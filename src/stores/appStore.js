@@ -33,6 +33,7 @@ export const useAppStore = defineStore('app', () => {
   const maxWorkers = ref(10)
   const batchSize = ref(10)
   const maxPapers = ref(20)
+  const scoringScheme = ref('original') // 'original' or 'decision_tree'
   
   // Processing state
   const isProcessing = ref(false)
@@ -132,7 +133,6 @@ export const useAppStore = defineStore('app', () => {
     if (professors.value.length > 0) {
       return candidateProfessors.value
         .sort((a, b) => (b.relevantPapers || 0) - (a.relevantPapers || 0))
-        .slice(0, 500) // Show more professors initially
     }
     
     return []
@@ -216,8 +216,13 @@ export const useAppStore = defineStore('app', () => {
           apiKey: llmApiKey.value,
           model: llmModel.value,
           baseURL: llmBaseURL.value,
-          researchDirection: researchDirection.value
+          researchDirection: researchDirection.value,
+          maxWorkers: maxWorkers.value, // Pass concurrency config
+          batchSize: batchSize.value,
+          scoringScheme: scoringScheme.value // Pass scoring scheme
         }
+        
+        console.log(`🚀 Starting LLM filter with ${maxWorkers.value} concurrent workers`)
         
         results = await batchFilterProfessors(
           candidateProfessors.value,
@@ -294,6 +299,7 @@ export const useAppStore = defineStore('app', () => {
     maxWorkers,
     batchSize,
     maxPapers,
+    scoringScheme,
     
     // Processing state
     isProcessing,

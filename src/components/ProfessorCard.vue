@@ -47,10 +47,15 @@
         </span>
       </div>
 
-      <!-- Match Reasoning (if available) -->
-      <div v-if="professor.matchReasoning" class="match-reasoning">
-        <el-icon><ChatLineRound /></el-icon>
-        <span>{{ professor.matchReasoning }}</span>
+      <!-- Research Summary / Match Reasoning (if available) -->
+      <div v-if="professor.researchSummary || professor.matchReasoning" class="match-reasoning">
+        <div class="reasoning-header">
+          <el-icon><ChatLineRound /></el-icon>
+          <strong>Research Focus:</strong>
+        </div>
+        <p class="reasoning-text">
+          {{ professor.researchSummary || professor.matchReasoning }}
+        </p>
       </div>
 
       <!-- Actions -->
@@ -234,21 +239,31 @@ function exportProfessor() {
 }
 
 .match-reasoning {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  padding: 8px 12px;
+  padding: 10px 12px;
   background: var(--el-fill-color-light);
-  border-radius: 4px;
-  font-size: 13px;
-  color: var(--el-text-color-regular);
-  line-height: 1.5;
+  border-radius: 6px;
+  border-left: 3px solid var(--el-color-primary);
 }
 
-.match-reasoning .el-icon {
-  margin-top: 2px;
+.reasoning-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: var(--el-text-color-secondary);
+}
+
+.reasoning-header .el-icon {
   color: var(--el-color-primary);
-  flex-shrink: 0;
+  font-size: 14px;
+}
+
+.reasoning-text {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--el-text-color-regular);
+  font-size: 13px;
 }
 
 .card-actions {

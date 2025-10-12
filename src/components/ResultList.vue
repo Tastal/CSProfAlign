@@ -47,24 +47,26 @@
             <el-option label="Institution Z-A" value="affiliation-desc" />
           </el-select>
 
-          <!-- Export -->
-          <el-dropdown trigger="click" @command="handleExport">
-            <el-button size="small" :icon="Download">
-              Export
-            </el-button>
-            <template #dropdown>
-              <el-dropdown-menu>
-                <el-dropdown-item command="csv">
-                  <el-icon><Document /></el-icon>
-                  Export as CSV
-                </el-dropdown-item>
-                <el-dropdown-item command="json">
-                  <el-icon><Folder /></el-icon>
-                  Export as JSON
-                </el-dropdown-item>
-              </el-dropdown-menu>
-            </template>
-          </el-dropdown>
+          <!-- Export - Hidden (now using floating button) -->
+          <div v-if="false">
+            <el-dropdown trigger="click" @command="handleExport">
+              <el-button size="small" :icon="Download">
+                Export
+              </el-button>
+              <template #dropdown>
+                <el-dropdown-menu>
+                  <el-dropdown-item command="csv">
+                    <el-icon><Document /></el-icon>
+                    Export as CSV
+                  </el-dropdown-item>
+                  <el-dropdown-item command="json">
+                    <el-icon><Folder /></el-icon>
+                    Export as JSON
+                  </el-dropdown-item>
+                </el-dropdown-menu>
+              </template>
+            </el-dropdown>
+          </div>
         </div>
       </div>
     </el-card>
@@ -309,12 +311,57 @@
         </el-table-column>
       </el-table>
     </el-card>
+
+    <!-- Pagination (only show when not grouping) -->
+    <div v-if="groupBy === 'none' && totalProfessors > pageSize" class="pagination-container">
+      <el-pagination
+        v-model:current-page="currentPage"
+        :page-size="pageSize"
+        :total="totalProfessors"
+        :page-sizes="[100, 200, 300, 500]"
+        layout="total, sizes, prev, pager, next, jumper"
+        @size-change="(size) => { pageSize = size; resetPagination() }"
+        @current-change="handlePageChange"
+        background
+      />
+    </div>
     </div><!-- End of content-area -->
+
+    <!-- Floating Export Button -->
+    <div v-if="displayProfessors.length > 0" class="floating-export-btn">
+      <el-dropdown trigger="click" @command="handleExport" placement="top-end">
+        <el-button type="success" circle size="large" :icon="Download" />
+        <template #dropdown>
+          <el-dropdown-menu>
+            <div class="export-header">
+              <strong>Export {{ displayCount }} Professors</strong>
+            </div>
+            <el-dropdown-item command="csv">
+              <el-icon><Document /></el-icon>
+              <div class="export-option">
+                <strong>CSV Format</strong>
+                <small>Spreadsheet compatible</small>
+              </div>
+            </el-dropdown-item>
+            <el-dropdown-item command="json">
+              <el-icon><Folder /></el-icon>
+              <div class="export-option">
+                <strong>JSON Format</strong>
+                <small>Developer friendly</small>
+              </div>
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
+      
+      <!-- Badge showing count -->
+      <el-badge :value="displayCount" :max="999" class="export-badge" />
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { ElMessage } from 'element-plus'
 import {
   UserFilled,
@@ -338,11 +385,15 @@ const sortBy = ref('papers-desc')
 const groupBy = ref('none')
 const activeGroups = ref([])
 
+// Pagination
+const currentPage = ref(1)
+const pageSize = ref(200)
+
 const displayProfessors = computed(() => {
   return store.displayProfessors
 })
 
-const sortedProfessors = computed(() => {
+const allSortedProfessors = computed(() => {
   const profs = [...displayProfessors.value]
   
   switch (sortBy.value) {
@@ -375,11 +426,22 @@ const sortedProfessors = computed(() => {
   }
 })
 
+// Paginated professors
+const sortedProfessors = computed(() => {
+  const start = (currentPage.value - 1) * pageSize.value
+  const end = start + pageSize.value
+  return allSortedProfessors.value.slice(start, end)
+})
+
+// Total count for pagination
+const totalProfessors = computed(() => allSortedProfessors.value.length)
+
 const groupedProfessors = computed(() => {
   if (groupBy.value === 'none') return {}
   
   const groups = {}
-  const profs = sortedProfessors.value
+  // When grouping, use ALL professors (paginated within groups instead)
+  const profs = allSortedProfessors.value
   
   for (const prof of profs) {
     let groupKey
@@ -408,8 +470,28 @@ const groupedProfessors = computed(() => {
 })
 
 const displayCount = computed(() => {
-  return displayProfessors.value.length
+  return totalProfessors.value
 })
+
+// Reset to page 1 when sort or filter changes
+function resetPagination() {
+  currentPage.value = 1
+}
+
+// Watch for sort changes to reset pagination
+watch([sortBy, groupBy, () => store.displayProfessors.length], () => {
+  resetPagination()
+})
+
+// Handle page change
+function handlePageChange(page) {
+  currentPage.value = page
+  // Scroll to top of results
+  const contentArea = document.querySelector('.content-area')
+  if (contentArea) {
+    contentArea.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+}
 
 const hasMatchScores = computed(() => {
   return displayProfessors.value.some(prof => prof.matchScore !== undefined)
@@ -670,6 +752,70 @@ function handleReset() {
   font-size: 15px;
 }
 
+/* Pagination */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
+  margin-top: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Floating Export Button */
+.floating-export-btn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 1000;
+}
+
+.floating-export-btn .el-button {
+  width: 56px;
+  height: 56px;
+  font-size: 24px;
+  box-shadow: 0 4px 12px rgba(103, 194, 58, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.floating-export-btn .el-button:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 6px 20px rgba(103, 194, 58, 0.6);
+}
+
+.export-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  pointer-events: none;
+}
+
+.export-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--el-border-color-light);
+  font-size: 14px;
+  color: var(--el-text-color-primary);
+}
+
+.export-option {
+  display: flex;
+  flex-direction: column;
+  margin-left: 8px;
+}
+
+.export-option strong {
+  font-size: 14px;
+  color: var(--el-text-color-primary);
+}
+
+.export-option small {
+  font-size: 12px;
+  color: var(--el-text-color-secondary);
+  margin-top: 2px;
+}
+
 @media (max-width: 768px) {
   .cards-container {
     grid-template-columns: 1fr;
@@ -682,6 +828,26 @@ function handleReset() {
 
   .toolbar-right {
     justify-content: space-between;
+  }
+
+  .pagination-container {
+    padding: 16px 8px;
+  }
+
+  .pagination-container :deep(.el-pagination) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .floating-export-btn {
+    bottom: 24px;
+    right: 24px;
+  }
+  
+  .floating-export-btn .el-button {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
   }
 }
 </style>

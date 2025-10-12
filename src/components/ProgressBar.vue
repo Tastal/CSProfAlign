@@ -3,19 +3,23 @@
     <el-card shadow="hover">
       <div class="progress-content">
         <div class="progress-header">
-          <h3>Processing Professors with AI...</h3>
-          <el-tag type="info">{{ store.processedCount }} / {{ store.totalCount }}</el-tag>
+          <h3>🤖 Processing Professors with AI...</h3>
         </div>
 
-        <el-progress
-          :percentage="store.processingProgress"
-          :status="store.processingProgress === 100 ? 'success' : undefined"
-          :stroke-width="24"
-          striped
-          striped-flow
-        >
-          <span class="progress-text">{{ store.processingProgress }}%</span>
-        </el-progress>
+        <div class="progress-wrapper">
+          <el-progress
+            :percentage="store.processingProgress"
+            :status="store.processingProgress === 100 ? 'success' : undefined"
+            :stroke-width="32"
+            :show-text="false"
+            striped
+            striped-flow
+          />
+          <div class="progress-overlay">
+            <span class="progress-count">{{ store.processedCount }} / {{ store.totalCount }}</span>
+            <span class="progress-percent">{{ store.processingProgress }}%</span>
+          </div>
+        </div>
 
         <div class="progress-stats">
           <div class="stat">
@@ -32,7 +36,7 @@
 
         <div class="progress-tips">
           <el-icon><InfoFilled /></el-icon>
-          <span>This may take a few minutes. You can switch tabs while processing.</span>
+          <span>Processing with parallel requests for faster speed. You can switch tabs while processing.</span>
         </div>
       </div>
     </el-card>
@@ -109,12 +113,39 @@ const processingRate = computed(() => {
   margin: 0;
   font-size: 18px;
   color: var(--el-text-color-primary);
+  text-align: center;
 }
 
-.progress-text {
-  font-weight: 600;
-  font-size: 14px;
-  color: white;
+.progress-wrapper {
+  position: relative;
+  margin-top: 20px;
+}
+
+.progress-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  pointer-events: none;
+}
+
+.progress-count {
+  font-weight: 700;
+  font-size: 16px;
+  color: #333;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
+}
+
+.progress-percent {
+  font-weight: 700;
+  font-size: 16px;
+  color: #333;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
 }
 
 .progress-stats {

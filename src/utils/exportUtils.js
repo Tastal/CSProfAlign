@@ -28,8 +28,10 @@ export function exportToCSV(professors, filename = 'professors.csv') {
     const name = prof.name || ''
     const affiliation = prof.affiliation || ''
     const score = prof.matchScore ? prof.matchScore.toFixed(2) : 'N/A'
-    const papers = prof.total_papers_recent || 0
-    const areas = (prof.areas || []).join('; ')
+    // Fix: Use integer for Total Papers
+    const papers = Math.round(prof.relevantPapers || prof.total_papers_recent || 0)
+    // Fix: Use research summary if available, fallback to area list
+    const areas = prof.researchSummary || (prof.areas || []).join('; ')
     const homepage = prof.homepage || ''
     const scholar = prof.scholarid 
       ? `https://scholar.google.com/citations?user=${prof.scholarid}`

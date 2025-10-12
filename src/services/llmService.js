@@ -220,7 +220,8 @@ export function parseScore(response) {
       const parsed = JSON.parse(jsonMatch[0])
       return {
         score: parseFloat(parsed.score) || 0,
-        reasoning: parsed.reasoning || ''
+        reasoning: parsed.reasoning || '',
+        researchSummary: parsed.research_summary || null
       }
     }
     
@@ -229,62 +230,124 @@ export function parseScore(response) {
     if (scoreMatch) {
       return {
         score: parseFloat(scoreMatch[1]) || 0,
-        reasoning: response
+        reasoning: response,
+        researchSummary: null
       }
     }
     
     // Default to 0 if unable to parse
     return {
       score: 0,
-      reasoning: 'Failed to parse score from response'
+      reasoning: 'Failed to parse score from response',
+      researchSummary: null
     }
   } catch (error) {
     console.error('Error parsing LLM response:', error)
     return {
       score: 0,
-      reasoning: 'Error parsing response'
+      reasoning: 'Error parsing response',
+      researchSummary: null
     }
   }
 }
 
 /**
- * Batch process professors with LLM
+ * Batch process professors with LLM (Parallel Processing)
  */
 export async function batchFilterProfessors(professors, config, onProgress) {
   const llmService = new LLMService(config)
   const results = []
   
-  for (let i = 0; i < professors.length; i++) {
-    try {
-      const professor = professors[i]
-      const prompt = buildProfessorPrompt(professor, config.researchDirection)
-      const response = await llmService.call(prompt, SYSTEM_PROMPT)
-      const { score, reasoning } = parseScore(response)
-      
-      results.push({
-        ...professor,
-        matchScore: score,
-        matchReasoning: reasoning
-      })
-      
-      // Report progress
-      if (onProgress) {
-        onProgress(i + 1, professors.length)
+  // Select scoring scheme
+  let buildPrompt, parseScoreFn, systemPrompt
+  
+  if (config.scoringScheme === 'decision_tree') {
+    // Use decision tree scoring
+    const decisionTree = await import('./scoringSchemes/decisionTree.js')
+    buildPrompt = decisionTree.buildDecisionTreePrompt
+    parseScoreFn = decisionTree.parseDecisionTreeScore
+    systemPrompt = decisionTree.DECISION_TREE_SYSTEM_PROMPT
+    console.log('📋 Using Decision Tree scoring method (95% consistency)')
+  } else {
+    // Use original scoring
+    buildPrompt = buildProfessorPrompt
+    parseScoreFn = parseScore
+    systemPrompt = SYSTEM_PROMPT
+    console.log('📋 Using Original scoring method')
+  }
+  
+  // Parallel processing with configurable concurrency
+  const CONCURRENT_REQUESTS = config.maxWorkers || 10 // Use user-configured concurrency
+  const BATCH_DELAY = 50 // Delay between batches (ms)
+  
+  console.log(`🚀 Starting parallel processing with ${CONCURRENT_REQUESTS} concurrent requests`)
+  console.log(`📊 Total professors to process: ${professors.length}`)
+  
+  // Split professors into batches
+  const batches = []
+  for (let i = 0; i < professors.length; i += CONCURRENT_REQUESTS) {
+    batches.push(professors.slice(i, i + CONCURRENT_REQUESTS))
+  }
+  
+  console.log(`📦 Split into ${batches.length} batches`)
+  
+  let processedCount = 0
+  const startTime = Date.now()
+  
+  // Process each batch in parallel
+  for (let batchIndex = 0; batchIndex < batches.length; batchIndex++) {
+    const batch = batches[batchIndex]
+    const batchStartTime = Date.now()
+    
+    const batchPromises = batch.map(async (professor) => {
+      try {
+        const prompt = buildPrompt(professor, config.researchDirection)
+        const response = await llmService.call(prompt, systemPrompt)
+        const result = parseScoreFn(response)
+        
+        return {
+          ...professor,
+          matchScore: result.score,
+          matchReasoning: result.reasoning,
+          researchSummary: result.researchSummary || result.reasoning,
+          decisionPath: result.decisionPath,
+          matchLevel: result.matchLevel
+        }
+      } catch (error) {
+        console.error(`Error processing professor ${professor.name}:`, error)
+        return {
+          ...professor,
+          matchScore: 0,
+          matchReasoning: `Error: ${error.message}`
+        }
       }
-      
-      // Rate limiting delay
-      if (i < professors.length - 1) {
-        await new Promise(resolve => setTimeout(resolve, 100))
-      }
-    } catch (error) {
-      console.error(`Error processing professor ${professors[i].name}:`, error)
-      results.push({
-        ...professors[i],
-        matchScore: 0,
-        matchReasoning: `Error: ${error.message}`
-      })
+    })
+    
+    // Wait for all professors in this batch to complete
+    const batchResults = await Promise.all(batchPromises)
+    results.push(...batchResults)
+    
+    // Update progress
+    processedCount += batchResults.length
+    const elapsed = (Date.now() - startTime) / 1000
+    const rate = (processedCount / elapsed).toFixed(2)
+    const batchTime = ((Date.now() - batchStartTime) / 1000).toFixed(2)
+    
+    console.log(`✅ Batch ${batchIndex + 1}/${batches.length} completed in ${batchTime}s (${rate} profs/sec)`)
+    
+    if (onProgress) {
+      onProgress(processedCount, professors.length)
+    }
+    
+    // Small delay between batches to avoid rate limiting
+    if (batchIndex < batches.length - 1) {
+      await new Promise(resolve => setTimeout(resolve, BATCH_DELAY))
     }
   }
+  
+  const totalTime = ((Date.now() - startTime) / 1000).toFixed(2)
+  const avgRate = (professors.length / totalTime).toFixed(2)
+  console.log(`🎉 All processing completed in ${totalTime}s (avg: ${avgRate} profs/sec)`)
   
   return results
 }

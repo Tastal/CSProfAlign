@@ -8,6 +8,7 @@
       :props="treeProps"
       :default-expand-all="false"
       :expand-on-click-node="false"
+      :check-on-click-node="true"
       @check="handleCheck"
       class="area-tree"
     >
