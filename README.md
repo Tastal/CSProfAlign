@@ -152,7 +152,9 @@ Contributions are welcome! Please feel free to submit issues and pull requests.
 
 ### 📄 License
 
-MIT License - Based on CSRankings data (Creative Commons licensed)
+MIT License - See [LICENSE](LICENSE) file for details
+
+Based on CSRankings data (Creative Commons licensed)
 
 ### 🙏 Acknowledgments
 
@@ -309,7 +311,9 @@ python scripts/load-local-data.py
 
 ### 📄 许可证
 
-MIT License - 基于 CSRankings 数据（Creative Commons 许可）
+MIT License - 详见 [LICENSE](LICENSE) 文件
+
+基于 CSRankings 数据（Creative Commons 许可）
 
 ### 🙏 致谢
 
