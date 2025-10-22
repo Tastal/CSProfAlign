@@ -1,0 +1,34 @@
+{
+  "last_updated": "2025-10-11T22:21:31.905928",
+  "source": "CSRankings local directory",
+  "regions": {
+    "europe": {
+      "count": 5743,
+      "filename": "professors-europe.json"
+    },
+    "asia": {
+      "count": 4483,
+      "filename": "professors-asia.json"
+    },
+    "us": {
+      "count": 6914,
+      "filename": "professors-us.json"
+    },
+    "canada": {
+      "count": 973,
+      "filename": "professors-canada.json"
+    },
+    "australasia": {
+      "count": 630,
+      "filename": "professors-australasia.json"
+    },
+    "southamerica": {
+      "count": 301,
+      "filename": "professors-southamerica.json"
+    },
+    "africa": {
+      "count": 14,
+      "filename": "professors-africa.json"
+    }
+  }
+}

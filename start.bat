@@ -24,99 +24,40 @@ if not exist "node_modules" (
     echo.
 )
 
-:: Check and update CSRankings data
-echo [Step 2/3] Checking CSRankings data...
-echo.
+:: Check and update CSRankings source files
+echo [Step 2/3] Checking CSRankings source files...
+python scripts\update-csrankings.py
+set UPDATE_EXIT=%errorlevel%
 
-:: Check if CSRankings directory exists
-if not exist "CSRankings" (
-    echo WARNING: CSRankings directory not found!
-    echo.
-    echo To use real data, please clone CSRankings:
-    echo   git clone --depth 1 https://github.com/emeryberger/CSRankings.git
-    echo.
-    echo Press any key to continue with demo mode, or Ctrl+C to exit and clone CSRankings first.
-    pause
-    goto :start_server
-)
-
-:: Check if data files exist
-if not exist "public\data\metadata.json" (
-    echo Data files not found. Loading data from CSRankings...
-    goto :load_data
-)
-
-:: Check if CSRankings has updates (check if .git exists for git pull)
-if exist "CSRankings\.git" (
-    echo Checking for CSRankings updates...
-    cd CSRankings
-    git fetch origin master --quiet 2>nul
-    
-    :: Compare local and remote
-    for /f %%i in ('git rev-list HEAD...origin/master --count 2^>nul') do set BEHIND=%%i
-    
-    cd ..
-    
-    if not "%BEHIND%"=="" if not "%BEHIND%"=="0" (
-        echo CSRankings repository has %BEHIND% new commits.
-        echo Updating CSRankings and reloading data...
-        cd CSRankings
-        git pull origin master --quiet
-        cd ..
-        goto :load_data
-    ) else (
-        echo CSRankings data is up to date [OK]
-        echo.
-    )
-) else (
-    echo CSRankings data exists [OK]
-    echo.
-)
-
-goto :start_server
-
-:load_data
-echo.
-echo ----------------------------------------
-echo Loading Real CSRankings Data
-echo ----------------------------------------
-echo This may take 2-5 minutes...
-echo.
-
-:: Check Python
-python --version >nul 2>&1
-if errorlevel 1 (
-    echo ERROR: Python not found!
-    echo Please install Python 3.7+ from https://www.python.org/
-    echo.
+if %UPDATE_EXIT% equ 1 (
+    echo ERROR: Failed to check CSRankings files
     pause
     exit /b 1
 )
 
-:: Check pandas
-python -c "import pandas" >nul 2>&1
-if errorlevel 1 (
-    echo Installing pandas...
-    pip install pandas
+if %UPDATE_EXIT% equ 2 (
+    echo.
+    echo CSRankings files updated. Regenerating data...
+    python scripts\load-local-data.py
     if errorlevel 1 (
-        echo ERROR: Failed to install pandas
+        echo ERROR: Data regeneration failed
         pause
         exit /b 1
     )
 )
 
-:: Run data loading script
-python scripts\load-local-data.py
-if errorlevel 1 (
-    echo.
-    echo ERROR: Data loading failed!
-    echo Please check the error messages above.
-    pause
-    exit /b 1
+:: Check if data files exist
+if not exist "public\data\metadata.json" (
+    echo ERROR: Data files not found!
+    echo Generating initial data...
+    python scripts\load-local-data.py
+    if errorlevel 1 (
+        echo ERROR: Data generation failed
+        pause
+        exit /b 1
+    )
 )
 
-echo.
-echo Data loaded successfully [OK]
 echo.
 
 :start_server

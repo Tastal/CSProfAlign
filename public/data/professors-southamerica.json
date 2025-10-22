@@ -1,0 +1,6672 @@
+{
+  "region": "southamerica",
+  "count": 301,
+  "last_updated": "2025-10-11T22:21:31.905928",
+  "professors": [
+    {
+      "name": "Adriano C. M. Pereira",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~adrianoc",
+      "scholarid": "MT9oSSwAAAAJ",
+      "publications": {
+        "sigir": {
+          "2014": 0.17,
+          "2022": 0.17,
+          "2023": 0.17
+        },
+        "www": {
+          "2009": 0.2
+        }
+      },
+      "areas": [
+        "sigir",
+        "www"
+      ],
+      "total_papers_recent": 0.34
+    },
+    {
+      "name": "Adriano Veloso",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~adrianov",
+      "scholarid": "j2BEVSoAAAAJ",
+      "publications": {
+        "acl": {
+          "2012": 0.2
+        },
+        "kdd": {
+          "2011": 0.25
+        },
+        "naacl": {
+          "2018": 0.33
+        },
+        "sigir": {
+          "2008": 0.25,
+          "2011": 0.2,
+          "2014": 0.17
+        }
+      },
+      "areas": [
+        "acl",
+        "kdd",
+        "naacl",
+        "sigir"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Agma J. M. Traina",
+      "affiliation": "USP-ICMC",
+      "homepage": "http://icmc.usp.br/pessoas?id=4170385",
+      "scholarid": "v2-C4i4AAAAJ",
+      "publications": {
+        "icde": {
+          "2001": 0.25,
+          "2010": 0.25
+        },
+        "kdd": {
+          "2001": 0.25,
+          "2006": 0.2,
+          "2011": 0.17,
+          "2015": 0.2
+        },
+        "sigmod": {
+          "2000": 0.25
+        },
+        "vis": {
+          "2023": 0.17
+        }
+      },
+      "areas": [
+        "icde",
+        "kdd",
+        "sigmod",
+        "vis"
+      ],
+      "total_papers_recent": 0.17
+    },
+    {
+      "name": "Agustín Gravano",
+      "affiliation": "University of Buenos Aires",
+      "homepage": "http://habla.dc.uba.ar/gravano",
+      "scholarid": "GrKOwHIAAAAJ",
+      "publications": {
+        "acl": {
+          "2007": 0.2
+        },
+        "naacl": {
+          "2012": 0.17
+        }
+      },
+      "areas": [
+        "acl",
+        "naacl"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Aidan Hogan",
+      "affiliation": "Universidad de Chile",
+      "homepage": "http://aidanhogan.com",
+      "scholarid": "CP-fgY4AAAAJ",
+      "publications": {
+        "emnlp": {
+          "2019": 0.33
+        },
+        "icde": {
+          "2022": 0.45
+        },
+        "sigmod": {
+          "2021": 0.17,
+          "2024": 0.17
+        },
+        "www": {
+          "2015": 1.0,
+          "2018": 0.5,
+          "2025": 0.17
+        }
+      },
+      "areas": [
+        "emnlp",
+        "icde",
+        "sigmod",
+        "www"
+      ],
+      "total_papers_recent": 0.79
+    },
+    {
+      "name": "Alan M. Durham",
+      "affiliation": "USP",
+      "homepage": "http://www.ime.usp.br/~durham",
+      "scholarid": "sX7BGkIAAAAJ",
+      "publications": {
+        "oopsla": {
+          "1996": 0.5
+        }
+      },
+      "areas": [
+        "oopsla"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Alberto Barbosa Raposo",
+      "affiliation": "PUC-RIO",
+      "homepage": "http://www.inf.puc-rio.br/~abraposo",
+      "scholarid": "bbNfBlwAAAAJ",
+      "publications": {
+        "vr": {
+          "2012": 0.14
+        }
+      },
+      "areas": [
+        "vr"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Alberto E. Schaeffer Filho",
+      "affiliation": "UFRGS",
+      "homepage": "http://inf.ufrgs.br/~alberto",
+      "scholarid": "y6oOiqYAAAAJ",
+      "publications": {
+        "eurosys": {
+          "2023": 0.33
+        },
+        "www": {
+          "2025": 0.2
+        }
+      },
+      "areas": [
+        "eurosys",
+        "www"
+      ],
+      "total_papers_recent": 0.33
+    },
+    {
+      "name": "Alberto H. F. Laender",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~laender",
+      "scholarid": "HJhu4csAAAAJ",
+      "publications": {
+        "acl": {
+          "2012": 0.2
+        },
+        "sigir": {
+          "1984": 0.5
+        },
+        "sigmod": {
+          "2011": 0.2
+        },
+        "www": {
+          "2004": 0.25,
+          "2009": 0.25
+        }
+      },
+      "areas": [
+        "acl",
+        "sigir",
+        "sigmod",
+        "www"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Alejandro Hevia",
+      "affiliation": "Universidad de Chile",
+      "homepage": "https://www.dcc.uchile.cl/~ahevia",
+      "scholarid": "klAKNOcAAAAJ",
+      "publications": {
+        "eurocrypt": {
+          "2002": 0.33
+        },
+        "pets": {
+          "2008": 0.5
+        },
+        "usenixatc": {
+          "2005": 0.2
+        }
+      },
+      "areas": [
+        "eurocrypt",
+        "pets",
+        "usenixatc"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Alessandro F. Garcia 0001",
+      "affiliation": "PUC-RIO",
+      "homepage": "http://www.inf.puc-rio.br/~afgarcia",
+      "scholarid": "rP1LYboAAAAJ",
+      "publications": {
+        "fse": {
+          "2006": 0.17,
+          "2017": 0.11,
+          "2019": 0.2,
+          "2024": 0.11
+        },
+        "icse": {
+          "2008": 0.09,
+          "2010": 0.07,
+          "2012": 0.25,
+          "2014": 0.11,
+          "2016": 0.2,
+          "2018": 0.08,
+          "2023": 0.31
+        }
+      },
+      "areas": [
+        "fse",
+        "icse"
+      ],
+      "total_papers_recent": 0.42
+    },
+    {
+      "name": "Alexandre A. B. Lima",
+      "affiliation": "UFRJ",
+      "homepage": "http://www.cos.ufrj.br/index.php/pt-BR/pessoas/details/18/1573-assis",
+      "scholarid": "CjlmBWMAAAAJ",
+      "publications": {
+        "hpdc": {
+          "2010": 0.14
+        }
+      },
+      "areas": [
+        "hpdc"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Alexandre Bergel",
+      "affiliation": "Universidad de Chile",
+      "homepage": "https://www.dcc.uchile.cl/alexandre_bergel",
+      "scholarid": "5pG4GQ8AAAAJ",
+      "publications": {
+        "icra": {
+          "2021": 0.33
+        },
+        "icse": {
+          "2012": 0.33,
+          "2018": 0.33,
+          "2025": 0.2
+        },
+        "oopsla": {
+          "2005": 0.33,
+          "2007": 0.25
+        }
+      },
+      "areas": [
+        "icra",
+        "icse",
+        "oopsla"
+      ],
+      "total_papers_recent": 0.33
+    },
+    {
+      "name": "Alexandre Plastino 0001",
+      "affiliation": "UFF",
+      "homepage": "http://www.ic.uff.br/index.php/en-GB/people/317-faculty-ic?docente=5",
+      "scholarid": "axlvTZoAAAAJ",
+      "publications": {
+        "icse": {
+          "2023": 0.17
+        }
+      },
+      "areas": [
+        "icse"
+      ],
+      "total_papers_recent": 0.17
+    },
+    {
+      "name": "Alexandre X. Falcão",
+      "affiliation": "UNICAMP",
+      "homepage": "http://www.ic.unicamp.br/~afalcao",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "vis": {
+          "2017": 0.25
+        }
+      },
+      "areas": [
+        "vis"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Alfredo Goldman",
+      "affiliation": "USP",
+      "homepage": "http://www.ime.usp.br/~gold",
+      "scholarid": "Cgl09uMAAAAJ",
+      "publications": {
+        "micro": {
+          "2019": 0.14
+        }
+      },
+      "areas": [
+        "micro"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Aluízio F. R. Araújo",
+      "affiliation": "UFPE",
+      "homepage": "https://www.cin.ufpe.br/~aluizioa/aluizio-homepage.htm",
+      "scholarid": "oAGSArYAAAAJ",
+      "publications": {
+        "iros": {
+          "1999": 0.25,
+          "2007": 0.17
+        }
+      },
+      "areas": [
+        "iros"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Alvaro Soto",
+      "affiliation": "Pontificia Universidad Catolica de Chile",
+      "homepage": "https://asoto.ing.puc.cl",
+      "scholarid": "gOVVRk4AAAAJ",
+      "publications": {
+        "cvpr": {
+          "2014": 0.33,
+          "2016": 0.67,
+          "2020": 0.5,
+          "2023": 0.12,
+          "2025": 0.14
+        },
+        "eccv": {
+          "2018": 0.25,
+          "2022": 0.33
+        },
+        "emnlp": {
+          "2018": 0.14,
+          "2021": 0.2
+        },
+        "iccv": {
+          "2013": 0.33
+        },
+        "icra": {
+          "2010": 0.25,
+          "2018": 0.33
+        },
+        "ijcai": {
+          "2005": 1.0,
+          "2017": 0.25
+        },
+        "nips": {
+          "2021": 0.33
+        },
+        "rss": {
+          "2019": 0.14
+        }
+      },
+      "areas": [
+        "cvpr",
+        "eccv",
+        "emnlp",
+        "iccv",
+        "icra",
+        "ijcai",
+        "nips",
+        "rss"
+      ],
+      "total_papers_recent": 1.48
+    },
+    {
+      "name": "Ana Cristina Bicharra Garcia",
+      "affiliation": "UFF",
+      "homepage": "http://www.addlabs.uff.br/bicharra",
+      "scholarid": "qN-wg74AAAAJ",
+      "publications": {
+        "aaai": {
+          "1997": 0.75,
+          "2007": 0.5
+        }
+      },
+      "areas": [
+        "aaai"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Ana L. C. Bazzan",
+      "affiliation": "UFRGS",
+      "homepage": "http://www.inf.ufrgs.br/~bazzan",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "aaai": {
+          "2013": 0.5,
+          "2015": 0.33
+        },
+        "icml": {
+          "2006": 0.25,
+          "2022": 0.33
+        },
+        "ijcai": {
+          "2015": 0.2
+        },
+        "nips": {
+          "2023": 0.39
+        }
+      },
+      "areas": [
+        "aaai",
+        "icml",
+        "ijcai",
+        "nips"
+      ],
+      "total_papers_recent": 0.72
+    },
+    {
+      "name": "Anarosa A. F. Brandão",
+      "affiliation": "USP",
+      "homepage": "https://www2.pcs.usp.br/pcsv6/index.php/menucolaboradores/117-colaboradores/211",
+      "scholarid": "0YlNxKgAAAAJ",
+      "publications": {
+        "ijcai": {
+          "2007": 0.25
+        }
+      },
+      "areas": [
+        "ijcai"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Anderson Maciel",
+      "affiliation": "UFRGS",
+      "homepage": "http://inf.ufrgs.br/~amaciel",
+      "scholarid": "GC-IHBoAAAAJ",
+      "publications": {
+        "chiconf": {
+          "2017": 0.25
+        },
+        "eurographics": {
+          "2019": 0.17
+        },
+        "vr": {
+          "2017": 0.25,
+          "2018": 0.2,
+          "2019": 0.33,
+          "2025": 0.33
+        }
+      },
+      "areas": [
+        "chiconf",
+        "eurographics",
+        "vr"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Anderson Rocha 0001",
+      "affiliation": "UNICAMP",
+      "homepage": "http://www.ic.unicamp.br/~rocha",
+      "scholarid": "JX1fykMAAAAJ",
+      "publications": {
+        "eccv": {
+          "2010": 0.25
+        },
+        "iccv": {
+          "2007": 0.5
+        }
+      },
+      "areas": [
+        "eccv",
+        "iccv"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "André C. Hora",
+      "affiliation": "UFMG",
+      "homepage": "https://dcc.ufmg.br/~andrehora",
+      "scholarid": "2fwfYtQAAAAJ",
+      "publications": {
+        "fse": {
+          "2016": 0.25
+        },
+        "icse": {
+          "2018": 0.25
+        }
+      },
+      "areas": [
+        "fse",
+        "icse"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "André Fujita",
+      "affiliation": "USP",
+      "homepage": "http://www.ime.usp.br/~fujita",
+      "scholarid": "R2gGcVYAAAAJ",
+      "publications": {
+        "ismb": {
+          "2007": 0.17
+        }
+      },
+      "areas": [
+        "ismb"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "André Grahl Pereira",
+      "affiliation": "UFRGS",
+      "homepage": "http://www.inf.ufrgs.br/~agpereira",
+      "scholarid": "uVd5njYAAAAJ",
+      "publications": {
+        "aaai": {
+          "2021": 0.25,
+          "2022": 0.5
+        },
+        "ijcai": {
+          "2016": 0.2,
+          "2018": 0.33,
+          "2019": 0.33
+        }
+      },
+      "areas": [
+        "aaai",
+        "ijcai"
+      ],
+      "total_papers_recent": 0.75
+    },
+    {
+      "name": "André Inácio Reis",
+      "affiliation": "UFRGS",
+      "homepage": "http://www.inf.ufrgs.br/~andreis",
+      "scholarid": "Cajbmi8AAAAJ",
+      "publications": {
+        "iccad": {
+          "2015": 0.2,
+          "2018": 0.17
+        }
+      },
+      "areas": [
+        "iccad"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "André L. M. Santos",
+      "affiliation": "UFPE",
+      "homepage": "https://www.cin.ufpe.br/~alms",
+      "scholarid": "paFR9XYAAAAJ",
+      "publications": {
+        "icfp": {
+          "1996": 0.33
+        },
+        "icse": {
+          "2008": 0.25
+        }
+      },
+      "areas": [
+        "icfp",
+        "icse"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "André Luís Vignatti",
+      "affiliation": "UFPR",
+      "homepage": "https://www.inf.ufpr.br/vignatti",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "kdd": {
+          "2020": 0.33
+        }
+      },
+      "areas": [
+        "kdd"
+      ],
+      "total_papers_recent": 0.33
+    },
+    {
+      "name": "Andrés Abeliuk",
+      "affiliation": "Universidad de Chile",
+      "homepage": "https://aabeliuk.github.io",
+      "scholarid": "qKqH1lcAAAAJ",
+      "publications": {
+        "ijcai": {
+          "2015": 0.33,
+          "2016": 0.35
+        },
+        "www": {
+          "2017": 0.2
+        }
+      },
+      "areas": [
+        "ijcai",
+        "www"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Antonio Alfredo Ferreira Loureiro",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~loureiro",
+      "scholarid": "GOGlTIMAAAAJ",
+      "publications": {
+        "kdd": {
+          "2008": 0.33
+        },
+        "sensys": {
+          "2012": 0.17,
+          "2016": 0.09
+        },
+        "www": {
+          "2013": 0.25
+        }
+      },
+      "areas": [
+        "kdd",
+        "sensys",
+        "www"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Antonio Carlos Schneider Beck",
+      "affiliation": "UFRGS",
+      "homepage": "http://inf.ufrgs.br/~caco",
+      "scholarid": "E-VfVv4AAAAJ",
+      "publications": {
+        "dac": {
+          "2005": 0.5,
+          "2018": 0.45,
+          "2020": 0.7,
+          "2021": 0.17,
+          "2022": 0.25
+        }
+      },
+      "areas": [
+        "dac"
+      ],
+      "total_papers_recent": 1.12
+    },
+    {
+      "name": "Arnaldo de Albuquerque Araújo",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~arnaldo",
+      "scholarid": "AitxvQIAAAAJ",
+      "publications": {
+        "eurographics": {
+          "2004": 0.2
+        }
+      },
+      "areas": [
+        "eurographics"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Arthur Francisco Lorenzon",
+      "affiliation": "UFRGS",
+      "homepage": "https://inf.ufrgs.br/~aflorenzon",
+      "scholarid": "ITN8AAAAJ",
+      "publications": {
+        "dac": {
+          "2021": 0.17,
+          "2022": 0.25
+        },
+        "ics": {
+          "2022": 0.25
+        }
+      },
+      "areas": [
+        "dac",
+        "ics"
+      ],
+      "total_papers_recent": 0.67
+    },
+    {
+      "name": "Avelino Francisco Zorzo",
+      "affiliation": "PUC-RS",
+      "homepage": "http://www.inf.pucrs.br/~zorzo",
+      "scholarid": "rsiQlMgAAAAJ",
+      "publications": {
+        "oopsla": {
+          "1999": 0.5
+        }
+      },
+      "areas": [
+        "oopsla"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Barbara Poblete",
+      "affiliation": "Universidad de Chile",
+      "homepage": "https://www.dcc.uchile.cl/barbara_poblete",
+      "scholarid": "eZBFWGEAAAAJ",
+      "publications": {
+        "emnlp": {
+          "2019": 0.33
+        },
+        "sigir": {
+          "2019": 0.33
+        },
+        "www": {
+          "2008": 0.5,
+          "2011": 0.33
+        }
+      },
+      "areas": [
+        "emnlp",
+        "sigir",
+        "www"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Benjamin Bustos",
+      "affiliation": "Universidad de Chile",
+      "homepage": "http://www.uchile.cl/portafolio-academico/impresion.jsf?username=bustos",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "eurographics": {
+          "2021": 0.2
+        },
+        "iccv": {
+          "2013": 0.5
+        },
+        "sigmod": {
+          "2024": 0.17
+        }
+      },
+      "areas": [
+        "eurographics",
+        "iccv",
+        "sigmod"
+      ],
+      "total_papers_recent": 0.37
+    },
+    {
+      "name": "Berthier A. Ribeiro-Neto",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~berthier",
+      "scholarid": "JMkfK0sAAAAJ",
+      "publications": {
+        "icde": {
+          "1992": 0.33
+        },
+        "sigir": {
+          "1996": 0.5,
+          "1999": 0.25,
+          "2000": 0.2,
+          "2001": 0.17,
+          "2002": 0.25,
+          "2005": 0.25,
+          "2006": 0.17,
+          "2011": 0.2
+        },
+        "sigmetrics": {
+          "2000": 0.33
+        },
+        "www": {
+          "2004": 0.14
+        }
+      },
+      "areas": [
+        "icde",
+        "sigir",
+        "sigmetrics",
+        "www"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Beta Ziliani",
+      "affiliation": "Universidad Nacional de Córdoba",
+      "homepage": "https://people.mpi-sws.org/~beta",
+      "scholarid": "zPeBksEAAAAJ",
+      "publications": {
+        "icfp": {
+          "2011": 0.25,
+          "2013": 0.2,
+          "2015": 0.5,
+          "2018": 0.2
+        }
+      },
+      "areas": [
+        "icfp"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Breno Miranda",
+      "affiliation": "UFPE",
+      "homepage": "https://cin.ufpe.br/~bafm",
+      "scholarid": "jp9fGhsAAAAJ",
+      "publications": {
+        "icse": {
+          "2017": 0.25,
+          "2018": 0.25,
+          "2019": 0.25,
+          "2020": 0.2
+        }
+      },
+      "areas": [
+        "icse"
+      ],
+      "total_papers_recent": 0.2
+    },
+    {
+      "name": "Bruno B. P. Cafeo",
+      "affiliation": "UFMS",
+      "homepage": "https://www.facom.ufms.br/~cafeo",
+      "scholarid": "FRfEKzcAAAAJ",
+      "publications": {
+        "icse": {
+          "2016": 0.2
+        }
+      },
+      "areas": [
+        "icse"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Caetano Traina Jr.",
+      "affiliation": "USP-ICMC",
+      "homepage": "http://conteudo.icmc.usp.br/pessoas/caetano",
+      "scholarid": "h2ivd3AAAAAJ",
+      "publications": {
+        "icde": {
+          "2001": 0.25,
+          "2010": 0.25,
+          "2011": 0.14
+        },
+        "kdd": {
+          "2001": 0.25,
+          "2011": 0.17,
+          "2015": 0.2
+        },
+        "sigmod": {
+          "2000": 0.25
+        }
+      },
+      "areas": [
+        "icde",
+        "kdd",
+        "sigmod"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Carla M. D. S. Freitas",
+      "affiliation": "UFRGS",
+      "homepage": "http://www.inf.ufrgs.br/~carla",
+      "scholarid": "p1oaXwoAAAAJ",
+      "publications": {
+        "eurographics": {
+          "2015": 0.2,
+          "2018": 0.33
+        },
+        "vr": {
+          "2018": 0.25,
+          "2023": 0.33
+        }
+      },
+      "areas": [
+        "eurographics",
+        "vr"
+      ],
+      "total_papers_recent": 0.33
+    },
+    {
+      "name": "Carlos Areces",
+      "affiliation": "Universidad Nacional de Córdoba",
+      "homepage": "https://cs.famaf.unc.edu.ar/~careces",
+      "scholarid": "Ku5jaRkAAAAJ",
+      "publications": {
+        "aaai": {
+          "2019": 0.2
+        },
+        "ijcai": {
+          "2003": 0.25,
+          "2009": 0.5
+        }
+      },
+      "areas": [
+        "aaai",
+        "ijcai"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Carlos Eduardo Ferreira",
+      "affiliation": "USP",
+      "homepage": "http://www.ime.usp.br/~cef",
+      "scholarid": "cp2Bft4AAAAJ",
+      "publications": {
+        "ismb": {
+          "2007": 0.17
+        }
+      },
+      "areas": [
+        "ismb"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Carlos Hitoshi Morimoto",
+      "affiliation": "USP",
+      "homepage": "http://www.ime.usp.br/~hitoshi",
+      "scholarid": "ylIa7EoAAAAJ",
+      "publications": {
+        "chiconf": {
+          "1999": 0.33,
+          "2016": 0.5,
+          "2021": 0.5
+        },
+        "cvpr": {
+          "1997": 0.5
+        }
+      },
+      "areas": [
+        "chiconf",
+        "cvpr"
+      ],
+      "total_papers_recent": 0.5
+    },
+    {
+      "name": "Carlos José Pereira de Lucena",
+      "affiliation": "PUC-RIO",
+      "homepage": "http://www.inf.puc-rio.br/blog/professor/@carlos-jose-pereira-de-lucena",
+      "scholarid": "BCW5XGIAAAAJ",
+      "publications": {
+        "icse": {
+          "1984": 0.25,
+          "2018": 0.08
+        }
+      },
+      "areas": [
+        "icse"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Carlos López Pombo",
+      "affiliation": "University of Buenos Aires",
+      "homepage": "https://www.dc.uba.ar/~clpombo",
+      "scholarid": "DGmfF8QAAAAJ",
+      "publications": {
+        "icse": {
+          "2005": 0.25
+        },
+        "issta": {
+          "2010": 0.25
+        }
+      },
+      "areas": [
+        "icse",
+        "issta"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Carmem S. Hara",
+      "affiliation": "UFPR",
+      "homepage": "https://www.inf.ufpr.br/carmem",
+      "scholarid": "NrgcBX8AAAAJ",
+      "publications": {
+        "icde": {
+          "2003": 0.25,
+          "2008": 0.25
+        },
+        "pods": {
+          "1999": 0.5
+        },
+        "vldb": {
+          "2003": 0.25
+        },
+        "www": {
+          "2001": 0.2
+        }
+      },
+      "areas": [
+        "icde",
+        "pods",
+        "vldb",
+        "www"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Cecília M. F. Rubira",
+      "affiliation": "UNICAMP",
+      "homepage": "http://www.bv.fapesp.br/en/pesquisador/8092/cecilia-mary-fischer-rubira",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "fse": {
+          "2006": 0.17
+        }
+      },
+      "areas": [
+        "fse"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Claudia Bauzer Medeiros",
+      "affiliation": "UNICAMP",
+      "homepage": "http://www.ic.unicamp.br/~cmbm",
+      "scholarid": "Kf2m1twAAAAJ",
+      "publications": {
+        "icde": {
+          "1991": 0.5,
+          "1997": 0.33
+        },
+        "vldb": {
+          "1985": 0.5
+        }
+      },
+      "areas": [
+        "icde",
+        "vldb"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Claudia Jiménez-Guarín",
+      "affiliation": "Universidad de los Andes",
+      "homepage": "https://profesores.virtual.uniandes.edu.co/cjimenez/es/inicio",
+      "scholarid": "EAFoxGQAAAAJ",
+      "publications": {
+        "sigir": {
+          "1988": 1.0
+        }
+      },
+      "areas": [
+        "sigir"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Claudio Esperança",
+      "affiliation": "UFRJ",
+      "homepage": "http://www.lcg.ufrj.br/~esperanc",
+      "scholarid": "10tGVmsAAAAJ",
+      "publications": {
+        "eurographics": {
+          "2000": 0.33,
+          "2008": 0.25,
+          "2014": 0.25
+        },
+        "siggraph-asia": {
+          "2019": 0.17
+        }
+      },
+      "areas": [
+        "eurographics",
+        "siggraph-asia"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Claudio Fabiano Motta Toledo",
+      "affiliation": "USP-ICMC",
+      "homepage": "http://icmc.usp.br/pessoas?id=14662391",
+      "scholarid": "oiW7E1IAAAAJ",
+      "publications": {
+        "aaai": {
+          "2019": 0.25,
+          "2021": 0.2
+        }
+      },
+      "areas": [
+        "aaai"
+      ],
+      "total_papers_recent": 0.2
+    },
+    {
+      "name": "Claudio Gutierrez 0001",
+      "affiliation": "Universidad de Chile",
+      "homepage": "https://www.dcc.uchile.cl/cgutierr",
+      "scholarid": "jzeqUi4AAAAJ",
+      "publications": {
+        "focs": {
+          "1998": 1.0
+        },
+        "pods": {
+          "2004": 0.33
+        },
+        "sigmod": {
+          "2021": 0.33
+        },
+        "stoc": {
+          "2000": 1.0
+        },
+        "www": {
+          "2012": 0.33
+        }
+      },
+      "areas": [
+        "focs",
+        "pods",
+        "sigmod",
+        "stoc",
+        "www"
+      ],
+      "total_papers_recent": 0.33
+    },
+    {
+      "name": "Claudio Luis de Amorim",
+      "affiliation": "UFRJ",
+      "homepage": "http://www.cos.ufrj.br/index.php/pt-BR/pessoas/details/18/1007-amorim",
+      "scholarid": "YQNnYZQAAAAJ",
+      "publications": {
+        "asplos": {
+          "1996": 0.17
+        }
+      },
+      "areas": [
+        "asplos"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Cláudia M. L. Werner",
+      "affiliation": "UFRJ",
+      "homepage": "http://www.cos.ufrj.br/index.php/pt-BR/pessoas/details/18/1005-werner",
+      "scholarid": "Ejog01AAAAAJ",
+      "publications": {
+        "ase": {
+          "2006": 0.33
+        }
+      },
+      "areas": [
+        "ase"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Cláudio R. Jung",
+      "affiliation": "UFRGS",
+      "homepage": "http://inf.ufrgs.br/~crjung",
+      "scholarid": "3hU1tEkAAAAJ",
+      "publications": {
+        "cvpr": {
+          "2019": 0.5,
+          "2025": 0.33
+        },
+        "eccv": {
+          "2018": 0.5
+        },
+        "eurographics": {
+          "2006": 0.33
+        },
+        "vr": {
+          "2019": 0.5
+        }
+      },
+      "areas": [
+        "cvpr",
+        "eccv",
+        "eurographics",
+        "vr"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Cristian Riveros",
+      "affiliation": "Pontificia Universidad Catolica de Chile",
+      "homepage": "https://criveros.sitios.ing.uc.cl",
+      "scholarid": "wkDO2HIAAAAJ",
+      "publications": {
+        "lics": {
+          "2011": 0.33,
+          "2013": 0.5,
+          "2017": 0.33
+        },
+        "pods": {
+          "2008": 0.33,
+          "2010": 0.25,
+          "2018": 0.53,
+          "2019": 0.25,
+          "2021": 0.25,
+          "2022": 0.25,
+          "2025": 0.5
+        },
+        "sigmod": {
+          "2024": 0.75
+        },
+        "stoc": {
+          "2021": 0.25
+        },
+        "vldb": {
+          "2009": 0.25,
+          "2016": 0.25,
+          "2022": 0.2,
+          "2023": 0.33
+        }
+      },
+      "areas": [
+        "lics",
+        "pods",
+        "sigmod",
+        "stoc",
+        "vldb"
+      ],
+      "total_papers_recent": 2.03
+    },
+    {
+      "name": "Cristian Ruz",
+      "affiliation": "Pontificia Universidad Catolica de Chile",
+      "homepage": "https://www.ing.uc.cl/academicos-e-investigadores/cristian-daniel-ruz-ruz",
+      "scholarid": "qJ1jacoAAAAJ",
+      "publications": {
+        "ijcai": {
+          "2017": 0.25
+        }
+      },
+      "areas": [
+        "ijcai"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Cristina G. Fernandes",
+      "affiliation": "USP",
+      "homepage": "http://www.ime.usp.br/~cris",
+      "scholarid": "XnaNOq8AAAAJ",
+      "publications": {
+        "soda": {
+          "1996": 0.25,
+          "1997": 1.0
+        }
+      },
+      "areas": [
+        "soda"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "César A. F. De Rose",
+      "affiliation": "PUC-RS",
+      "homepage": "http://www.inf.pucrs.br/~derose",
+      "scholarid": "MliaRD4AAAAJ",
+      "publications": {
+        "vldb": {
+          "2020": 0.25
+        }
+      },
+      "areas": [
+        "vldb"
+      ],
+      "total_papers_recent": 0.25
+    },
+    {
+      "name": "César A. M. Marcon",
+      "affiliation": "PUC-RS",
+      "homepage": "http://www.inf.pucrs.br/~marcon",
+      "scholarid": "QbIUVcQAAAAJ",
+      "publications": {
+        "dac": {
+          "2018": 0.14
+        }
+      },
+      "areas": [
+        "dac"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Daniel R. Figueiredo 0001",
+      "affiliation": "UFRJ",
+      "homepage": "http://www.land.ufrj.br/~daniel",
+      "scholarid": "j4YbANwAAAAJ",
+      "publications": {
+        "kdd": {
+          "2017": 0.33
+        },
+        "nips": {
+          "2023": 0.33
+        },
+        "sigmetrics": {
+          "2008": 0.33,
+          "2012": 0.2,
+          "2016": 0.25
+        }
+      },
+      "areas": [
+        "kdd",
+        "nips",
+        "sigmetrics"
+      ],
+      "total_papers_recent": 0.33
+    },
+    {
+      "name": "Daniel de Oliveira 0001",
+      "affiliation": "UFF",
+      "homepage": "http://www2.ic.uff.br/~danielcmo",
+      "scholarid": "T_YePXEAAAAJ",
+      "publications": {
+        "hpdc": {
+          "2010": 0.14
+        },
+        "vis": {
+          "2024": 0.17,
+          "2025": 0.11
+        },
+        "vldb": {
+          "2011": 0.17
+        }
+      },
+      "areas": [
+        "hpdc",
+        "vis",
+        "vldb"
+      ],
+      "total_papers_recent": 0.17
+    },
+    {
+      "name": "Dante Augusto Couto Barone",
+      "affiliation": "UFRGS",
+      "homepage": "http://www.inf.ufrgs.br/site/docente/dante-augusto-couto-barone",
+      "scholarid": "O4nTWhwAAAAJ",
+      "publications": {
+        "cvpr": {
+          "2004": 0.33
+        },
+        "icra": {
+          "2002": 0.5
+        }
+      },
+      "areas": [
+        "cvpr",
+        "icra"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Denis Deratani Mauá",
+      "affiliation": "USP",
+      "homepage": "http://www.ime.usp.br/~ddm",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "aaai": {
+          "2015": 0.5,
+          "2019": 0.25
+        },
+        "icml": {
+          "2012": 0.5
+        },
+        "ijcai": {
+          "2013": 0.25,
+          "2015": 0.33
+        },
+        "nips": {
+          "2011": 0.5,
+          "2014": 0.25,
+          "2024": 0.25
+        }
+      },
+      "areas": [
+        "aaai",
+        "icml",
+        "ijcai",
+        "nips"
+      ],
+      "total_papers_recent": 0.25
+    },
+    {
+      "name": "Denis F. Wolf",
+      "affiliation": "USP-ICMC",
+      "homepage": "http://conteudo.icmc.usp.br/pessoas/denis",
+      "scholarid": "ncy_2xUAAAAJ",
+      "publications": {
+        "icra": {
+          "2004": 0.5,
+          "2005": 0.25,
+          "2011": 0.17,
+          "2014": 0.2,
+          "2015": 0.14,
+          "2016": 0.5
+        },
+        "iros": {
+          "2004": 0.33,
+          "2005": 0.33
+        }
+      },
+      "areas": [
+        "icra",
+        "iros"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Denis Parra",
+      "affiliation": "Pontificia Universidad Catolica de Chile",
+      "homepage": "https://dparra.sitios.ing.uc.cl",
+      "scholarid": "aQ9TkcIAAAAJ",
+      "publications": {
+        "eurographics": {
+          "2023": 0.17
+        },
+        "icml": {
+          "2024": 0.33
+        }
+      },
+      "areas": [
+        "eurographics",
+        "icml"
+      ],
+      "total_papers_recent": 0.5
+    },
+    {
+      "name": "Diego Arroyuelo",
+      "affiliation": "Pontificia Universidad Catolica de Chile",
+      "homepage": "https://www.ing.uc.cl/academicos-e-investigadores/diego-gaston-arroyuelo-billiardi",
+      "scholarid": "J6BRiDwAAAAJ",
+      "publications": {
+        "icde": {
+          "2010": 0.12,
+          "2022": 0.25
+        },
+        "sigir": {
+          "2012": 0.2,
+          "2013": 0.25
+        },
+        "sigmod": {
+          "2021": 0.17,
+          "2024": 0.17
+        }
+      },
+      "areas": [
+        "icde",
+        "sigir",
+        "sigmod"
+      ],
+      "total_papers_recent": 0.59
+    },
+    {
+      "name": "Diego Fernández Slezak",
+      "affiliation": "University of Buenos Aires",
+      "homepage": "https://neuro.org.ar/profile/70",
+      "scholarid": "nvVcDr4AAAAJ",
+      "publications": {
+        "acl": {
+          "2023": 0.2
+        }
+      },
+      "areas": [
+        "acl"
+      ],
+      "total_papers_recent": 0.2
+    },
+    {
+      "name": "Diego Garbervetsky",
+      "affiliation": "University of Buenos Aires",
+      "homepage": "http://lafhis.dc.uba.ar/en/~diegog",
+      "scholarid": "dXb-veoAAAAJ",
+      "publications": {
+        "fse": {
+          "2017": 0.5,
+          "2018": 0.14,
+          "2024": 0.11
+        },
+        "icse": {
+          "2009": 0.25,
+          "2011": 0.25
+        }
+      },
+      "areas": [
+        "fse",
+        "icse"
+      ],
+      "total_papers_recent": 0.11
+    },
+    {
+      "name": "Diego R. Amancio",
+      "affiliation": "USP-ICMC",
+      "homepage": "http://icmc.usp.br/pessoas?id=10793181",
+      "scholarid": "WHdCNq0AAAAJ",
+      "publications": {
+        "acl": {
+          "2017": 0.17
+        }
+      },
+      "areas": [
+        "acl"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Domingo Mery",
+      "affiliation": "Pontificia Universidad Catolica de Chile",
+      "homepage": "https://domingomery.ing.puc.cl",
+      "scholarid": "7S6RcTYAAAAJ",
+      "publications": {
+        "cvpr": {
+          "2016": 0.33
+        }
+      },
+      "areas": [
+        "cvpr"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Dorgival O. Guedes",
+      "affiliation": "UFMG",
+      "homepage": "http://www.dcc.ufmg.br/~dorgival",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "isca": {
+          "2007": 0.25
+        },
+        "sigmod": {
+          "2019": 0.2
+        }
+      },
+      "areas": [
+        "isca",
+        "sigmod"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Douglas G. Macharet",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~doug",
+      "scholarid": "RDGIj6sAAAAJ",
+      "publications": {
+        "icra": {
+          "2011": 0.25,
+          "2020": 0.25,
+          "2021": 0.67,
+          "2023": 0.33
+        },
+        "iros": {
+          "2009": 0.33,
+          "2010": 0.33,
+          "2012": 0.5,
+          "2013": 0.75,
+          "2015": 0.33,
+          "2019": 0.5,
+          "2020": 0.45,
+          "2021": 0.25,
+          "2022": 0.33,
+          "2023": 0.33,
+          "2024": 0.25
+        }
+      },
+      "areas": [
+        "icra",
+        "iros"
+      ],
+      "total_papers_recent": 2.86
+    },
+    {
+      "name": "Edmundo de Souza e Silva",
+      "affiliation": "UFRJ",
+      "homepage": "http://www.land.ufrj.br/~edmundo",
+      "scholarid": "r9ngIuMAAAAJ",
+      "publications": {
+        "sigmetrics": {
+          "1989": 0.33,
+          "1992": 0.5,
+          "1995": 0.33,
+          "2012": 0.2
+        }
+      },
+      "areas": [
+        "sigmetrics"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Edna Barros",
+      "affiliation": "UFPE",
+      "homepage": "https://www.cin.ufpe.br/~ensb",
+      "scholarid": "HCGd3n0AAAAJ",
+      "publications": {
+        "dac": {
+          "2006": 0.2
+        }
+      },
+      "areas": [
+        "dac"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Edson Borin",
+      "affiliation": "UNICAMP",
+      "homepage": "http://www.ic.unicamp.br/~edson",
+      "scholarid": "dZAu_PkAAAAJ",
+      "publications": {
+        "ics": {
+          "2009": 0.12
+        },
+        "isca": {
+          "2015": 0.2
+        }
+      },
+      "areas": [
+        "ics",
+        "isca"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Edson Prestes e Silva Jr.",
+      "affiliation": "UFRGS",
+      "homepage": "http://www.inf.ufrgs.br/~prestes",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "icra": {
+          "2014": 0.25,
+          "2015": 0.34,
+          "2018": 0.2
+        },
+        "iros": {
+          "2001": 0.25,
+          "2002": 0.25,
+          "2003": 0.25,
+          "2008": 0.33,
+          "2010": 0.83,
+          "2011": 0.5,
+          "2012": 0.12,
+          "2013": 0.34,
+          "2014": 0.17,
+          "2015": 0.12,
+          "2016": 0.2,
+          "2020": 0.2
+        },
+        "ubicomp": {
+          "2012": 0.24
+        }
+      },
+      "areas": [
+        "icra",
+        "iros",
+        "ubicomp"
+      ],
+      "total_papers_recent": 0.2
+    },
+    {
+      "name": "Eduardo C. Xavier",
+      "affiliation": "UNICAMP",
+      "homepage": "http://www.ic.unicamp.br/~ecx",
+      "scholarid": "JMx0rAMAAAAJ",
+      "publications": {
+        "ijcai": {
+          "2013": 0.5
+        }
+      },
+      "areas": [
+        "ijcai"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Eduardo Figueiredo 0001",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~figueiredo",
+      "scholarid": "3sxP3E4AAAAJ",
+      "publications": {
+        "fse": {
+          "2006": 0.17,
+          "2020": 0.17
+        },
+        "icse": {
+          "2008": 0.09,
+          "2010": 0.07
+        }
+      },
+      "areas": [
+        "fse",
+        "icse"
+      ],
+      "total_papers_recent": 0.17
+    },
+    {
+      "name": "Eduardo Sany Laber",
+      "affiliation": "PUC-RIO",
+      "homepage": "http://www-di.inf.puc-rio.br/~laber",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "icml": {
+          "2014": 0.33,
+          "2018": 0.33,
+          "2019": 0.33,
+          "2020": 0.25,
+          "2021": 0.5,
+          "2024": 0.5
+        },
+        "nips": {
+          "2022": 0.25,
+          "2023": 0.5
+        },
+        "soda": {
+          "2001": 0.33,
+          "2006": 0.5
+        },
+        "stoc": {
+          "2005": 0.5
+        }
+      },
+      "areas": [
+        "icml",
+        "nips",
+        "soda",
+        "stoc"
+      ],
+      "total_papers_recent": 2.0
+    },
+    {
+      "name": "Eduardo Todt",
+      "affiliation": "UFPR",
+      "homepage": "https://www.inf.ufpr.br/todt",
+      "scholarid": "Sbr5yW8AAAAJ",
+      "publications": {
+        "icra": {
+          "2000": 0.33,
+          "2007": 0.5
+        }
+      },
+      "areas": [
+        "icra"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Eduardo do Valle Simões",
+      "affiliation": "USP-ICMC",
+      "homepage": "http://conteudo.icmc.usp.br/pessoas/simoes",
+      "scholarid": "acJCV0AAAAAJ",
+      "publications": {
+        "icra": {
+          "2002": 0.5
+        }
+      },
+      "areas": [
+        "icra"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Elisa Yumi Nakagawa",
+      "affiliation": "USP-ICMC",
+      "homepage": "http://conteudo.icmc.usp.br/pessoas/elisa",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "sigcse": {
+          "2018": 0.11
+        }
+      },
+      "areas": [
+        "sigcse"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Ellen Francine Barbosa",
+      "affiliation": "USP-ICMC",
+      "homepage": "http://www.labes.icmc.usp.br/site/content/ellen-francine-barbosa-profa-dra",
+      "scholarid": "rWEar9sAAAAJ",
+      "publications": {
+        "sigcse": {
+          "2018": 0.11,
+          "2019": 0.25
+        }
+      },
+      "areas": [
+        "sigcse"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Erickson R. Nascimento",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~erickson",
+      "scholarid": "GTWCJkQAAAAJ",
+      "publications": {
+        "cvpr": {
+          "2018": 0.17,
+          "2020": 0.2,
+          "2023": 0.2,
+          "2024": 0.2
+        },
+        "iccv": {
+          "2019": 0.17
+        },
+        "icra": {
+          "2012": 0.25,
+          "2021": 0.33
+        },
+        "iros": {
+          "2012": 0.2,
+          "2015": 0.25,
+          "2016": 0.2,
+          "2019": 0.2
+        },
+        "nips": {
+          "2021": 0.25
+        }
+      },
+      "areas": [
+        "cvpr",
+        "iccv",
+        "icra",
+        "iros",
+        "nips"
+      ],
+      "total_papers_recent": 1.18
+    },
+    {
+      "name": "Esteban Walter Gonzalez Clua",
+      "affiliation": "UFF",
+      "homepage": "http://www2.ic.uff.br/~esteban",
+      "scholarid": "p1-e5NMAAAAJ",
+      "publications": {
+        "siggraph": {
+          "2011": 0.14
+        }
+      },
+      "areas": [
+        "siggraph"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Fabio Kon",
+      "affiliation": "USP",
+      "homepage": "http://www.ime.usp.br/~kon",
+      "scholarid": "VE8BW84AAAAJ",
+      "publications": {
+        "hpdc": {
+          "2000": 0.2
+        }
+      },
+      "areas": [
+        "hpdc"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Fabio Q. B. da Silva",
+      "affiliation": "UFPE",
+      "homepage": "https://www.cin.ufpe.br/~fabio",
+      "scholarid": "20ew2kUAAAAJ",
+      "publications": {
+        "icse": {
+          "2008": 0.25,
+          "2016": 0.25
+        }
+      },
+      "areas": [
+        "icse"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Fabricio Murai",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~murai",
+      "scholarid": "sF3doEMAAAAJ",
+      "publications": {
+        "aaai": {
+          "2022": 0.33
+        }
+      },
+      "areas": [
+        "aaai"
+      ],
+      "total_papers_recent": 0.33
+    },
+    {
+      "name": "Fabrício Benevenuto",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~fabricio",
+      "scholarid": "iOnt0iMAAAAJ",
+      "publications": {
+        "imc": {
+          "2009": 0.25,
+          "2011": 0.2,
+          "2020": 0.14
+        },
+        "kdd": {
+          "2012": 0.2
+        },
+        "ndss": {
+          "2019": 0.17
+        },
+        "sigir": {
+          "2009": 0.2,
+          "2012": 0.2
+        },
+        "www": {
+          "2012": 0.12,
+          "2019": 0.14,
+          "2020": 0.62
+        }
+      },
+      "areas": [
+        "imc",
+        "kdd",
+        "ndss",
+        "sigir",
+        "www"
+      ],
+      "total_papers_recent": 0.76
+    },
+    {
+      "name": "Federico Olmedo",
+      "affiliation": "Universidad de Chile",
+      "homepage": "https://pleiad.cl/people/folmedo",
+      "scholarid": "6xQx47oAAAAJ",
+      "publications": {
+        "lics": {
+          "2016": 0.25
+        },
+        "oakland": {
+          "2009": 0.25
+        },
+        "oopsla": {
+          "2023": 0.33
+        },
+        "popl": {
+          "2012": 0.25
+        }
+      },
+      "areas": [
+        "lics",
+        "oakland",
+        "oopsla",
+        "popl"
+      ],
+      "total_papers_recent": 0.33
+    },
+    {
+      "name": "Felipe M. G. França",
+      "affiliation": "UFRJ",
+      "homepage": "http://www.cos.ufrj.br/~felipe",
+      "scholarid": "An-l3DsAAAAJ",
+      "publications": {
+        "icml": {
+          "2024": 0.14
+        },
+        "micro": {
+          "1986": 0.33
+        }
+      },
+      "areas": [
+        "icml",
+        "micro"
+      ],
+      "total_papers_recent": 0.14
+    },
+    {
+      "name": "Fernanda Lima Kastensmidt",
+      "affiliation": "UFRGS",
+      "homepage": "http://www.inf.ufrgs.br/~fglima",
+      "scholarid": "vazfTWQAAAAJ",
+      "publications": {
+        "dac": {
+          "2003": 0.33
+        }
+      },
+      "areas": [
+        "dac"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Fernando Magno Quintão Pereira",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~fernando",
+      "scholarid": "xZfJARoAAAAJ",
+      "publications": {
+        "ics": {
+          "2020": 0.33
+        },
+        "oopsla": {
+          "2014": 0.17,
+          "2015": 0.14,
+          "2017": 0.25,
+          "2019": 0.25,
+          "2020": 1.0,
+          "2021": 0.33
+        },
+        "pldi": {
+          "2008": 0.5
+        },
+        "popl": {
+          "2018": 0.25
+        },
+        "sensys": {
+          "2017": 0.17
+        }
+      },
+      "areas": [
+        "ics",
+        "oopsla",
+        "pldi",
+        "popl",
+        "sensys"
+      ],
+      "total_papers_recent": 1.66
+    },
+    {
+      "name": "Fernando Santos Osório",
+      "affiliation": "USP-ICMC",
+      "homepage": "http://conteudo.icmc.usp.br/pessoas/fosorio/fosorio-usp.html",
+      "scholarid": "RHVtgb0AAAAJ",
+      "publications": {
+        "icra": {
+          "2011": 0.17
+        }
+      },
+      "areas": [
+        "icra"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Flavio Figueiredo",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~flaviovdf",
+      "scholarid": "4QhxTFYAAAAJ",
+      "publications": {
+        "chiconf": {
+          "2017": 0.33,
+          "2019": 0.14
+        },
+        "nips": {
+          "2018": 0.25
+        },
+        "www": {
+          "2016": 0.25
+        }
+      },
+      "areas": [
+        "chiconf",
+        "nips",
+        "www"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Flávio Rech Wagner",
+      "affiliation": "UFRGS",
+      "homepage": "http://www.inf.ufrgs.br/~flavio",
+      "scholarid": "EUlQ8PkAAAAJ",
+      "publications": {
+        "dac": {
+          "1991": 0.5
+        }
+      },
+      "areas": [
+        "dac"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Franco M. Luque",
+      "affiliation": "Universidad Nacional de Córdoba",
+      "homepage": "https://cs.famaf.unc.edu.ar/~francolq",
+      "scholarid": "edh9Nv4AAAAJ",
+      "publications": {
+        "emnlp": {
+          "2013": 0.25,
+          "2021": 0.17
+        }
+      },
+      "areas": [
+        "emnlp"
+      ],
+      "total_papers_recent": 0.17
+    },
+    {
+      "name": "Fred Freitas",
+      "affiliation": "UFPE",
+      "homepage": "https://www.cin.ufpe.br/~fred",
+      "scholarid": "bp0hZ8QAAAAJ",
+      "publications": {
+        "ijcai": {
+          "2003": 0.5
+        },
+        "ismb": {
+          "2011": 0.2
+        }
+      },
+      "areas": [
+        "ijcai",
+        "ismb"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Gabriel Coutinho",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~gabriel",
+      "scholarid": "EpDBGxcAAAAJ",
+      "publications": {
+        "pets": {
+          "2022": 0.25
+        }
+      },
+      "areas": [
+        "pets"
+      ],
+      "total_papers_recent": 0.25
+    },
+    {
+      "name": "Gabriel L. Nazar",
+      "affiliation": "UFRGS",
+      "homepage": "http://inf.ufrgs.br/~glnazar",
+      "scholarid": "z6oRVPUAAAAJ",
+      "publications": {
+        "dac": {
+          "2019": 0.5,
+          "2020": 0.25
+        }
+      },
+      "areas": [
+        "dac"
+      ],
+      "total_papers_recent": 0.25
+    },
+    {
+      "name": "Geber L. Ramalho",
+      "affiliation": "UFPE",
+      "homepage": "https://www.cin.ufpe.br/~glr",
+      "scholarid": "U970EO4AAAAJ",
+      "publications": {
+        "aaai": {
+          "1994": 0.5
+        }
+      },
+      "areas": [
+        "aaai"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Genaína Nunes Rodrigues",
+      "affiliation": "Universidade de Brasília",
+      "homepage": "http://cic.unb.br/~genaina",
+      "scholarid": "qCUFz5AAAAAJ",
+      "publications": {
+        "icse": {
+          "2024": 0.07
+        }
+      },
+      "areas": [
+        "icse"
+      ],
+      "total_papers_recent": 0.07
+    },
+    {
+      "name": "George Teodoro",
+      "affiliation": "Universidade de Brasília",
+      "homepage": "http://cic.unb.br/~teodoro",
+      "scholarid": "J-voATsAAAAJ",
+      "publications": {
+        "hpdc": {
+          "2010": 0.25
+        }
+      },
+      "areas": [
+        "hpdc"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Geraldo Zimbrão",
+      "affiliation": "UFRJ",
+      "homepage": "http://www.cos.ufrj.br/~zimbrao",
+      "scholarid": "nJ1JMwcAAAAJ",
+      "publications": {
+        "vldb": {
+          "1998": 0.5
+        }
+      },
+      "areas": [
+        "vldb"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Giovanni Comarela",
+      "affiliation": "Universidade Federal de Viçosa",
+      "homepage": "http://www.dpi.ufv.br/~gcom",
+      "scholarid": "onfmt40AAAAJ",
+      "publications": {
+        "imc": {
+          "2012": 0.2,
+          "2013": 0.33,
+          "2014": 0.5,
+          "2016": 0.33
+        },
+        "kdd": {
+          "2012": 0.2,
+          "2018": 0.2,
+          "2023": 0.33
+        }
+      },
+      "areas": [
+        "imc",
+        "kdd"
+      ],
+      "total_papers_recent": 0.33
+    },
+    {
+      "name": "Gisele L. Pappa",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~glpappa",
+      "scholarid": "C_0ZLuYAAAAJ",
+      "publications": {
+        "sigir": {
+          "2010": 0.17
+        }
+      },
+      "areas": [
+        "sigir"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Guido Araujo",
+      "affiliation": "UNICAMP",
+      "homepage": "https://guidoaraujo.wordpress.com/guido-araujo-homepage",
+      "scholarid": "xjuoV4QAAAAJ",
+      "publications": {
+        "dac": {
+          "1996": 0.33,
+          "2004": 0.25
+        },
+        "ics": {
+          "2017": 0.33
+        },
+        "micro": {
+          "1998": 0.25,
+          "2019": 0.14
+        }
+      },
+      "areas": [
+        "dac",
+        "ics",
+        "micro"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Guilherme Horta Travassos",
+      "affiliation": "UFRJ",
+      "homepage": "http://www.cos.ufrj.br/~ght",
+      "scholarid": "hn4LDmkAAAAJ",
+      "publications": {
+        "ase": {
+          "2004": 0.5
+        },
+        "oopsla": {
+          "1999": 0.25
+        }
+      },
+      "areas": [
+        "ase",
+        "oopsla"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Guilherme P. Telles",
+      "affiliation": "UNICAMP",
+      "homepage": "http://www.escience.org.br/guilherme.telles",
+      "scholarid": "UVM3F2UAAAAJ",
+      "publications": {
+        "eurographics": {
+          "2012": 0.2
+        },
+        "vis": {
+          "2011": 0.2
+        }
+      },
+      "areas": [
+        "eurographics",
+        "vis"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Gustavo Batista",
+      "affiliation": "USP-ICMC",
+      "homepage": "http://conteudo.icmc.usp.br/pessoas/gbatista",
+      "scholarid": "takZ6KIAAAAJ",
+      "publications": {
+        "aaai": {
+          "2019": 0.25
+        },
+        "icra": {
+          "2024": 0.25
+        },
+        "ijcai": {
+          "2020": 0.25
+        },
+        "kdd": {
+          "2012": 0.12,
+          "2013": 0.25,
+          "2016": 0.25,
+          "2018": 0.25
+        },
+        "sigmetrics": {
+          "2025": 0.25
+        }
+      },
+      "areas": [
+        "aaai",
+        "icra",
+        "ijcai",
+        "kdd",
+        "sigmetrics"
+      ],
+      "total_papers_recent": 0.5
+    },
+    {
+      "name": "H. Andrés Neyem",
+      "affiliation": "Pontificia Universidad Catolica de Chile",
+      "homepage": "http://www.andresneyem.cl",
+      "scholarid": "xPEdf1wAAAAJ",
+      "publications": {
+        "sigcse": {
+          "2014": 0.33,
+          "2017": 0.25,
+          "2024": 0.17,
+          "2025": 0.25
+        }
+      },
+      "areas": [
+        "sigcse"
+      ],
+      "total_papers_recent": 0.17
+    },
+    {
+      "name": "Hans Lobel",
+      "affiliation": "Pontificia Universidad Catolica de Chile",
+      "homepage": "https://www.ing.uc.cl/academicos-e-investigadores/hans-albert-lobel-diaz",
+      "scholarid": "oKYALakAAAAJ",
+      "publications": {
+        "iccv": {
+          "2013": 0.33
+        },
+        "icml": {
+          "2024": 0.5
+        }
+      },
+      "areas": [
+        "iccv",
+        "icml"
+      ],
+      "total_papers_recent": 0.5
+    },
+    {
+      "name": "Henrique Rebêlo",
+      "affiliation": "UFPE",
+      "homepage": "https://www.cin.ufpe.br/~hemr",
+      "scholarid": "2QUyZaMAAAAJ",
+      "publications": {
+        "cav": {
+          "2012": 0.25
+        }
+      },
+      "areas": [
+        "cav"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Hernán C. Melgratti",
+      "affiliation": "University of Buenos Aires",
+      "homepage": "http://lafhis.dc.uba.ar/en/~melgratti",
+      "scholarid": "bLFVsAQAAAAJ",
+      "publications": {
+        "icfp": {
+          "2017": 0.5
+        },
+        "lics": {
+          "2018": 0.33,
+          "2021": 0.33
+        },
+        "popl": {
+          "2005": 0.33
+        }
+      },
+      "areas": [
+        "icfp",
+        "lics",
+        "popl"
+      ],
+      "total_papers_recent": 0.33
+    },
+    {
+      "name": "Humberto Luiz Razente",
+      "affiliation": "UFU",
+      "homepage": "http://www.facom.ufu.br/~humberto",
+      "scholarid": "t2SVE_UAAAAJ",
+      "publications": {
+        "icde": {
+          "2011": 0.14
+        }
+      },
+      "areas": [
+        "icde"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Hélio Lopes 0001",
+      "affiliation": "PUC-RIO",
+      "homepage": "http://www-di.inf.puc-rio.br/~lopes",
+      "scholarid": "cbAHng0AAAAJ",
+      "publications": {
+        "eurographics": {
+          "2004": 0.2,
+          "2006": 0.17,
+          "2008": 0.2,
+          "2009": 0.14,
+          "2010": 0.2
+        },
+        "iccv": {
+          "2023": 0.17
+        }
+      },
+      "areas": [
+        "eurographics",
+        "iccv"
+      ],
+      "total_papers_recent": 0.17
+    },
+    {
+      "name": "Hélio Pedrini",
+      "affiliation": "UNICAMP",
+      "homepage": "http://www.ic.unicamp.br/~helio",
+      "scholarid": "kc-wB9QAAAAJ",
+      "publications": {
+        "eurographics": {
+          "2006": 0.5,
+          "2012": 0.25
+        },
+        "icml": {
+          "2024": 0.33
+        },
+        "vis": {
+          "2011": 0.2
+        }
+      },
+      "areas": [
+        "eurographics",
+        "icml",
+        "vis"
+      ],
+      "total_papers_recent": 0.33
+    },
+    {
+      "name": "Ing Ren Tsang",
+      "affiliation": "UFPE",
+      "homepage": "https://lattes.cnpq.br/3084134533707587",
+      "scholarid": "TdlHZ0kAAAAJ",
+      "publications": {
+        "siggraph": {
+          "2020": 0.33
+        }
+      },
+      "areas": [
+        "siggraph"
+      ],
+      "total_papers_recent": 0.33
+    },
+    {
+      "name": "Jacques Wainer",
+      "affiliation": "UNICAMP",
+      "homepage": "http://www.ic.unicamp.br/~wainer",
+      "scholarid": "wKRXIZ8AAAAJ",
+      "publications": {
+        "aaai": {
+          "1992": 1.0
+        },
+        "icml": {
+          "2012": 0.25
+        },
+        "ijcai": {
+          "1993": 1.0,
+          "2007": 0.5
+        }
+      },
+      "areas": [
+        "aaai",
+        "icml",
+        "ijcai"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Jano Moreira de Souza",
+      "affiliation": "UFRJ",
+      "homepage": "http://www.cos.ufrj.br/~jano",
+      "scholarid": "WSrB70EAAAAJ",
+      "publications": {
+        "vldb": {
+          "1998": 0.5
+        }
+      },
+      "areas": [
+        "vldb"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Jayme Luiz Szwarcfiter",
+      "affiliation": "UFRJ",
+      "homepage": "http://www.cos.ufrj.br/~jayme",
+      "scholarid": "cjQH4G0AAAAJ",
+      "publications": {
+        "soda": {
+          "2006": 0.5
+        }
+      },
+      "areas": [
+        "soda"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Jefferson R. Souza",
+      "affiliation": "UFU",
+      "homepage": "http://www.ppgco.facom.ufu.br/pt-br/pessoas/jefferson-rodrigo-de-souza",
+      "scholarid": "AmdqjLsAAAAJ",
+      "publications": {
+        "icra": {
+          "2014": 0.2,
+          "2015": 0.14
+        }
+      },
+      "areas": [
+        "icra"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Jeroen van de Graaf",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~jvdg",
+      "scholarid": "-w8olWwAAAAJ",
+      "publications": {
+        "crypto": {
+          "1986": 0.25,
+          "1987": 1.08,
+          "1995": 0.33
+        },
+        "eurocrypt": {
+          "1987": 0.33
+        }
+      },
+      "areas": [
+        "crypto",
+        "eurocrypt"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Jocelyn Dunstan",
+      "affiliation": "Pontificia Universidad Catolica de Chile",
+      "homepage": "https://www.ing.uc.cl/academicos-e-investigadores/jocelyn-mariel-dunstan-escudero",
+      "scholarid": "geH4mS0AAAAJ",
+      "publications": {
+        "nips": {
+          "2024": 0.01
+        }
+      },
+      "areas": [
+        "nips"
+      ],
+      "total_papers_recent": 0.01
+    },
+    {
+      "name": "Jocelyn Simmonds",
+      "affiliation": "Universidad de Chile",
+      "homepage": "http://www.dcc.uchile.cl/~jsimmond",
+      "scholarid": "QTdKy5gAAAAJ",
+      "publications": {
+        "fse": {
+          "2010": 0.33
+        },
+        "sigcse": {
+          "2018": 0.2,
+          "2019": 0.2,
+          "2020": 0.14,
+          "2021": 0.2
+        }
+      },
+      "areas": [
+        "fse",
+        "sigcse"
+      ],
+      "total_papers_recent": 0.34
+    },
+    {
+      "name": "Joel Luis Carbonera",
+      "affiliation": "UFRGS",
+      "homepage": "https://www.inf.ufrgs.br/site/docente/joel-luis-carbonera",
+      "scholarid": "oMtHaoQAAAAJ",
+      "publications": {
+        "iros": {
+          "2013": 0.09
+        }
+      },
+      "areas": [
+        "iros"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Jorge A. Baier",
+      "affiliation": "Pontificia Universidad Catolica de Chile",
+      "homepage": "https://www.ing.uc.cl/academicos-e-investigadores/jorge-antonio-baier-ortiz",
+      "scholarid": "7S6RcTYAAAAJ",
+      "publications": {
+        "aaai": {
+          "2006": 0.5,
+          "2011": 0.33,
+          "2013": 0.33,
+          "2015": 0.33,
+          "2017": 0.53,
+          "2020": 0.33,
+          "2022": 0.33
+        },
+        "ijcai": {
+          "2007": 0.33,
+          "2009": 0.33,
+          "2011": 0.5,
+          "2015": 0.5,
+          "2016": 0.25,
+          "2017": 0.5,
+          "2018": 0.25,
+          "2022": 0.33
+        }
+      },
+      "areas": [
+        "aaai",
+        "ijcai"
+      ],
+      "total_papers_recent": 0.99
+    },
+    {
+      "name": "Jorge Munoz-Gama",
+      "affiliation": "Pontificia Universidad Catolica de Chile",
+      "homepage": "https://haplab.org/team/jorge",
+      "scholarid": "3Og-qpwAAAAJ",
+      "publications": {
+        "sigcse": {
+          "2017": 0.25,
+          "2024": 0.2
+        }
+      },
+      "areas": [
+        "sigcse"
+      ],
+      "total_papers_recent": 0.2
+    },
+    {
+      "name": "Jorge Pérez 0001",
+      "affiliation": "Universidad de Chile",
+      "homepage": "https://users.dcc.uchile.cl/~jperez",
+      "scholarid": "a6lUuiwAAAAJ",
+      "publications": {
+        "iclr": {
+          "2019": 0.33,
+          "2020": 0.17
+        },
+        "ijcai": {
+          "2015": 0.33,
+          "2020": 0.33
+        },
+        "nips": {
+          "2020": 0.25,
+          "2021": 0.2
+        },
+        "pods": {
+          "2008": 0.33,
+          "2010": 0.25,
+          "2011": 0.83,
+          "2012": 0.25
+        },
+        "sigir": {
+          "2019": 0.33
+        },
+        "vldb": {
+          "2009": 0.25
+        },
+        "www": {
+          "2012": 0.33,
+          "2018": 0.5
+        }
+      },
+      "areas": [
+        "iclr",
+        "ijcai",
+        "nips",
+        "pods",
+        "sigir",
+        "vldb",
+        "www"
+      ],
+      "total_papers_recent": 0.95
+    },
+    {
+      "name": "Jorge Stolfi",
+      "affiliation": "UNICAMP",
+      "homepage": "https://twitter.com/jorgestolfi?lang=en",
+      "scholarid": "mLo7gCEAAAAJ",
+      "publications": {
+        "eurographics": {
+          "1996": 0.5,
+          "2003": 0.33
+        },
+        "focs": {
+          "1983": 0.33
+        },
+        "siggraph": {
+          "1990": 0.5
+        },
+        "soda": {
+          "1999": 0.25
+        },
+        "stoc": {
+          "1983": 0.5
+        }
+      },
+      "areas": [
+        "eurographics",
+        "focs",
+        "siggraph",
+        "soda",
+        "stoc"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Jorge Sánchez 0002",
+      "affiliation": "Universidad Nacional de Córdoba",
+      "homepage": "https://www.famaf.unc.edu.ar/~jsanchez",
+      "scholarid": "XV4_wlwAAAAJ",
+      "publications": {
+        "cvpr": {
+          "2010": 0.58,
+          "2011": 0.5
+        },
+        "eccv": {
+          "2010": 0.33
+        },
+        "sigir": {
+          "2024": 0.33
+        }
+      },
+      "areas": [
+        "cvpr",
+        "eccv",
+        "sigir"
+      ],
+      "total_papers_recent": 0.33
+    },
+    {
+      "name": "Jorge Villalobos",
+      "affiliation": "Universidad de los Andes",
+      "homepage": "https://profesores.virtual.uniandes.edu.co/jvillalo/es/inicio",
+      "scholarid": "6pj6oSUAAAAJ",
+      "publications": {
+        "sc": {
+          "2003": 0.33
+        }
+      },
+      "areas": [
+        "sc"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Jose Gustavo Paiva",
+      "affiliation": "UFU",
+      "homepage": "http://www.facom.ufu.br/~jgustavo",
+      "scholarid": "k0MT90YAAAAJ",
+      "publications": {
+        "eurographics": {
+          "2012": 0.25
+        },
+        "vis": {
+          "2011": 0.2
+        }
+      },
+      "areas": [
+        "eurographics",
+        "vis"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Jose Nagib Cotrim Árabe",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~arabe",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "sc": {
+          "1992": 0.25
+        }
+      },
+      "areas": [
+        "sc"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "José Tiberio Hernández",
+      "affiliation": "Universidad de los Andes",
+      "homepage": "http://imagine.uniandes.edu.co",
+      "scholarid": "-gUUc7oAAAAJ",
+      "publications": {
+        "vr": {
+          "2019": 0.2
+        }
+      },
+      "areas": [
+        "vr"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "João Eduardo Ferreira",
+      "affiliation": "USP",
+      "homepage": "http://www.ime.usp.br/~jef",
+      "scholarid": "wR2O6I0AAAAJ",
+      "publications": {
+        "vldb": {
+          "2020": 0.25
+        }
+      },
+      "areas": [
+        "vldb"
+      ],
+      "total_papers_recent": 0.25
+    },
+    {
+      "name": "João Luiz Dihl Comba",
+      "affiliation": "UFRGS",
+      "homepage": "http://www.inf.ufrgs.br/~comba",
+      "scholarid": "jyeX-1sAAAAJ",
+      "publications": {
+        "eurographics": {
+          "1999": 0.17,
+          "2005": 0.33,
+          "2009": 0.25,
+          "2010": 0.37,
+          "2011": 0.17,
+          "2014": 0.17,
+          "2015": 0.17,
+          "2020": 0.37,
+          "2021": 0.33
+        },
+        "iros": {
+          "2017": 0.33
+        },
+        "vis": {
+          "2005": 0.25,
+          "2008": 0.2,
+          "2017": 0.25
+        }
+      },
+      "areas": [
+        "eurographics",
+        "iros",
+        "vis"
+      ],
+      "total_papers_recent": 0.7
+    },
+    {
+      "name": "João Luís Garcia Rosa",
+      "affiliation": "USP-ICMC",
+      "homepage": "http://conteudo.icmc.usp.br/pessoas/joaoluis",
+      "scholarid": "YsO1rOUAAAAJ",
+      "publications": {
+        "ijcai": {
+          "1999": 0.5
+        }
+      },
+      "areas": [
+        "ijcai"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Juan A. Fraire",
+      "affiliation": "Universidad Nacional de Córdoba",
+      "homepage": "https://depend.cs.uni-saarland.de/~jfraire",
+      "scholarid": "YXq56tgAAAAJ",
+      "publications": {
+        "emsoft": {
+          "2020": 0.17
+        }
+      },
+      "areas": [
+        "emsoft"
+      ],
+      "total_papers_recent": 0.17
+    },
+    {
+      "name": "Juan L. Reutter",
+      "affiliation": "Pontificia Universidad Catolica de Chile",
+      "homepage": "https://jreutter.sitios.ing.uc.cl",
+      "scholarid": "WHug6IAAAAAJ",
+      "publications": {
+        "aaai": {
+          "2013": 0.5,
+          "2015": 0.33
+        },
+        "iclr": {
+          "2020": 0.17,
+          "2022": 0.5
+        },
+        "nips": {
+          "2021": 0.25
+        },
+        "pods": {
+          "2010": 0.25,
+          "2011": 0.67,
+          "2012": 0.33,
+          "2013": 0.33,
+          "2017": 0.25
+        },
+        "sigmod": {
+          "2021": 0.17,
+          "2024": 0.17
+        },
+        "vldb": {
+          "2009": 0.25
+        },
+        "www": {
+          "2016": 0.2,
+          "2020": 0.17,
+          "2025": 0.17
+        }
+      },
+      "areas": [
+        "aaai",
+        "iclr",
+        "nips",
+        "pods",
+        "sigmod",
+        "vldb",
+        "www"
+      ],
+      "total_papers_recent": 1.43
+    },
+    {
+      "name": "Juan P. Galeotti",
+      "affiliation": "University of Buenos Aires",
+      "homepage": "http://lafhis.dc.uba.ar/en/~jgaleotti",
+      "scholarid": "xeL-QIoAAAAJ",
+      "publications": {
+        "ase": {
+          "2014": 0.33
+        },
+        "cav": {
+          "2009": 0.2
+        },
+        "fse": {
+          "2015": 0.33
+        },
+        "icse": {
+          "2005": 0.25
+        },
+        "issta": {
+          "2010": 0.25,
+          "2013": 0.12
+        }
+      },
+      "areas": [
+        "ase",
+        "cav",
+        "fse",
+        "icse",
+        "issta"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Juan Pablo Sandoval Alcocer",
+      "affiliation": "Pontificia Universidad Catolica de Chile",
+      "homepage": "https://www.ing.uc.cl/academicos-e-investigadores/juan-pablo-sandoval-alcocer",
+      "scholarid": "hXSNrdcAAAAJ",
+      "publications": {
+        "icse": {
+          "2025": 0.2
+        },
+        "sigcse": {
+          "2024": 0.17,
+          "2025": 0.25
+        }
+      },
+      "areas": [
+        "icse",
+        "sigcse"
+      ],
+      "total_papers_recent": 0.17
+    },
+    {
+      "name": "Judith Kelner",
+      "affiliation": "UFPE",
+      "homepage": "https://www.cin.ufpe.br/~jk",
+      "scholarid": "flG1Hw4AAAAJ",
+      "publications": {
+        "vr": {
+          "2010": 0.2
+        }
+      },
+      "areas": [
+        "vr"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Jussara M. Almeida",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~jussara",
+      "scholarid": "pkf_HjEAAAAJ",
+      "publications": {
+        "imc": {
+          "2004": 0.2
+        },
+        "sigcomm": {
+          "1998": 0.25
+        },
+        "sigir": {
+          "2009": 0.2,
+          "2011": 0.2
+        },
+        "sigmetrics": {
+          "2001": 0.25
+        },
+        "ubicomp": {
+          "2012": 0.2
+        },
+        "www": {
+          "2004": 0.14,
+          "2016": 0.25,
+          "2019": 0.14,
+          "2020": 0.25
+        }
+      },
+      "areas": [
+        "imc",
+        "sigcomm",
+        "sigir",
+        "sigmetrics",
+        "ubicomp",
+        "www"
+      ],
+      "total_papers_recent": 0.25
+    },
+    {
+      "name": "Jérémy Barbay",
+      "affiliation": "Universidad de Chile",
+      "homepage": "http://www.dcc.uchile.cl/~jbarbay",
+      "scholarid": "x7L1W0rvHwsC",
+      "publications": {
+        "focs": {
+          "2009": 0.33
+        },
+        "soda": {
+          "2001": 0.5,
+          "2002": 0.5,
+          "2007": 0.25
+        }
+      },
+      "areas": [
+        "focs",
+        "soda"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Kalinka Regina Lucas Jaquie Castelo Branco",
+      "affiliation": "USP-ICMC",
+      "homepage": "http://conteudo.icmc.usp.br/pessoas/kalinka",
+      "scholarid": "XMwzMF8AAAAJ",
+      "publications": {
+        "icra": {
+          "2011": 0.17
+        }
+      },
+      "areas": [
+        "icra"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Karina Valdivia Delgado",
+      "affiliation": "USP",
+      "homepage": "http://www.ime.usp.br/~kvd",
+      "scholarid": "xSgMBCMAAAAJ",
+      "publications": {
+        "ijcai": {
+          "2013": 0.25
+        }
+      },
+      "areas": [
+        "ijcai"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Kelly Garcés",
+      "affiliation": "Universidad de los Andes",
+      "homepage": "https://profesores.virtual.uniandes.edu.co/kjgarces971/es/inicio",
+      "scholarid": "5p7oedgAAAAJ",
+      "publications": {
+        "fse": {
+          "2017": 0.5
+        }
+      },
+      "areas": [
+        "fse"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Laura Alonso Alemany",
+      "affiliation": "Universidad Nacional de Córdoba",
+      "homepage": "https://cs.famaf.unc.edu.ar/~laura",
+      "scholarid": "ZhbejRkAAAAJ",
+      "publications": {
+        "icde": {
+          "2019": 0.25
+        },
+        "nips": {
+          "2024": 0.01
+        }
+      },
+      "areas": [
+        "icde",
+        "nips"
+      ],
+      "total_papers_recent": 0.01
+    },
+    {
+      "name": "Leandro A. F. Fernandes",
+      "affiliation": "UFF",
+      "homepage": "http://www2.ic.uff.br/~laffernandes",
+      "scholarid": "4OcyYJ4AAAAJ",
+      "publications": {
+        "vis": {
+          "2008": 0.33,
+          "2009": 0.33
+        }
+      },
+      "areas": [
+        "vis"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Leila Ribeiro 0001",
+      "affiliation": "UFRGS",
+      "homepage": "http://www.inf.ufrgs.br/~leila",
+      "scholarid": "gVbcXTQAAAAJ",
+      "publications": {
+        "sigcse": {
+          "2023": 0.2
+        }
+      },
+      "areas": [
+        "sigcse"
+      ],
+      "total_papers_recent": 0.2
+    },
+    {
+      "name": "Leliane Nunes de Barros",
+      "affiliation": "USP",
+      "homepage": "http://www.ime.usp.br/~leliane",
+      "scholarid": "CqqZ8b0AAAAJ",
+      "publications": {
+        "aaai": {
+          "2011": 0.5,
+          "2015": 0.33,
+          "2019": 0.25
+        },
+        "ijcai": {
+          "1997": 0.33,
+          "2007": 0.33,
+          "2013": 0.25
+        }
+      },
+      "areas": [
+        "aaai",
+        "ijcai"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Leonardo B. Oliveira",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~leob",
+      "scholarid": "YTEzpH0AAAAJ",
+      "publications": {
+        "oopsla": {
+          "2014": 0.17
+        },
+        "sensys": {
+          "2016": 0.09,
+          "2017": 0.17
+        }
+      },
+      "areas": [
+        "oopsla",
+        "sensys"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Leonardo Murta 0001",
+      "affiliation": "UFF",
+      "homepage": "http://www2.ic.uff.br/~leomurta",
+      "scholarid": "VEbJeB8AAAAJ",
+      "publications": {
+        "ase": {
+          "2006": 0.33
+        },
+        "fse": {
+          "2016": 0.25
+        },
+        "icse": {
+          "2023": 0.17
+        }
+      },
+      "areas": [
+        "ase",
+        "fse",
+        "icse"
+      ],
+      "total_papers_recent": 0.17
+    },
+    {
+      "name": "Leopoldo Teixeira",
+      "affiliation": "UFPE",
+      "homepage": "http://www.cin.ufpe.br/~lmt",
+      "scholarid": "kCcCrNMAAAAJ",
+      "publications": {
+        "ase": {
+          "2024": 0.25
+        },
+        "icse": {
+          "2021": 0.2
+        },
+        "oopsla": {
+          "2024": 0.12
+        }
+      },
+      "areas": [
+        "ase",
+        "icse",
+        "oopsla"
+      ],
+      "total_papers_recent": 0.57
+    },
+    {
+      "name": "Lisandro Z. Granville",
+      "affiliation": "UFRGS",
+      "homepage": "http://www.inf.ufrgs.br/granville",
+      "scholarid": "v9JjkyYAAAAJ",
+      "publications": {
+        "ccs": {
+          "2022": 0.17
+        },
+        "usenixatc": {
+          "2021": 0.14
+        }
+      },
+      "areas": [
+        "ccs",
+        "usenixatc"
+      ],
+      "total_papers_recent": 0.31
+    },
+    {
+      "name": "Loïc Cerf",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~lcerf",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "icde": {
+          "2014": 0.5
+        }
+      },
+      "areas": [
+        "icde"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Luciana Benotti",
+      "affiliation": "Universidad Nacional de Córdoba",
+      "homepage": "https://cs.famaf.unc.edu.ar/~luciana",
+      "scholarid": "QqsVx-oAAAAJ",
+      "publications": {
+        "acl": {
+          "2012": 0.25,
+          "2015": 0.25
+        },
+        "emnlp": {
+          "2021": 0.17,
+          "2022": 0.5
+        },
+        "naacl": {
+          "2021": 0.5
+        },
+        "nips": {
+          "2024": 0.01
+        },
+        "sigcse": {
+          "2018": 0.25
+        }
+      },
+      "areas": [
+        "acl",
+        "emnlp",
+        "naacl",
+        "nips",
+        "sigcse"
+      ],
+      "total_papers_recent": 1.18
+    },
+    {
+      "name": "Luciana Porcher Nedel",
+      "affiliation": "UFRGS",
+      "homepage": "http://www.inf.ufrgs.br/~nedel",
+      "scholarid": "PNdeI7UAAAAJ",
+      "publications": {
+        "chiconf": {
+          "2017": 0.25
+        },
+        "eurographics": {
+          "2018": 0.33
+        },
+        "iros": {
+          "2010": 0.33
+        },
+        "vis": {
+          "2008": 0.2,
+          "2020": 0.33
+        },
+        "vr": {
+          "2017": 0.25,
+          "2018": 0.45,
+          "2021": 0.33,
+          "2023": 0.33,
+          "2024": 0.25,
+          "2025": 0.33
+        }
+      },
+      "areas": [
+        "chiconf",
+        "eurographics",
+        "iros",
+        "vis",
+        "vr"
+      ],
+      "total_papers_recent": 1.24
+    },
+    {
+      "name": "Luciana S. Buriol",
+      "affiliation": "UFRGS",
+      "homepage": "http://www.inf.ufrgs.br/~buriol",
+      "scholarid": "5BoIwjYAAAAJ",
+      "publications": {
+        "ijcai": {
+          "2016": 0.2
+        },
+        "pods": {
+          "2006": 0.2
+        }
+      },
+      "areas": [
+        "ijcai",
+        "pods"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Luciano Barbosa",
+      "affiliation": "UFPE",
+      "homepage": "http://www.cin.ufpe.br/~luciano",
+      "scholarid": "OsKAdpEAAAAJ",
+      "publications": {
+        "acl": {
+          "2015": 0.25
+        },
+        "icde": {
+          "2007": 0.33
+        },
+        "naacl": {
+          "2009": 0.25
+        },
+        "sigmod": {
+          "2018": 0.2
+        },
+        "vldb": {
+          "2015": 0.2
+        },
+        "www": {
+          "2007": 1.0
+        }
+      },
+      "areas": [
+        "acl",
+        "icde",
+        "naacl",
+        "sigmod",
+        "vldb",
+        "www"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Luciano Silva",
+      "affiliation": "UFPR",
+      "homepage": "https://www.inf.ufpr.br/luciano",
+      "scholarid": "_xB5NUgAAAAJ",
+      "publications": {
+        "cvpr": {
+          "2003": 0.33,
+          "2009": 0.33
+        },
+        "eurographics": {
+          "2014": 0.33
+        },
+        "nips": {
+          "2020": 0.17
+        }
+      },
+      "areas": [
+        "cvpr",
+        "eurographics",
+        "nips"
+      ],
+      "total_papers_recent": 0.17
+    },
+    {
+      "name": "Luigi Carro",
+      "affiliation": "UFRGS",
+      "homepage": "http://www.inf.ufrgs.br/~carro",
+      "scholarid": "vS6vkY4AAAAJ",
+      "publications": {
+        "dac": {
+          "1998": 0.5,
+          "2003": 0.33,
+          "2005": 0.5,
+          "2018": 0.45
+        },
+        "hpca": {
+          "2015": 0.08,
+          "2017": 0.1
+        }
+      },
+      "areas": [
+        "dac",
+        "hpca"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Luis A. B. Kowada",
+      "affiliation": "UFF",
+      "homepage": "http://www.professores.uff.br/kowada",
+      "scholarid": "8DN4mmEAAAAJ",
+      "publications": {
+        "recomb": {
+          "2016": 0.25
+        }
+      },
+      "areas": [
+        "recomb"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Luis C. E. Bona",
+      "affiliation": "UFPR",
+      "homepage": "https://web.inf.ufpr.br/bona",
+      "scholarid": "YJL1PhUAAAAJ",
+      "publications": {
+        "fast": {
+          "2019": 0.33
+        },
+        "vldb": {
+          "2016": 0.33
+        }
+      },
+      "areas": [
+        "fast",
+        "vldb"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Luiz Augusto de Macêdo Morais",
+      "affiliation": "UFPE",
+      "homepage": "https://www.cin.ufpe.br/~lamm",
+      "scholarid": "QikAoAUAAAAJ",
+      "publications": {
+        "chiconf": {
+          "2021": 0.25,
+          "2023": 0.25,
+          "2024": 0.17,
+          "2025": 0.33
+        },
+        "eurographics": {
+          "2022": 0.33
+        },
+        "vis": {
+          "2024": 0.05
+        }
+      },
+      "areas": [
+        "chiconf",
+        "eurographics",
+        "vis"
+      ],
+      "total_papers_recent": 1.05
+    },
+    {
+      "name": "Luiz Chaimowicz",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~chaimo",
+      "scholarid": "-6ws0MoAAAAJ",
+      "publications": {
+        "icra": {
+          "2001": 0.25,
+          "2002": 0.58,
+          "2003": 0.33,
+          "2004": 0.2,
+          "2005": 0.33,
+          "2008": 0.5,
+          "2014": 0.33,
+          "2021": 0.33
+        },
+        "ijcai": {
+          "2018": 0.25
+        },
+        "iros": {
+          "2003": 0.25,
+          "2009": 1.0,
+          "2011": 0.5,
+          "2021": 0.33,
+          "2024": 0.25
+        }
+      },
+      "areas": [
+        "icra",
+        "ijcai",
+        "iros"
+      ],
+      "total_papers_recent": 0.91
+    },
+    {
+      "name": "Luís C. Lamb",
+      "affiliation": "UFRGS",
+      "homepage": "http://www.inf.ufrgs.br/~lamb",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "aaai": {
+          "2007": 0.33,
+          "2008": 0.5,
+          "2015": 0.25,
+          "2019": 0.2
+        },
+        "ijcai": {
+          "2005": 0.25,
+          "2007": 0.5,
+          "2011": 0.25,
+          "2020": 0.17
+        },
+        "nips": {
+          "2003": 0.5,
+          "2005": 0.33
+        }
+      },
+      "areas": [
+        "aaai",
+        "ijcai",
+        "nips"
+      ],
+      "total_papers_recent": 0.17
+    },
+    {
+      "name": "Lásaro J. Camargos",
+      "affiliation": "UFU",
+      "homepage": "http://www.ppgco.facom.ufu.br/pt-br/pessoas/lasaro-jonas-camargos",
+      "scholarid": "ZTKP1OwAAAAJ",
+      "publications": {
+        "eurosys": {
+          "2007": 0.33
+        }
+      },
+      "areas": [
+        "eurosys"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Manuel Menezes de Oliveira Neto",
+      "affiliation": "UFRGS",
+      "homepage": "http://inf.ufrgs.br/~oliveira",
+      "scholarid": "f2UrnmAAAAAJ",
+      "publications": {
+        "eurographics": {
+          "2002": 0.5,
+          "2010": 1.0,
+          "2012": 0.5,
+          "2013": 0.5,
+          "2015": 0.5,
+          "2018": 0.33,
+          "2019": 0.5,
+          "2020": 0.33,
+          "2021": 0.33
+        },
+        "siggraph": {
+          "2000": 0.33,
+          "2003": 0.5,
+          "2010": 0.25,
+          "2011": 0.64,
+          "2012": 0.75,
+          "2016": 0.33,
+          "2017": 0.5
+        },
+        "vis": {
+          "2005": 0.33,
+          "2008": 0.33,
+          "2009": 0.33
+        }
+      },
+      "areas": [
+        "eurographics",
+        "siggraph",
+        "vis"
+      ],
+      "total_papers_recent": 0.66
+    },
+    {
+      "name": "Mara Abel",
+      "affiliation": "UFRGS",
+      "homepage": "http://inf.ufrgs.br/bdi",
+      "scholarid": "0yuOx18AAAAJ",
+      "publications": {
+        "ijcai": {
+          "2005": 0.25
+        },
+        "iros": {
+          "2013": 0.09
+        }
+      },
+      "areas": [
+        "ijcai",
+        "iros"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Marcelo Arenas",
+      "affiliation": "Pontificia Universidad Catolica de Chile",
+      "homepage": "http://marceloarenas.cl",
+      "scholarid": "YHR0wkkAAAAJ",
+      "publications": {
+        "aaai": {
+          "2021": 0.25,
+          "2025": 0.33
+        },
+        "icde": {
+          "2004": 0.2,
+          "2022": 0.25
+        },
+        "ijcai": {
+          "2013": 0.25,
+          "2015": 0.33,
+          "2016": 0.25
+        },
+        "lics": {
+          "2007": 0.17,
+          "2017": 0.33
+        },
+        "nips": {
+          "2021": 0.2,
+          "2022": 0.25
+        },
+        "pods": {
+          "1999": 0.33,
+          "2002": 0.83,
+          "2003": 0.5,
+          "2004": 0.25,
+          "2005": 0.5,
+          "2008": 0.33,
+          "2010": 0.25,
+          "2011": 0.83,
+          "2014": 0.33,
+          "2016": 0.5,
+          "2019": 0.25,
+          "2020": 0.33,
+          "2023": 0.33
+        },
+        "sigmod": {
+          "2003": 0.33,
+          "2013": 0.17,
+          "2021": 0.33,
+          "2024": 0.25
+        },
+        "stoc": {
+          "2021": 0.25
+        },
+        "vldb": {
+          "2004": 0.5,
+          "2009": 0.25,
+          "2014": 0.2,
+          "2016": 0.25
+        },
+        "www": {
+          "2012": 0.67,
+          "2016": 0.33
+        }
+      },
+      "areas": [
+        "aaai",
+        "icde",
+        "ijcai",
+        "lics",
+        "nips",
+        "pods",
+        "sigmod",
+        "stoc",
+        "vldb",
+        "www"
+      ],
+      "total_papers_recent": 2.44
+    },
+    {
+      "name": "Marcelo Finger",
+      "affiliation": "USP",
+      "homepage": "http://www.ime.usp.br/~finger",
+      "scholarid": "uuu73GEAAAAJ",
+      "publications": {
+        "aaai": {
+          "2017": 0.5
+        },
+        "ijcai": {
+          "2011": 0.5
+        }
+      },
+      "areas": [
+        "aaai",
+        "ijcai"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Marcelo Henriques de Carvalho",
+      "affiliation": "UFMS",
+      "homepage": "https://www.facom.ufms.br/~mhc",
+      "scholarid": "Q_F5v5wAAAAJ",
+      "publications": {
+        "soda": {
+          "2005": 0.5
+        }
+      },
+      "areas": [
+        "soda"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Marcelo Mendoza",
+      "affiliation": "Pontificia Universidad Catolica de Chile",
+      "homepage": "https://www.ing.uc.cl/academicos-e-investigadores/marcelo-gabriel-mendoza-rocha",
+      "scholarid": "6LYRTPEAAAAJ",
+      "publications": {
+        "emnlp": {
+          "2021": 0.2
+        },
+        "sigcse": {
+          "2024": 0.17
+        },
+        "www": {
+          "2011": 0.33
+        }
+      },
+      "areas": [
+        "emnlp",
+        "sigcse",
+        "www"
+      ],
+      "total_papers_recent": 0.37
+    },
+    {
+      "name": "Marcelo Pias",
+      "affiliation": "Federal University of Rio Grande",
+      "homepage": "https://sites.google.com/site/piasmarcelo",
+      "scholarid": "X_zoltAAAAAJ",
+      "publications": {
+        "imc": {
+          "2005": 0.2
+        },
+        "sigcse": {
+          "2023": 0.33
+        }
+      },
+      "areas": [
+        "imc",
+        "sigcse"
+      ],
+      "total_papers_recent": 0.33
+    },
+    {
+      "name": "Marcelo Walter",
+      "affiliation": "UFRGS",
+      "homepage": "http://www.inf.ufrgs.br/~mwalter",
+      "scholarid": "7VfUEj0AAAAJ",
+      "publications": {
+        "eurographics": {
+          "1997": 0.5,
+          "2006": 0.33,
+          "2017": 0.5,
+          "2019": 0.17
+        },
+        "siggraph": {
+          "2001": 0.33,
+          "2020": 0.33
+        },
+        "siggraph-asia": {
+          "2022": 0.5
+        }
+      },
+      "areas": [
+        "eurographics",
+        "siggraph",
+        "siggraph-asia"
+      ],
+      "total_papers_recent": 0.83
+    },
+    {
+      "name": "Marco A. Casanova",
+      "affiliation": "PUC-RIO",
+      "homepage": "http://www.inf.puc-rio.br/~casanova",
+      "scholarid": "zWh25xcAAAAJ",
+      "publications": {
+        "ijcai": {
+          "1989": 0.33
+        },
+        "pods": {
+          "1982": 1.33,
+          "1983": 0.5,
+          "1984": 0.33,
+          "1985": 0.33
+        },
+        "popl": {
+          "1979": 0.5
+        },
+        "vldb": {
+          "1982": 0.33,
+          "1983": 0.33,
+          "1985": 0.33,
+          "1988": 0.33,
+          "1989": 0.25,
+          "1994": 0.33
+        }
+      },
+      "areas": [
+        "ijcai",
+        "pods",
+        "popl",
+        "vldb"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Marco A. Z. Alves",
+      "affiliation": "UFPR",
+      "homepage": "https://web.inf.ufpr.br/mazalves",
+      "scholarid": "zhYsRbcAAAAJ",
+      "publications": {
+        "icde": {
+          "2018": 0.25
+        },
+        "vldb": {
+          "2019": 0.33
+        }
+      },
+      "areas": [
+        "icde",
+        "vldb"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Marco Molinaro 0001",
+      "affiliation": "PUC-RIO",
+      "homepage": "http://www.inf.puc-rio.br/~mmolinaro",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "focs": {
+          "2011": 0.25
+        },
+        "icml": {
+          "2018": 0.33,
+          "2020": 0.25,
+          "2024": 0.25
+        },
+        "nips": {
+          "2022": 0.25
+        },
+        "sigmetrics": {
+          "2024": 0.33
+        },
+        "soda": {
+          "2013": 0.33,
+          "2017": 1.0,
+          "2019": 1.25,
+          "2021": 1.33,
+          "2022": 0.25,
+          "2023": 0.33
+        },
+        "stoc": {
+          "2024": 0.33
+        }
+      },
+      "areas": [
+        "focs",
+        "icml",
+        "nips",
+        "sigmetrics",
+        "soda",
+        "stoc"
+      ],
+      "total_papers_recent": 3.32
+    },
+    {
+      "name": "Marco Túlio Valente",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~mtov",
+      "scholarid": "0vFkqMIAAAAJ",
+      "publications": {
+        "fse": {
+          "2016": 0.58,
+          "2017": 0.5
+        },
+        "icse": {
+          "2018": 0.25
+        }
+      },
+      "areas": [
+        "fse",
+        "icse"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Marcos A. M. Vieira",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~mmvieira",
+      "scholarid": "2pp8xosAAAAJ",
+      "publications": {
+        "icra": {
+          "2011": 0.33
+        },
+        "iros": {
+          "2009": 0.17,
+          "2014": 0.5,
+          "2020": 0.58
+        },
+        "sensys": {
+          "2006": 0.11
+        }
+      },
+      "areas": [
+        "icra",
+        "iros",
+        "sensys"
+      ],
+      "total_papers_recent": 0.58
+    },
+    {
+      "name": "Marcos André Gonçalves",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~mgoncalv",
+      "scholarid": "IStCGaoAAAAJ",
+      "publications": {
+        "acl": {
+          "2020": 0.17,
+          "2025": 0.2
+        },
+        "sigir": {
+          "2006": 0.17,
+          "2007": 0.25,
+          "2008": 0.25,
+          "2009": 0.2,
+          "2010": 0.17,
+          "2011": 0.2,
+          "2013": 0.25,
+          "2015": 0.45,
+          "2016": 0.25,
+          "2017": 0.2,
+          "2019": 0.25,
+          "2022": 0.25,
+          "2023": 0.2,
+          "2025": 0.17
+        },
+        "sigmod": {
+          "2010": 0.25
+        },
+        "www": {
+          "2018": 0.12
+        }
+      },
+      "areas": [
+        "acl",
+        "sigir",
+        "sigmod",
+        "www"
+      ],
+      "total_papers_recent": 0.62
+    },
+    {
+      "name": "Marcos Kalinowski",
+      "affiliation": "PUC-RIO",
+      "homepage": "http://www.inf.puc-rio.br/~kalinowski",
+      "scholarid": "tKCYoHsAAAAJ",
+      "publications": {
+        "ase": {
+          "2004": 0.5
+        },
+        "icse": {
+          "2018": 0.08
+        },
+        "vldb": {
+          "2021": 0.2
+        }
+      },
+      "areas": [
+        "ase",
+        "icse",
+        "vldb"
+      ],
+      "total_papers_recent": 0.2
+    },
+    {
+      "name": "Marcos Lage",
+      "affiliation": "UFF",
+      "homepage": "http://www2.ic.uff.br/~mlage",
+      "scholarid": "ltxcRtwAAAAJ",
+      "publications": {
+        "chiconf": {
+          "2020": 0.17
+        },
+        "eurographics": {
+          "2018": 0.12,
+          "2022": 0.12,
+          "2024": 0.11
+        },
+        "siggraph-asia": {
+          "2015": 0.12
+        },
+        "vis": {
+          "2017": 0.12,
+          "2023": 0.11,
+          "2024": 0.33,
+          "2025": 0.11
+        }
+      },
+      "areas": [
+        "chiconf",
+        "eurographics",
+        "siggraph-asia",
+        "vis"
+      ],
+      "total_papers_recent": 0.84
+    },
+    {
+      "name": "Marcus Poggi de Aragão",
+      "affiliation": "PUC-RIO",
+      "homepage": "http://www.inf.puc-rio.br/~poggi",
+      "scholarid": "tOei_80AAAAJ",
+      "publications": {
+        "ijcai": {
+          "1995": 0.25
+        },
+        "www": {
+          "2004": 0.33
+        }
+      },
+      "areas": [
+        "ijcai",
+        "www"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Marcus Ritt",
+      "affiliation": "UFRGS",
+      "homepage": "http://inf.ufrgs.br/~mrpritt",
+      "scholarid": "LtRLs7UAAAAJ",
+      "publications": {
+        "ijcai": {
+          "2016": 0.2,
+          "2018": 0.33
+        },
+        "iros": {
+          "2008": 0.33
+        }
+      },
+      "areas": [
+        "ijcai",
+        "iros"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Maria Camila Nardini Barioni",
+      "affiliation": "UFU",
+      "homepage": "http://www.facom.ufu.br/~camila",
+      "scholarid": "f0ib3vMAAAAJ",
+      "publications": {
+        "icde": {
+          "2011": 0.14
+        }
+      },
+      "areas": [
+        "icde"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Maria Cristina Ferreira de Oliveira",
+      "affiliation": "USP-ICMC",
+      "homepage": "http://icmc.usp.br/pessoas?id=176869",
+      "scholarid": "vhRUZogAAAAJ",
+      "publications": {
+        "eurographics": {
+          "2001": 0.25,
+          "2011": 0.12
+        }
+      },
+      "areas": [
+        "eurographics"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Mariana Luderitz Kolberg",
+      "affiliation": "UFRGS",
+      "homepage": "http://www.inf.ufrgs.br/site/docente/mariana-luderitz-kolberg",
+      "scholarid": "TyOe8ZwAAAAJ",
+      "publications": {
+        "icra": {
+          "2014": 0.25,
+          "2015": 0.34,
+          "2020": 0.17
+        },
+        "iros": {
+          "2013": 0.25,
+          "2014": 0.17,
+          "2015": 0.12,
+          "2016": 0.2,
+          "2020": 0.2,
+          "2024": 0.25
+        }
+      },
+      "areas": [
+        "icra",
+        "iros"
+      ],
+      "total_papers_recent": 0.62
+    },
+    {
+      "name": "Mariana Recamonde Mendoza",
+      "affiliation": "UFRGS",
+      "homepage": "https://www.inf.ufrgs.br/site/docente/mariana-recamonde-mendoza",
+      "scholarid": "nyMTIdoAAAAJ",
+      "publications": {
+        "aaai": {
+          "2013": 0.5
+        }
+      },
+      "areas": [
+        "aaai"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Mario Fernando Montenegro Campos",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~mario",
+      "scholarid": "qWrXkPwAAAAJ",
+      "publications": {
+        "cvpr": {
+          "2018": 0.17
+        },
+        "iccv": {
+          "2019": 0.17
+        },
+        "icra": {
+          "1999": 0.5,
+          "2001": 0.25,
+          "2002": 0.75,
+          "2003": 0.33,
+          "2005": 0.14,
+          "2009": 0.5,
+          "2010": 0.2,
+          "2011": 0.25,
+          "2012": 0.58,
+          "2015": 0.92,
+          "2016": 0.2,
+          "2017": 0.17,
+          "2021": 0.33
+        },
+        "iros": {
+          "2000": 0.33,
+          "2003": 0.75,
+          "2004": 0.33,
+          "2007": 0.2,
+          "2009": 1.03,
+          "2010": 0.5,
+          "2011": 0.5,
+          "2012": 0.2,
+          "2013": 0.25,
+          "2014": 0.33,
+          "2015": 0.58,
+          "2016": 0.2,
+          "2017": 0.14
+        }
+      },
+      "areas": [
+        "cvpr",
+        "iccv",
+        "icra",
+        "iros"
+      ],
+      "total_papers_recent": 0.33
+    },
+    {
+      "name": "Mario Linares-Vásquez",
+      "affiliation": "Universidad de los Andes",
+      "homepage": "https://profesores.virtual.uniandes.edu.co/mlinaresv",
+      "scholarid": "55fmMcoAAAAJ",
+      "publications": {
+        "ase": {
+          "2017": 0.17
+        },
+        "fse": {
+          "2013": 0.17,
+          "2015": 0.42,
+          "2017": 0.12
+        },
+        "icse": {
+          "2017": 0.17,
+          "2018": 0.17,
+          "2019": 0.14,
+          "2020": 0.14
+        },
+        "issta": {
+          "2016": 0.25
+        }
+      },
+      "areas": [
+        "ase",
+        "fse",
+        "icse",
+        "issta"
+      ],
+      "total_papers_recent": 0.14
+    },
+    {
+      "name": "Mario Lúcio Côrtes",
+      "affiliation": "UNICAMP",
+      "homepage": "http://www.ic.unicamp.br/~cortes",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "micro": {
+          "1998": 0.25
+        }
+      },
+      "areas": [
+        "micro"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Markus Endler",
+      "affiliation": "PUC-RIO",
+      "homepage": "http://www.inf.puc-rio.br/~endler",
+      "scholarid": "QpN9ae8AAAAJ",
+      "publications": {
+        "iros": {
+          "2017": 0.5
+        }
+      },
+      "areas": [
+        "iros"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Marta Mattoso",
+      "affiliation": "UFRJ",
+      "homepage": "http://cos.ufrj.br/~marta",
+      "scholarid": "ZPczFBAAAAAJ",
+      "publications": {
+        "hpdc": {
+          "2010": 0.14
+        },
+        "vldb": {
+          "2011": 0.17
+        }
+      },
+      "areas": [
+        "hpdc",
+        "vldb"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Martín Ariel Domínguez",
+      "affiliation": "Universidad Nacional de Córdoba",
+      "homepage": "https://cs.famaf.unc.edu.ar/~mdoming",
+      "scholarid": "ExBxMa4AAAAJ",
+      "publications": {
+        "aaai": {
+          "2019": 0.2
+        }
+      },
+      "areas": [
+        "aaai"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "María-Del-Pilar Villamil",
+      "affiliation": "Universidad de los Andes",
+      "homepage": "https://profesores.virtual.uniandes.edu.co/mavillam/es/inicio",
+      "scholarid": "YCevcDEAAAAJ",
+      "publications": {
+        "kdd": {
+          "2018": 0.2
+        }
+      },
+      "areas": [
+        "kdd"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Matías Toro",
+      "affiliation": "Universidad de Chile",
+      "homepage": "https://pleiad.cl/people/mtoro",
+      "scholarid": "hRPJ-ZIAAAAJ",
+      "publications": {
+        "oopsla": {
+          "2015": 0.5,
+          "2022": 0.25,
+          "2023": 0.33,
+          "2024": 0.33
+        },
+        "popl": {
+          "2019": 0.33
+        }
+      },
+      "areas": [
+        "oopsla",
+        "popl"
+      ],
+      "total_papers_recent": 0.91
+    },
+    {
+      "name": "Miguel Romero 0001",
+      "affiliation": "Pontificia Universidad Catolica de Chile",
+      "homepage": "https://www.ing.uc.cl/academicos-e-investigadores/miguel-angel-romero-orth",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "focs": {
+          "2018": 0.33
+        },
+        "lics": {
+          "2017": 0.33,
+          "2019": 0.33
+        },
+        "nips": {
+          "2022": 0.25,
+          "2023": 0.25
+        },
+        "pods": {
+          "2012": 0.33,
+          "2013": 0.33,
+          "2014": 0.33,
+          "2018": 1.0,
+          "2020": 0.25,
+          "2023": 0.5,
+          "2025": 0.53
+        },
+        "soda": {
+          "2021": 0.33
+        }
+      },
+      "areas": [
+        "focs",
+        "lics",
+        "nips",
+        "pods",
+        "soda"
+      ],
+      "total_papers_recent": 1.58
+    },
+    {
+      "name": "Min Chih Lin",
+      "affiliation": "University of Buenos Aires",
+      "homepage": "http://www.ic.fcen.uba.ar/~mlin/homepage.html",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "soda": {
+          "2006": 0.5
+        }
+      },
+      "areas": [
+        "soda"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Mirella M. Moro",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~mirella",
+      "scholarid": "MRbdeWkAAAAJ",
+      "publications": {
+        "vldb": {
+          "2005": 0.33,
+          "2007": 0.33
+        }
+      },
+      "areas": [
+        "vldb"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Moacir Ponti",
+      "affiliation": "USP-ICMC",
+      "homepage": "http://www.icmc.usp.br/pessoas/moacir",
+      "scholarid": "ZxQDyNcAAAAJ",
+      "publications": {
+        "cvpr": {
+          "2020": 0.25
+        },
+        "icml": {
+          "2022": 0.17
+        }
+      },
+      "areas": [
+        "cvpr",
+        "icml"
+      ],
+      "total_papers_recent": 0.42
+    },
+    {
+      "name": "Márcio Eduardo Delamaro",
+      "affiliation": "USP-ICMC",
+      "homepage": "http://conteudo.icmc.usp.br/pessoas/delamaro",
+      "scholarid": "htqWT0IAAAAJ",
+      "publications": {
+        "fse": {
+          "2016": 0.17
+        }
+      },
+      "areas": [
+        "fse"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Mário S. Alvim",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~msalvim",
+      "scholarid": "9r8YfCgAAAAJ",
+      "publications": {
+        "ccs": {
+          "2023": 0.2,
+          "2024": 0.25
+        },
+        "lics": {
+          "2010": 0.33
+        },
+        "oakland": {
+          "2014": 0.25
+        },
+        "pets": {
+          "2022": 0.45
+        },
+        "sensys": {
+          "2017": 0.17
+        }
+      },
+      "areas": [
+        "ccs",
+        "lics",
+        "oakland",
+        "pets",
+        "sensys"
+      ],
+      "total_papers_recent": 0.9
+    },
+    {
+      "name": "Nancy Hitschfeld-Kahler",
+      "affiliation": "Universidad de Chile",
+      "homepage": "https://www.dcc.uchile.cl/nancy",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "aaai": {
+          "2024": 0.25
+        },
+        "sigcse": {
+          "2018": 0.2,
+          "2019": 0.2,
+          "2020": 0.14
+        }
+      },
+      "areas": [
+        "aaai",
+        "sigcse"
+      ],
+      "total_papers_recent": 0.39
+    },
+    {
+      "name": "Nicolás D'Ippolito",
+      "affiliation": "University of Buenos Aires",
+      "homepage": "http://lafhis.dc.uba.ar/en/~dippolito",
+      "scholarid": "zVAhnsUAAAAJ",
+      "publications": {
+        "fse": {
+          "2010": 0.25
+        },
+        "icse": {
+          "2011": 0.25,
+          "2014": 0.17,
+          "2015": 0.25
+        },
+        "ijcai": {
+          "2015": 0.5
+        }
+      },
+      "areas": [
+        "fse",
+        "icse",
+        "ijcai"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Nina Sumiko Tomita Hirata",
+      "affiliation": "USP",
+      "homepage": "http://www.ime.usp.br/~nina",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "naacl": {
+          "2025": 0.12
+        }
+      },
+      "areas": [
+        "naacl"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Nivan Ferreira",
+      "affiliation": "UFPE",
+      "homepage": "http://www.cin.ufpe.br/~nivan",
+      "scholarid": "aXnmMnkAAAAJ",
+      "publications": {
+        "chiconf": {
+          "2014": 0.33
+        },
+        "eurographics": {
+          "2013": 0.25,
+          "2024": 0.11
+        },
+        "siggraph-asia": {
+          "2015": 0.12
+        },
+        "vis": {
+          "2011": 0.14,
+          "2013": 0.2,
+          "2014": 0.2,
+          "2017": 0.2,
+          "2023": 0.11,
+          "2024": 0.17,
+          "2025": 0.11
+        }
+      },
+      "areas": [
+        "chiconf",
+        "eurographics",
+        "siggraph-asia",
+        "vis"
+      ],
+      "total_papers_recent": 0.39
+    },
+    {
+      "name": "Nivio Ziviani",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~nivio",
+      "scholarid": "OZ2ju_EAAAAJ",
+      "publications": {
+        "sigir": {
+          "1998": 0.25,
+          "1999": 0.25,
+          "2000": 0.2,
+          "2001": 0.17,
+          "2002": 0.25,
+          "2006": 0.17,
+          "2017": 0.33
+        },
+        "vldb": {
+          "2018": 0.5
+        },
+        "www": {
+          "2008": 0.33,
+          "2009": 0.25
+        }
+      },
+      "areas": [
+        "sigir",
+        "vldb",
+        "www"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Noemi de La Rocque Rodriguez",
+      "affiliation": "PUC-RIO",
+      "homepage": "http://www.inf.puc-rio.br/~noemi",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "sensys": {
+          "2013": 0.2
+        }
+      },
+      "areas": [
+        "sensys"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Olga R. P. Bellon",
+      "affiliation": "UFPR",
+      "homepage": "https://www.inf.ufpr.br/olga",
+      "scholarid": "YBjOLlsAAAAJ",
+      "publications": {
+        "cvpr": {
+          "2003": 0.33,
+          "2009": 0.33
+        },
+        "eurographics": {
+          "2014": 0.33
+        }
+      },
+      "areas": [
+        "cvpr",
+        "eurographics"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Onofre Trindade Júnior",
+      "affiliation": "USP-ICMC",
+      "homepage": "http://icmc.usp.br/pessoas?id=170745",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "icra": {
+          "2011": 0.17
+        }
+      },
+      "areas": [
+        "icra"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Orlando Lee",
+      "affiliation": "UNICAMP",
+      "homepage": "http://www.ic.unicamp.br/~lee",
+      "scholarid": "b9ExoosAAAAJ",
+      "publications": {
+        "soda": {
+          "2003": 0.33
+        }
+      },
+      "areas": [
+        "soda"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Orlando Loques",
+      "affiliation": "UFF",
+      "homepage": "http://www2.ic.uff.br/~loques",
+      "scholarid": "KlPc9LgAAAAJ",
+      "publications": {
+        "rtas": {
+          "2012": 0.17
+        }
+      },
+      "areas": [
+        "rtas"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Pablo Andrés Arbeláez",
+      "affiliation": "Universidad de los Andes",
+      "homepage": "https://biomedicalcomputervision.uniandes.edu.co",
+      "scholarid": "k0nZO90AAAAJ",
+      "publications": {
+        "aaai": {
+          "2025": 0.12
+        },
+        "cvpr": {
+          "2008": 0.75,
+          "2009": 0.5,
+          "2011": 0.2,
+          "2012": 0.17,
+          "2013": 0.58,
+          "2014": 0.2,
+          "2015": 0.75,
+          "2020": 0.14,
+          "2022": 0.01,
+          "2024": 0.01
+        },
+        "eccv": {
+          "2010": 0.2,
+          "2012": 0.2,
+          "2014": 0.5,
+          "2016": 0.25,
+          "2018": 0.25,
+          "2020": 0.14
+        },
+        "iccv": {
+          "2009": 0.25,
+          "2011": 0.2,
+          "2013": 0.17,
+          "2021": 0.17
+        },
+        "nips": {
+          "2014": 0.25
+        }
+      },
+      "areas": [
+        "aaai",
+        "cvpr",
+        "eccv",
+        "iccv",
+        "nips"
+      ],
+      "total_papers_recent": 0.47
+    },
+    {
+      "name": "Pablo Barceló",
+      "affiliation": "Pontificia Universidad Catolica de Chile",
+      "homepage": "https://pbarcelo.ing.uc.cl",
+      "scholarid": "iVGrHpgAAAAJ",
+      "publications": {
+        "aaai": {
+          "2021": 0.25
+        },
+        "iclr": {
+          "2019": 0.33,
+          "2020": 0.17,
+          "2024": 0.75
+        },
+        "ijcai": {
+          "2018": 0.25
+        },
+        "lics": {
+          "2005": 0.5,
+          "2007": 0.17,
+          "2012": 0.33,
+          "2014": 0.5,
+          "2017": 0.33,
+          "2019": 0.25
+        },
+        "nips": {
+          "2020": 0.25,
+          "2021": 0.45,
+          "2022": 0.25,
+          "2023": 0.45
+        },
+        "pods": {
+          "2004": 0.25,
+          "2009": 0.25,
+          "2010": 0.25,
+          "2011": 0.33,
+          "2012": 0.33,
+          "2013": 1.33,
+          "2014": 0.33,
+          "2015": 0.33,
+          "2016": 0.33,
+          "2018": 0.33,
+          "2019": 0.25,
+          "2020": 0.53,
+          "2025": 0.2
+        },
+        "popl": {
+          "2016": 0.5
+        }
+      },
+      "areas": [
+        "aaai",
+        "iclr",
+        "ijcai",
+        "lics",
+        "nips",
+        "pods",
+        "popl"
+      ],
+      "total_papers_recent": 3.1
+    },
+    {
+      "name": "Pablo de Cristóforis",
+      "affiliation": "University of Buenos Aires",
+      "homepage": "https://www.dc.uba.ar/rrhh/profesores/decristoforis",
+      "scholarid": "v0TPxugAAAAJ",
+      "publications": {
+        "iros": {
+          "2015": 0.2,
+          "2016": 0.2,
+          "2021": 0.33
+        }
+      },
+      "areas": [
+        "iros"
+      ],
+      "total_papers_recent": 0.33
+    },
+    {
+      "name": "Paolo Rech",
+      "affiliation": "UFRGS",
+      "homepage": "http://inf.ufrgs.br/~prech",
+      "scholarid": "1EKLRakAAAAJ",
+      "publications": {
+        "dac": {
+          "2024": 0.17
+        },
+        "hpca": {
+          "2015": 0.08,
+          "2017": 0.1,
+          "2019": 0.2
+        },
+        "sc": {
+          "2017": 0.12,
+          "2023": 0.2,
+          "2024": 0.25
+        }
+      },
+      "areas": [
+        "dac",
+        "hpca",
+        "sc"
+      ],
+      "total_papers_recent": 0.62
+    },
+    {
+      "name": "Patricio V. Poblete",
+      "affiliation": "Universidad de Chile",
+      "homepage": "http://www.dcc.uchile.cl/~ppoblete",
+      "scholarid": "AZuHYCQAAAAJ",
+      "publications": {
+        "focs": {
+          "1990": 0.33
+        },
+        "pods": {
+          "1983": 0.5
+        }
+      },
+      "areas": [
+        "focs",
+        "pods"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Paula Estrella",
+      "affiliation": "Universidad Nacional de Córdoba",
+      "homepage": "https://www.famaf.unc.edu.ar/~pestrella",
+      "scholarid": "Mo7TUaQAAAAJ",
+      "publications": {
+        "acl": {
+          "2007": 0.5
+        }
+      },
+      "areas": [
+        "acl"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Paulo A. Pagliosa",
+      "affiliation": "UFMS",
+      "homepage": "https://www.facom.ufms.br/~pagliosa",
+      "scholarid": "lNUJYtwAAAAJ",
+      "publications": {
+        "eurographics": {
+          "2016": 0.2
+        },
+        "siggraph-asia": {
+          "2020": 0.2
+        }
+      },
+      "areas": [
+        "eurographics",
+        "siggraph-asia"
+      ],
+      "total_papers_recent": 0.2
+    },
+    {
+      "name": "Paulo A. S. Veloso",
+      "affiliation": "UFRJ",
+      "homepage": "http://www.cos.ufrj.br/index.php/pt-BR/pessoas/details/18/1043-veloso",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "icse": {
+          "1984": 0.25
+        },
+        "pods": {
+          "1984": 0.33
+        },
+        "vldb": {
+          "1981": 0.33
+        }
+      },
+      "areas": [
+        "icse",
+        "pods",
+        "vldb"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Paulo Borba",
+      "affiliation": "UFPE",
+      "homepage": "http://www.cin.ufpe.br/~phmb",
+      "scholarid": "PpRDLgcAAAAJ",
+      "publications": {
+        "ase": {
+          "2019": 0.5,
+          "2024": 0.25
+        },
+        "icse": {
+          "2014": 0.33
+        },
+        "oopsla": {
+          "2002": 0.33,
+          "2017": 0.33
+        },
+        "pldi": {
+          "2013": 0.17
+        }
+      },
+      "areas": [
+        "ase",
+        "icse",
+        "oopsla",
+        "pldi"
+      ],
+      "total_papers_recent": 0.25
+    },
+    {
+      "name": "Paulo F. Butzen",
+      "affiliation": "Federal University of Rio Grande",
+      "homepage": "http://www.butzen.c3.furg.br",
+      "scholarid": "2VeTdosAAAAJ",
+      "publications": {
+        "iccad": {
+          "2020": 0.17
+        }
+      },
+      "areas": [
+        "iccad"
+      ],
+      "total_papers_recent": 0.17
+    },
+    {
+      "name": "Paulo L. J. Drews-Jr",
+      "affiliation": "Federal University of Rio Grande",
+      "homepage": "http://www.paulo.c3.furg.br",
+      "scholarid": "IeIst7QAAAAJ",
+      "publications": {
+        "cvpr": {
+          "2023": 0.2
+        },
+        "eccv": {
+          "2024": 0.14
+        },
+        "icra": {
+          "2010": 0.2,
+          "2012": 0.33,
+          "2013": 0.25,
+          "2015": 0.25,
+          "2021": 0.12
+        },
+        "iros": {
+          "2009": 0.2,
+          "2010": 0.17,
+          "2014": 0.33,
+          "2015": 0.25,
+          "2016": 0.2,
+          "2018": 0.14,
+          "2022": 0.17,
+          "2023": 0.17,
+          "2024": 0.25
+        }
+      },
+      "areas": [
+        "cvpr",
+        "eccv",
+        "icra",
+        "iros"
+      ],
+      "total_papers_recent": 1.05
+    },
+    {
+      "name": "Paulo Lício de Geus",
+      "affiliation": "UNICAMP",
+      "homepage": "http://www.lasca.ic.unicamp.br/paulo",
+      "scholarid": "XK0LjgUAAAAJ",
+      "publications": {
+        "ndss": {
+          "2016": 0.12
+        }
+      },
+      "areas": [
+        "ndss"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Paulo Martins Engel",
+      "affiliation": "UFRGS",
+      "homepage": "http://inf.ufrgs.br/~engel",
+      "scholarid": "3yK2X-MAAAAJ",
+      "publications": {
+        "icml": {
+          "2006": 0.25
+        },
+        "iros": {
+          "2001": 0.25,
+          "2002": 0.25,
+          "2003": 0.25,
+          "2011": 0.5
+        }
+      },
+      "areas": [
+        "icml",
+        "iros"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Paulo Roberto Freire Cunha",
+      "affiliation": "UFPE",
+      "homepage": "https://www.cin.ufpe.br/~prfc",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "icse": {
+          "1981": 0.5
+        }
+      },
+      "areas": [
+        "icse"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Pedro Machado Manhães de Castro",
+      "affiliation": "UFPE",
+      "homepage": "https://www.cin.ufpe.br/~pmmc",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "eurographics": {
+          "2009": 0.25
+        }
+      },
+      "areas": [
+        "eurographics"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Pedro O. S. Vaz de Melo",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~olmo",
+      "scholarid": "WjS15esAAAAJ",
+      "publications": {
+        "kdd": {
+          "2008": 0.33,
+          "2016": 0.33,
+          "2017": 0.33
+        },
+        "naacl": {
+          "2021": 0.33
+        },
+        "nips": {
+          "2018": 0.25
+        },
+        "www": {
+          "2013": 0.25,
+          "2020": 0.37,
+          "2024": 0.2
+        }
+      },
+      "areas": [
+        "kdd",
+        "naacl",
+        "nips",
+        "www"
+      ],
+      "total_papers_recent": 0.9
+    },
+    {
+      "name": "Pedro R. D'Argenio",
+      "affiliation": "Universidad Nacional de Córdoba",
+      "homepage": "https://cs.famaf.unc.edu.ar/~dargenio",
+      "scholarid": "Z7i2nckAAAAJ",
+      "publications": {
+        "cav": {
+          "2022": 0.25
+        },
+        "rtss": {
+          "1999": 0.33
+        }
+      },
+      "areas": [
+        "cav",
+        "rtss"
+      ],
+      "total_papers_recent": 0.25
+    },
+    {
+      "name": "Philippe Olivier Alexandre Navaux",
+      "affiliation": "UFRGS",
+      "homepage": "http://www.inf.ufrgs.br/site/docente/philippe-olivier-alexandre-navaux",
+      "scholarid": "tNIuJeUAAAAJ",
+      "publications": {
+        "hpca": {
+          "2015": 0.08,
+          "2017": 0.1
+        },
+        "sc": {
+          "2017": 0.12
+        }
+      },
+      "areas": [
+        "hpca",
+        "sc"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Rafael H. Bordini",
+      "affiliation": "PUC-RS",
+      "homepage": "http://www.inf.pucrs.br/r.bordini/Rafael_Bordini/Welcome.html",
+      "scholarid": "PAs5hY4AAAAJ",
+      "publications": {
+        "ase": {
+          "2008": 0.25
+        }
+      },
+      "areas": [
+        "ase"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Rafael Prikladnicki",
+      "affiliation": "PUC-RS",
+      "homepage": "http://www.inf.pucrs.br/~rafael",
+      "scholarid": "_W9zu7sAAAAJ",
+      "publications": {
+        "chiconf": {
+          "2025": 0.17
+        },
+        "icse": {
+          "2024": 0.33
+        },
+        "sigcse": {
+          "2019": 0.2
+        }
+      },
+      "areas": [
+        "chiconf",
+        "icse",
+        "sigcse"
+      ],
+      "total_papers_recent": 0.33
+    },
+    {
+      "name": "Raul Fervari",
+      "affiliation": "Universidad Nacional de Córdoba",
+      "homepage": "http://cs.famaf.unc.edu.ar/~rfervari",
+      "scholarid": "3dg1ASwAAAAJ",
+      "publications": {
+        "aaai": {
+          "2023": 0.5
+        },
+        "ijcai": {
+          "2017": 0.25
+        },
+        "lics": {
+          "2020": 0.25
+        }
+      },
+      "areas": [
+        "aaai",
+        "ijcai",
+        "lics"
+      ],
+      "total_papers_recent": 0.75
+    },
+    {
+      "name": "Renan G. Cattelan",
+      "affiliation": "UFU",
+      "homepage": "http://www.facom.ufu.br/~renan",
+      "scholarid": "c4ncSUUAAAAJ",
+      "publications": {
+        "eurosys": {
+          "2008": 0.33
+        }
+      },
+      "areas": [
+        "eurosys"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Renan Maffei",
+      "affiliation": "UFRGS",
+      "homepage": "https://www.inf.ufrgs.br/site/docente/renan-de-queiroz-maffei",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "icra": {
+          "2014": 0.25,
+          "2015": 0.34,
+          "2018": 0.2,
+          "2020": 0.17
+        },
+        "iros": {
+          "2013": 0.25,
+          "2014": 0.17,
+          "2015": 0.12,
+          "2016": 0.2,
+          "2020": 0.2,
+          "2024": 0.25
+        }
+      },
+      "areas": [
+        "icra",
+        "iros"
+      ],
+      "total_papers_recent": 0.62
+    },
+    {
+      "name": "Renata Vieira",
+      "affiliation": "PUC-RS",
+      "homepage": "http://www.inf.pucrs.br/~rvieira",
+      "scholarid": "5Lw-0-UAAAAJ",
+      "publications": {
+        "aaai": {
+          "2019": 0.33
+        }
+      },
+      "areas": [
+        "aaai"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Renata Wassermann",
+      "affiliation": "USP",
+      "homepage": "http://www.ime.usp.br/~renata",
+      "scholarid": "_CyspwkAAAAJ",
+      "publications": {
+        "aaai": {
+          "2019": 0.33
+        },
+        "ijcai": {
+          "2019": 0.33
+        }
+      },
+      "areas": [
+        "aaai",
+        "ijcai"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Renato Assunção",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~assuncao",
+      "scholarid": "rjVMpKoAAAAJ",
+      "publications": {
+        "aaai": {
+          "2022": 0.33
+        },
+        "icra": {
+          "2015": 0.33,
+          "2016": 0.2,
+          "2021": 0.33
+        },
+        "iros": {
+          "2021": 0.33
+        },
+        "kdd": {
+          "2016": 0.33,
+          "2017": 0.33
+        },
+        "nips": {
+          "2018": 0.25
+        },
+        "www": {
+          "2013": 0.25,
+          "2024": 0.2
+        }
+      },
+      "areas": [
+        "aaai",
+        "icra",
+        "iros",
+        "kdd",
+        "nips",
+        "www"
+      ],
+      "total_papers_recent": 1.19
+    },
+    {
+      "name": "Renato Ferreira 0001",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~renato",
+      "scholarid": "Y7Ce3MUAAAAJ",
+      "publications": {
+        "hpdc": {
+          "2010": 0.25
+        },
+        "ics": {
+          "2000": 0.33,
+          "2002": 0.33,
+          "2003": 0.33
+        },
+        "sc": {
+          "1999": 0.2,
+          "2002": 0.14,
+          "2003": 0.5
+        },
+        "sigir": {
+          "2011": 0.2,
+          "2014": 0.17
+        }
+      },
+      "areas": [
+        "hpdc",
+        "ics",
+        "sc",
+        "sigir"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Renato P. Ribas",
+      "affiliation": "UFRGS",
+      "homepage": "http://inf.ufrgs.br/~rpribas",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "iccad": {
+          "2015": 0.2,
+          "2018": 0.17
+        }
+      },
+      "areas": [
+        "iccad"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Ricardo Augusto da Luz Reis",
+      "affiliation": "UFRGS",
+      "homepage": "http://inf.ufrgs.br/~reis",
+      "scholarid": "Iw4qTucAAAAJ",
+      "publications": {
+        "dac": {
+          "2003": 0.33,
+          "2010": 0.33,
+          "2018": 0.25
+        },
+        "iccad": {
+          "2014": 0.2,
+          "2020": 0.17
+        }
+      },
+      "areas": [
+        "dac",
+        "iccad"
+      ],
+      "total_papers_recent": 0.17
+    },
+    {
+      "name": "Ricardo C. Farias",
+      "affiliation": "UFRJ",
+      "homepage": "http://www.cos.ufrj.br/~rfarias",
+      "scholarid": "tmOKSCgAAAAJ",
+      "publications": {
+        "eurographics": {
+          "2008": 0.25,
+          "2010": 0.33
+        }
+      },
+      "areas": [
+        "eurographics"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Ricardo J. G. B. Campello",
+      "affiliation": "USP-ICMC",
+      "homepage": "http://icmc.usp.br/pessoas?id=11548141",
+      "scholarid": "jh1yfPIAAAAJ",
+      "publications": {
+        "icde": {
+          "2022": 0.25
+        },
+        "iclr": {
+          "2024": 0.17
+        },
+        "kdd": {
+          "2013": 0.25
+        }
+      },
+      "areas": [
+        "icde",
+        "iclr",
+        "kdd"
+      ],
+      "total_papers_recent": 0.42
+    },
+    {
+      "name": "Roberto Ierusalimschy",
+      "affiliation": "PUC-RIO",
+      "homepage": "http://www.inf.puc-rio.br/~roberto",
+      "scholarid": "_pZgPlIAAAAJ",
+      "publications": {
+        "sensys": {
+          "2013": 0.2
+        }
+      },
+      "areas": [
+        "sensys"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Roberto Marcondes Cesar Junior",
+      "affiliation": "USP",
+      "homepage": "http://www.ime.usp.br/~cesar",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "cvpr": {
+          "2019": 0.1,
+          "2025": 0.2
+        },
+        "icra": {
+          "2024": 0.2
+        },
+        "www": {
+          "2016": 0.25
+        }
+      },
+      "areas": [
+        "cvpr",
+        "icra",
+        "www"
+      ],
+      "total_papers_recent": 0.2
+    },
+    {
+      "name": "Rodolfo Azevedo",
+      "affiliation": "UNICAMP",
+      "homepage": "http://www.ic.unicamp.br/~rodolfo",
+      "scholarid": "yjK-jq0AAAAJ",
+      "publications": {
+        "dac": {
+          "2004": 0.25
+        },
+        "isca": {
+          "2013": 0.17,
+          "2015": 0.2
+        },
+        "sigcse": {
+          "2016": 0.25,
+          "2018": 0.33
+        }
+      },
+      "areas": [
+        "dac",
+        "isca",
+        "sigcse"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Rodolfo F. Resende",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~rodolfo",
+      "scholarid": "JuyaieQAAAAJ",
+      "publications": {
+        "oopsla": {
+          "1994": 0.33
+        }
+      },
+      "areas": [
+        "oopsla"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Rodrigo C. Barros",
+      "affiliation": "PUC-RS",
+      "homepage": "http://www.pucrs.br/facin/programa-de-pos-graduacao-em-ciencia-da-computacao/corpo-docente",
+      "scholarid": "2vo62sIAAAAJ",
+      "publications": {
+        "aaai": {
+          "2020": 0.33,
+          "2024": 0.2
+        },
+        "cvpr": {
+          "2018": 0.5
+        },
+        "iccv": {
+          "2019": 0.25
+        },
+        "icml": {
+          "2018": 0.33
+        }
+      },
+      "areas": [
+        "aaai",
+        "cvpr",
+        "iccv",
+        "icml"
+      ],
+      "total_papers_recent": 0.53
+    },
+    {
+      "name": "Rodrigo Toro Icarte",
+      "affiliation": "Pontificia Universidad Catolica de Chile",
+      "homepage": "https://www.ing.uc.cl/academicos-e-investigadores/rodrigo-andres-toro-icarte",
+      "scholarid": "W9DykFMAAAAJ",
+      "publications": {
+        "aaai": {
+          "2021": 0.25
+        },
+        "cvpr": {
+          "2025": 0.14
+        },
+        "icml": {
+          "2018": 0.25,
+          "2021": 0.25,
+          "2023": 0.2,
+          "2024": 0.33
+        },
+        "ijcai": {
+          "2017": 0.25,
+          "2019": 0.2,
+          "2022": 0.33
+        },
+        "nips": {
+          "2019": 0.17,
+          "2024": 0.17
+        }
+      },
+      "areas": [
+        "aaai",
+        "cvpr",
+        "icml",
+        "ijcai",
+        "nips"
+      ],
+      "total_papers_recent": 1.53
+    },
+    {
+      "name": "Rodrigo Zelir Azzolin",
+      "affiliation": "Federal University of Rio Grande",
+      "homepage": "http://www.rodrigo.c3.furg.br",
+      "scholarid": "AaqPK4AAAAAJ",
+      "publications": {
+        "iros": {
+          "2018": 0.14
+        }
+      },
+      "areas": [
+        "iros"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Rodrygo L. T. Santos",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~rodrygo",
+      "scholarid": "NAyozE0AAAAJ",
+      "publications": {
+        "naacl": {
+          "2021": 0.33
+        },
+        "sigir": {
+          "2011": 0.33,
+          "2017": 0.33
+        },
+        "www": {
+          "2010": 0.33,
+          "2022": 0.33
+        }
+      },
+      "areas": [
+        "naacl",
+        "sigir",
+        "www"
+      ],
+      "total_papers_recent": 0.66
+    },
+    {
+      "name": "Ronaldo A. Ferreira",
+      "affiliation": "UFMS",
+      "homepage": "https://www.facom.ufms.br/~raf",
+      "scholarid": "WlY9jd8AAAAJ",
+      "publications": {
+        "ccs": {
+          "2022": 0.17
+        },
+        "sigcomm": {
+          "2017": 0.2
+        },
+        "sigmetrics": {
+          "2022": 0.17,
+          "2024": 0.17
+        },
+        "usenixatc": {
+          "2021": 0.14
+        }
+      },
+      "areas": [
+        "ccs",
+        "sigcomm",
+        "sigmetrics",
+        "usenixatc"
+      ],
+      "total_papers_recent": 0.65
+    },
+    {
+      "name": "Rosane Minghim",
+      "affiliation": "USP-ICMC",
+      "homepage": "http://www.lcad.icmc.usp.br/~rosane",
+      "scholarid": "TodwpSwAAAAJ",
+      "publications": {
+        "eurographics": {
+          "2001": 0.25,
+          "2011": 0.29,
+          "2012": 0.7
+        },
+        "vis": {
+          "1995": 0.5,
+          "2008": 0.5,
+          "2011": 0.2
+        }
+      },
+      "areas": [
+        "eurographics",
+        "vis"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Roseli A. Francelin Romero",
+      "affiliation": "USP-ICMC",
+      "homepage": "http://conteudo.icmc.usp.br/pessoas/rafrance",
+      "scholarid": "pdtTa-8AAAAJ",
+      "publications": {
+        "aaai": {
+          "1998": 0.25
+        }
+      },
+      "areas": [
+        "aaai"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Routo Terada",
+      "affiliation": "USP",
+      "homepage": "http://www.ime.usp.br/~rt",
+      "scholarid": "NH6zsPUAAAAJ",
+      "publications": {
+        "crypto": {
+          "1990": 0.5
+        }
+      },
+      "areas": [
+        "crypto"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Sabrina Marczak",
+      "affiliation": "PUC-RS",
+      "homepage": "http://www.inf.pucrs.br/sabrina.marczak/SabrinaMarczak/Welcome.html",
+      "scholarid": "tjnEfX4AAAAJ",
+      "publications": {
+        "icse": {
+          "2013": 0.2
+        }
+      },
+      "areas": [
+        "icse"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Sandra Julieta Rueda",
+      "affiliation": "Universidad de los Andes",
+      "homepage": "http://profesores.virtual.uniandes.edu.co/sarueda",
+      "scholarid": "picn4ngAAAAJ",
+      "publications": {
+        "usenixatc": {
+          "2007": 0.25
+        },
+        "usenixsec": {
+          "2008": 0.33
+        }
+      },
+      "areas": [
+        "usenixatc",
+        "usenixsec"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Sandra M. Aluísio",
+      "affiliation": "USP-ICMC",
+      "homepage": "http://icmc.usp.br/pessoas?id=109687",
+      "scholarid": "9mDOHngAAAAJ",
+      "publications": {
+        "acl": {
+          "2017": 0.17
+        }
+      },
+      "areas": [
+        "acl"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Sandro Rigo",
+      "affiliation": "UNICAMP",
+      "homepage": "http://www.ic.unicamp.br/~sandro",
+      "scholarid": "Bkd9ZXkAAAAJ",
+      "publications": {
+        "dac": {
+          "2009": 0.25
+        }
+      },
+      "areas": [
+        "dac"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Santiago Figueira",
+      "affiliation": "University of Buenos Aires",
+      "homepage": "http://www.glyc.dc.uba.ar/santiago",
+      "scholarid": "WzLmB-4AAAAJ",
+      "publications": {
+        "lics": {
+          "2011": 0.25,
+          "2023": 0.33
+        }
+      },
+      "areas": [
+        "lics"
+      ],
+      "total_papers_recent": 0.33
+    },
+    {
+      "name": "Sebastián Uchitel",
+      "affiliation": "University of Buenos Aires",
+      "homepage": "http://lafhis.dc.uba.ar/en/~suchitel",
+      "scholarid": "v-rnR5UAAAAJ",
+      "publications": {
+        "ase": {
+          "2003": 0.25
+        },
+        "fse": {
+          "2002": 0.33,
+          "2004": 0.75,
+          "2005": 0.25,
+          "2007": 0.17,
+          "2008": 0.7,
+          "2009": 0.33,
+          "2010": 0.25,
+          "2011": 0.25,
+          "2018": 0.14,
+          "2024": 0.11
+        },
+        "icra": {
+          "2020": 0.33,
+          "2021": 0.2
+        },
+        "icse": {
+          "2001": 0.5,
+          "2005": 0.25,
+          "2007": 0.33,
+          "2008": 0.33,
+          "2009": 0.5,
+          "2011": 0.5,
+          "2012": 0.2,
+          "2013": 0.33,
+          "2014": 0.42,
+          "2016": 0.2,
+          "2025": 0.33
+        }
+      },
+      "areas": [
+        "ase",
+        "fse",
+        "icra",
+        "icse"
+      ],
+      "total_papers_recent": 0.64
+    },
+    {
+      "name": "Seiji Isotani",
+      "affiliation": "USP-ICMC",
+      "homepage": "http://icmc.usp.br/pessoas?id=6064889",
+      "scholarid": "GKphfGsAAAAJ",
+      "publications": {
+        "sigcse": {
+          "2018": 0.11,
+          "2021": 0.17
+        }
+      },
+      "areas": [
+        "sigcse"
+      ],
+      "total_papers_recent": 0.17
+    },
+    {
+      "name": "Sergio Bampi",
+      "affiliation": "UFRGS",
+      "homepage": "http://inf.ufrgs.br/gme",
+      "scholarid": "emFRxDUAAAAJ",
+      "publications": {
+        "dac": {
+          "1999": 0.33,
+          "2011": 0.17,
+          "2012": 0.2
+        },
+        "iccad": {
+          "2011": 0.25,
+          "2014": 0.2,
+          "2022": 0.17
+        }
+      },
+      "areas": [
+        "dac",
+        "iccad"
+      ],
+      "total_papers_recent": 0.17
+    },
+    {
+      "name": "Sergio Yovine",
+      "affiliation": "University of Buenos Aires",
+      "homepage": "http://lafhis.dc.uba.ar/en/~syovine",
+      "scholarid": "IFVbNzUAAAAJ",
+      "publications": {
+        "cav": {
+          "1994": 0.33,
+          "1996": 0.5,
+          "1997": 0.25
+        },
+        "emsoft": {
+          "2002": 0.2,
+          "2003": 0.33
+        },
+        "lics": {
+          "1992": 0.25
+        },
+        "rtss": {
+          "1995": 0.5,
+          "1996": 0.5,
+          "1997": 0.33,
+          "1999": 0.17
+        }
+      },
+      "areas": [
+        "cav",
+        "emsoft",
+        "lics",
+        "rtss"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Silvia Silva da Costa Botelho",
+      "affiliation": "Federal University of Rio Grande",
+      "homepage": "http://www.silviacb.c3.furg.br",
+      "scholarid": "XKt2OlEAAAAJ",
+      "publications": {
+        "icra": {
+          "1999": 0.5,
+          "2000": 0.5,
+          "2013": 0.33,
+          "2016": 0.12
+        },
+        "iros": {
+          "2001": 0.5,
+          "2018": 0.48
+        }
+      },
+      "areas": [
+        "icra",
+        "iros"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Simone D. J. Barbosa",
+      "affiliation": "PUC-RIO",
+      "homepage": "http://www-di.inf.puc-rio.br/~simone",
+      "scholarid": "DEayOYgAAAAJ",
+      "publications": {
+        "icse": {
+          "2018": 0.08
+        },
+        "vis": {
+          "2018": 0.25
+        }
+      },
+      "areas": [
+        "icse",
+        "vis"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Simone do Rócio Senger de Souza",
+      "affiliation": "USP-ICMC",
+      "homepage": "http://icmc.usp.br/pessoas?id=3685313",
+      "scholarid": "EhrqxfYAAAAJ",
+      "publications": {
+        "sigcse": {
+          "2018": 0.11
+        }
+      },
+      "areas": [
+        "sigcse"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Siome Goldenstein",
+      "affiliation": "UNICAMP",
+      "homepage": "http://www.ic.unicamp.br/~siome",
+      "scholarid": "6uBpaf0AAAAJ",
+      "publications": {
+        "cvpr": {
+          "2004": 0.33
+        },
+        "eurographics": {
+          "2005": 0.33,
+          "2008": 0.33
+        },
+        "iccv": {
+          "2007": 0.7
+        },
+        "icra": {
+          "2001": 0.2
+        }
+      },
+      "areas": [
+        "cvpr",
+        "eurographics",
+        "iccv",
+        "icra"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Solange Oliveira Rezende",
+      "affiliation": "USP-ICMC",
+      "homepage": "http://icmc.usp.br/pessoas?id=130627",
+      "scholarid": "e2GNtdIAAAAJ",
+      "publications": {
+        "naacl": {
+          "2013": 0.33
+        }
+      },
+      "areas": [
+        "naacl"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Soraia Raupp Musse",
+      "affiliation": "PUC-RS",
+      "homepage": "http://www.inf.pucrs.br/~smusse",
+      "scholarid": "MyKLYVMAAAAJ",
+      "publications": {
+        "eurographics": {
+          "2019": 0.25
+        }
+      },
+      "areas": [
+        "eurographics"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Sulamita Klein",
+      "affiliation": "UFRJ",
+      "homepage": "http://www.cos.ufrj.br/index.php/pt-BR/pessoas/details/18/1054-sula",
+      "scholarid": "r4ZrGiIAAAAJ",
+      "publications": {
+        "stoc": {
+          "1999": 0.25
+        }
+      },
+      "areas": [
+        "stoc"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Sérgio Soares",
+      "affiliation": "UFPE",
+      "homepage": "http://www.cin.ufpe.br/~scbs",
+      "scholarid": "Jqll4wwAAAAJ",
+      "publications": {
+        "ase": {
+          "2019": 0.25
+        },
+        "icse": {
+          "2008": 0.09,
+          "2010": 0.07
+        },
+        "oopsla": {
+          "2002": 0.33
+        }
+      },
+      "areas": [
+        "ase",
+        "icse",
+        "oopsla"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Sérgio Vale Aguiar Campos",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~scampos",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "cav": {
+          "1996": 0.75
+        }
+      },
+      "areas": [
+        "cav"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Teresa Bernarda Ludermir",
+      "affiliation": "UFPE",
+      "homepage": "http://www.cin.ufpe.br/~tbl",
+      "scholarid": "w-tKJOwAAAAJ",
+      "publications": {
+        "icml": {
+          "2000": 0.5
+        }
+      },
+      "areas": [
+        "icml"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Teófilo Emídio de Campos",
+      "affiliation": "Universidade de Brasília",
+      "homepage": "http://cic.unb.br/~teodecampos",
+      "scholarid": "dMZCMp0AAAAJ",
+      "publications": {
+        "cvpr": {
+          "2006": 0.5,
+          "2010": 0.33
+        }
+      },
+      "areas": [
+        "cvpr"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Thiago A. S. Pardo",
+      "affiliation": "USP-ICMC",
+      "homepage": "http://conteudo.icmc.usp.br/pessoas/taspardo",
+      "scholarid": "J4kg7ZYAAAAJ",
+      "publications": {
+        "acl": {
+          "2019": 0.5
+        },
+        "emnlp": {
+          "2020": 0.5
+        },
+        "naacl": {
+          "2013": 0.33
+        }
+      },
+      "areas": [
+        "acl",
+        "emnlp",
+        "naacl"
+      ],
+      "total_papers_recent": 0.5
+    },
+    {
+      "name": "Thibaut Vidal",
+      "affiliation": "PUC-RIO",
+      "homepage": "http://www-di.inf.puc-rio.br/~vidalt/en/teaching-thibaut-vidal.html",
+      "scholarid": "qbO0xwUAAAAJ",
+      "publications": {
+        "aaai": {
+          "2023": 0.2,
+          "2025": 0.25
+        },
+        "icml": {
+          "2020": 0.5,
+          "2021": 0.5,
+          "2023": 0.33,
+          "2024": 0.5
+        },
+        "nips": {
+          "2024": 0.25
+        }
+      },
+      "areas": [
+        "aaai",
+        "icml",
+        "nips"
+      ],
+      "total_papers_recent": 2.28
+    },
+    {
+      "name": "Vagner Santos Da Rosa",
+      "affiliation": "Federal University of Rio Grande",
+      "homepage": "http://www.vagner.c3.furg.br",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "icra": {
+          "2003": 0.5,
+          "2016": 0.12
+        }
+      },
+      "areas": [
+        "icra"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Valeria Herskovic",
+      "affiliation": "Pontificia Universidad Catolica de Chile",
+      "homepage": "https://vherskov.ing.puc.cl",
+      "scholarid": "hZvxhjYAAAAJ",
+      "publications": {
+        "sigcse": {
+          "2024": 0.2
+        }
+      },
+      "areas": [
+        "sigcse"
+      ],
+      "total_papers_recent": 0.2
+    },
+    {
+      "name": "Vanessa Braganholo",
+      "affiliation": "UFF",
+      "homepage": "http://www2.ic.uff.br/~vanessa",
+      "scholarid": "QT9-AZ4AAAAJ",
+      "publications": {
+        "hpdc": {
+          "2010": 0.14
+        },
+        "vldb": {
+          "2004": 0.33
+        }
+      },
+      "areas": [
+        "hpdc",
+        "vldb"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Veronica Teichrieb",
+      "affiliation": "UFPE",
+      "homepage": "http://www.cin.ufpe.br/voxarlabs",
+      "scholarid": "6YwOT_QAAAAJ",
+      "publications": {
+        "icra": {
+          "2018": 0.12
+        },
+        "vr": {
+          "2010": 0.2
+        }
+      },
+      "areas": [
+        "icra",
+        "vr"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Verónica Becher",
+      "affiliation": "University of Buenos Aires",
+      "homepage": "http://www-2.dc.uba.ar/profesores/becher",
+      "scholarid": "_7APZ6sAAAAJ",
+      "publications": {
+        "aaai": {
+          "1993": 0.5
+        }
+      },
+      "areas": [
+        "aaai"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Vinícius Fernandes dos Santos",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~viniciussantos",
+      "scholarid": "KNe4ZD0AAAAJ",
+      "publications": {
+        "oopsla": {
+          "2019": 0.25
+        }
+      },
+      "areas": [
+        "oopsla"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Virgílio A. F. Almeida",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~virgilio",
+      "scholarid": "sPKpIPwAAAAJ",
+      "publications": {
+        "ec": {
+          "1999": 0.25,
+          "2000": 0.17
+        },
+        "imc": {
+          "2004": 0.2,
+          "2009": 0.25,
+          "2011": 0.2,
+          "2012": 0.2
+        },
+        "kdd": {
+          "2008": 0.33,
+          "2011": 0.25,
+          "2012": 0.2
+        },
+        "pets": {
+          "2016": 0.2
+        },
+        "sc": {
+          "1990": 0.5,
+          "1992": 0.25
+        },
+        "sigir": {
+          "2009": 0.2
+        },
+        "ubicomp": {
+          "2012": 0.2
+        },
+        "www": {
+          "2004": 0.5,
+          "2009": 0.45,
+          "2013": 0.25
+        }
+      },
+      "areas": [
+        "ec",
+        "imc",
+        "kdd",
+        "pets",
+        "sc",
+        "sigir",
+        "ubicomp",
+        "www"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Viviane Pereira Moreira",
+      "affiliation": "UFRGS",
+      "homepage": "http://www.inf.ufrgs.br/~viviane",
+      "scholarid": "-l5-OIQAAAAJ",
+      "publications": {
+        "sigir": {
+          "2021": 0.33
+        },
+        "vldb": {
+          "2011": 0.2
+        }
+      },
+      "areas": [
+        "sigir",
+        "vldb"
+      ],
+      "total_papers_recent": 0.33
+    },
+    {
+      "name": "Víctor A. Braberman",
+      "affiliation": "University of Buenos Aires",
+      "homepage": "http://lafhis.dc.uba.ar/en/~vbraber",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "fse": {
+          "2009": 0.33,
+          "2010": 0.25,
+          "2018": 0.14
+        },
+        "icse": {
+          "2004": 0.25,
+          "2008": 0.33,
+          "2009": 0.25,
+          "2011": 0.5,
+          "2013": 0.33,
+          "2014": 0.17
+        },
+        "rtss": {
+          "1998": 0.5
+        }
+      },
+      "areas": [
+        "fse",
+        "icse",
+        "rtss"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Wagner M. Nunan Zola",
+      "affiliation": "UFPR",
+      "homepage": "https://www.inf.ufpr.br/wagner",
+      "scholarid": "3FAaX00AAAAJ",
+      "publications": {
+        "fast": {
+          "2019": 0.33
+        }
+      },
+      "areas": [
+        "fast"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Wagner Meira Jr.",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~meira",
+      "scholarid": "oad6_oEAAAAJ",
+      "publications": {
+        "acl": {
+          "2012": 0.2
+        },
+        "ec": {
+          "2000": 0.17
+        },
+        "icde": {
+          "2014": 0.5
+        },
+        "imc": {
+          "2004": 0.2
+        },
+        "isca": {
+          "1997": 0.11,
+          "2007": 0.25
+        },
+        "kdd": {
+          "2011": 0.25
+        },
+        "sigir": {
+          "2001": 0.17,
+          "2002": 0.25,
+          "2008": 0.25,
+          "2010": 0.17,
+          "2011": 0.2,
+          "2014": 0.17
+        },
+        "sigmod": {
+          "2019": 0.2
+        },
+        "vldb": {
+          "2010": 0.2,
+          "2012": 0.33
+        },
+        "www": {
+          "2009": 0.2
+        }
+      },
+      "areas": [
+        "acl",
+        "ec",
+        "icde",
+        "imc",
+        "isca",
+        "kdd",
+        "sigir",
+        "sigmod",
+        "vldb",
+        "www"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Waldemar Celes Filho",
+      "affiliation": "PUC-RIO",
+      "homepage": "http://www.inf.puc-rio.br/~celes",
+      "scholarid": "i0ECFCEAAAAJ",
+      "publications": {
+        "vis": {
+          "2018": 0.25
+        }
+      },
+      "areas": [
+        "vis"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Weverton Luis da Costa Cordeiro",
+      "affiliation": "UFRGS",
+      "homepage": "http://inf.ufrgs.br/~wlccordeiro",
+      "scholarid": "LESq_VcAAAAJ",
+      "publications": {
+        "nsdi": {
+          "2012": 0.14
+        }
+      },
+      "areas": [
+        "nsdi"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "William Robson Schwartz",
+      "affiliation": "UFMG",
+      "homepage": "http://homepages.dcc.ufmg.br/~william",
+      "scholarid": "koXKq5EAAAAJ",
+      "publications": {
+        "eccv": {
+          "2010": 0.33
+        },
+        "eurographics": {
+          "2012": 0.25
+        },
+        "iccv": {
+          "2009": 0.25
+        },
+        "iros": {
+          "2012": 0.2
+        }
+      },
+      "areas": [
+        "eccv",
+        "eurographics",
+        "iccv",
+        "iros"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Yoshiharu Kohayakawa",
+      "affiliation": "USP",
+      "homepage": "http://www.ime.usp.br/~yk",
+      "scholarid": "EC6p9kIAAAAJ",
+      "publications": {
+        "focs": {
+          "2000": 0.17
+        },
+        "soda": {
+          "2002": 0.33,
+          "2006": 0.5,
+          "2008": 0.25,
+          "2010": 0.25,
+          "2011": 0.33,
+          "2019": 0.25
+        }
+      },
+      "areas": [
+        "focs",
+        "soda"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Éric Tanter",
+      "affiliation": "Universidad de Chile",
+      "homepage": "https://pleiad.cl/people/etanter",
+      "scholarid": "d0LISE4AAAAJ",
+      "publications": {
+        "fse": {
+          "2015": 0.14
+        },
+        "icfp": {
+          "2014": 0.33,
+          "2016": 0.33,
+          "2018": 0.33,
+          "2019": 0.73,
+          "2022": 0.58,
+          "2024": 0.25
+        },
+        "oopsla": {
+          "2003": 0.25,
+          "2006": 0.33,
+          "2007": 0.33,
+          "2011": 0.2,
+          "2012": 0.2,
+          "2014": 0.25,
+          "2015": 0.5,
+          "2018": 0.33,
+          "2020": 0.17,
+          "2021": 0.33,
+          "2022": 0.25
+        },
+        "popl": {
+          "2016": 0.33,
+          "2017": 0.5,
+          "2019": 0.33,
+          "2024": 0.14,
+          "2025": 0.14
+        }
+      },
+      "areas": [
+        "fse",
+        "icfp",
+        "oopsla",
+        "popl"
+      ],
+      "total_papers_recent": 1.72
+    },
+    {
+      "name": "Ítalo S. Cunha",
+      "affiliation": "UFMG",
+      "homepage": "https://www.dcc.ufmg.br/~cunha",
+      "scholarid": "bTAky1EAAAAJ",
+      "publications": {
+        "imc": {
+          "2009": 0.25,
+          "2015": 0.17,
+          "2019": 0.2,
+          "2020": 0.29,
+          "2022": 0.4,
+          "2024": 0.53
+        },
+        "ndss": {
+          "2020": 0.14
+        },
+        "nsdi": {
+          "2016": 0.1
+        },
+        "sensys": {
+          "2016": 0.09
+        },
+        "sigcomm": {
+          "2011": 0.25,
+          "2012": 0.11,
+          "2013": 0.17,
+          "2017": 0.1
+        },
+        "sigmetrics": {
+          "2022": 0.17,
+          "2024": 0.17
+        },
+        "www": {
+          "2004": 0.14
+        }
+      },
+      "areas": [
+        "imc",
+        "ndss",
+        "nsdi",
+        "sensys",
+        "sigcomm",
+        "sigmetrics",
+        "www"
+      ],
+      "total_papers_recent": 1.7
+    }
+  ]
+}

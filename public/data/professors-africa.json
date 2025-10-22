@@ -1,0 +1,341 @@
+{
+  "region": "africa",
+  "count": 14,
+  "last_updated": "2025-10-11T22:21:31.905928",
+  "professors": [
+    {
+      "name": "Bernd Fischer 0002",
+      "affiliation": "Stellenbosch University",
+      "homepage": "http://www.cs.sun.ac.za/~bfischer",
+      "scholarid": "m51BXiwAAAAJ",
+      "publications": {
+        "ase": {
+          "1998": 1.0,
+          "2009": 0.33,
+          "2017": 0.2
+        },
+        "cav": {
+          "2014": 0.2
+        },
+        "icse": {
+          "2011": 0.5
+        },
+        "issta": {
+          "2023": 0.5
+        },
+        "nips": {
+          "2002": 0.25
+        }
+      },
+      "areas": [
+        "ase",
+        "cav",
+        "icse",
+        "issta",
+        "nips"
+      ],
+      "total_papers_recent": 0.5
+    },
+    {
+      "name": "El Houcine Bergou",
+      "affiliation": "Mohammed VI Polytechnic University",
+      "homepage": "https://cc.um6p.ma/people/EL.BERGOU",
+      "scholarid": "qzxprWoAAAAJ",
+      "publications": {
+        "aaai": {
+          "2020": 0.34,
+          "2024": 0.25
+        },
+        "iclr": {
+          "2020": 0.2
+        },
+        "ijcai": {
+          "2024": 0.5
+        },
+        "nips": {
+          "2024": 0.25
+        }
+      },
+      "areas": [
+        "aaai",
+        "iclr",
+        "ijcai",
+        "nips"
+      ],
+      "total_papers_recent": 1.54
+    },
+    {
+      "name": "Geoff S. Nitschke",
+      "affiliation": "University of Cape Town",
+      "homepage": "https://people.cs.uct.ac.za/~gnitschke",
+      "scholarid": "jgX5HxoAAAAJ",
+      "publications": {
+        "ijcai": {
+          "2003": 1.0
+        },
+        "iros": {
+          "2003": 1.0
+        }
+      },
+      "areas": [
+        "ijcai",
+        "iros"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Hamza Keurti",
+      "affiliation": "Mohammed VI Polytechnic University",
+      "homepage": "https://hamzakeurti.github.io",
+      "scholarid": "zmS6_aYAAAAJ",
+      "publications": {
+        "icml": {
+          "2023": 0.2
+        }
+      },
+      "areas": [
+        "icml"
+      ],
+      "total_papers_recent": 0.2
+    },
+    {
+      "name": "Imane Fouad",
+      "affiliation": "Mohammed VI Polytechnic University",
+      "homepage": "https://cc.um6p.ma/people/Imane.FOUAD",
+      "scholarid": "9UcJvxgAAAAJ",
+      "publications": {
+        "pets": {
+          "2020": 0.25,
+          "2022": 0.25,
+          "2024": 0.33
+        }
+      },
+      "areas": [
+        "pets"
+      ],
+      "total_papers_recent": 0.83
+    },
+    {
+      "name": "Ismail Berrada",
+      "affiliation": "Mohammed VI Polytechnic University",
+      "homepage": "https://cc.um6p.ma/people/Ismail.BERRADA",
+      "scholarid": "NOSCHOLARPAGE",
+      "publications": {
+        "acl": {
+          "2025": 0.02
+        },
+        "emnlp": {
+          "2024": 0.04
+        },
+        "naacl": {
+          "2021": 0.25
+        }
+      },
+      "areas": [
+        "acl",
+        "emnlp",
+        "naacl"
+      ],
+      "total_papers_recent": 0.29
+    },
+    {
+      "name": "Jaco Geldenhuys",
+      "affiliation": "Stellenbosch University",
+      "homepage": "http://www.cs.sun.ac.za/~jaco",
+      "scholarid": "Y5dRFosAAAAJ",
+      "publications": {
+        "fse": {
+          "2012": 0.33,
+          "2014": 0.25
+        },
+        "icse": {
+          "2025": 0.03
+        },
+        "issta": {
+          "2012": 0.33
+        }
+      },
+      "areas": [
+        "fse",
+        "icse",
+        "issta"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "James E. Gain",
+      "affiliation": "University of Cape Town",
+      "homepage": "https://people.cs.uct.ac.za/~jgain",
+      "scholarid": "ZN802qkAAAAJ",
+      "publications": {
+        "eurographics": {
+          "2003": 0.5,
+          "2006": 0.33,
+          "2007": 0.33,
+          "2010": 0.33,
+          "2012": 0.33,
+          "2015": 0.33
+        }
+      },
+      "areas": [
+        "eurographics"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Karima Echihabi",
+      "affiliation": "Mohammed VI Polytechnic University",
+      "homepage": "https://cc.um6p.ma/people/Karima.ECHIHABI",
+      "scholarid": "5dFMZ1wAAAAJ",
+      "publications": {
+        "sigmod": {
+          "2020": 0.2,
+          "2025": 0.5
+        },
+        "vldb": {
+          "2018": 0.25,
+          "2019": 0.25,
+          "2020": 0.17,
+          "2022": 0.2,
+          "2023": 0.33
+        }
+      },
+      "areas": [
+        "sigmod",
+        "vldb"
+      ],
+      "total_papers_recent": 0.9
+    },
+    {
+      "name": "Melissa Densmore",
+      "affiliation": "University of Cape Town",
+      "homepage": "http://www.melissadensmore.com",
+      "scholarid": "5Bqgw2gAAAAJ",
+      "publications": {
+        "chiconf": {
+          "2008": 0.33,
+          "2012": 1.0,
+          "2017": 0.33,
+          "2018": 0.25
+        }
+      },
+      "areas": [
+        "chiconf"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Omar Saadi",
+      "affiliation": "Mohammed VI Polytechnic University",
+      "homepage": "https://cc.um6p.ma/people/Omar.SAADI",
+      "scholarid": "95WV3c4AAAAJ",
+      "publications": {
+        "iclr": {
+          "2025": 0.5
+        }
+      },
+      "areas": [
+        "iclr"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Steve Kroon",
+      "affiliation": "Stellenbosch University",
+      "homepage": "http://www.cs.sun.ac.za/~kroon",
+      "scholarid": "-M2yWHQAAAAJ",
+      "publications": {
+        "icml": {
+          "2018": 0.33
+        },
+        "nips": {
+          "2018": 0.25
+        }
+      },
+      "areas": [
+        "icml",
+        "nips"
+      ],
+      "total_papers_recent": 0
+    },
+    {
+      "name": "Thomas Andreas Meyer",
+      "affiliation": "University of Cape Town",
+      "homepage": "https://people.cs.uct.ac.za/~tmeyer",
+      "scholarid": "Ua2MNSoAAAAJ",
+      "publications": {
+        "aaai": {
+          "2004": 0.5,
+          "2005": 0.33,
+          "2006": 0.25,
+          "2021": 0.33,
+          "2023": 0.2
+        },
+        "ijcai": {
+          "2009": 0.33,
+          "2015": 0.25,
+          "2017": 0.5,
+          "2019": 0.33,
+          "2022": 0.33
+        }
+      },
+      "areas": [
+        "aaai",
+        "ijcai"
+      ],
+      "total_papers_recent": 0.86
+    },
+    {
+      "name": "Willem Visser",
+      "affiliation": "Stellenbosch University",
+      "homepage": "http://www.cs.sun.ac.za/~wvisser",
+      "scholarid": "5yAC8o8AAAAJ",
+      "publications": {
+        "ase": {
+          "2000": 0.25,
+          "2004": 0.25,
+          "2014": 0.2,
+          "2017": 0.33
+        },
+        "cav": {
+          "2005": 0.33
+        },
+        "fse": {
+          "2012": 0.33,
+          "2014": 0.25,
+          "2016": 0.25,
+          "2017": 0.2,
+          "2020": 0.2,
+          "2021": 0.12,
+          "2022": 0.1,
+          "2023": 0.2
+        },
+        "icse": {
+          "2000": 0.2,
+          "2001": 0.12,
+          "2013": 0.33
+        },
+        "issta": {
+          "2002": 0.5,
+          "2004": 0.33,
+          "2006": 0.33,
+          "2007": 0.33,
+          "2011": 0.33,
+          "2012": 0.33
+        },
+        "pldi": {
+          "2014": 0.2
+        }
+      },
+      "areas": [
+        "ase",
+        "cav",
+        "fse",
+        "icse",
+        "issta",
+        "pldi"
+      ],
+      "total_papers_recent": 0.62
+    }
+  ]
+}

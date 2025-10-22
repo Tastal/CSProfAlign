@@ -44,12 +44,18 @@ An intelligent platform for discovering professors whose research aligns with yo
 
 ### Quick Start
 
-#### 1. Install Dependencies
+#### 1. Clone Repository
+```bash
+git clone https://github.com/Tastal/CSProfAlign.git
+cd CSProfAlign
+```
+
+#### 2. Install Dependencies
 ```bash
 npm install
 ```
 
-#### 2. Start Application
+#### 3. Start Application
 
 **Option A: Cloud API (Recommended)**
 ```bash
@@ -72,8 +78,13 @@ Then configure API key in settings.
 # macOS/Linux: ./start.sh
 ```
 
-#### 3. Open Browser
+#### 4. Open Browser
 Navigate to http://localhost:5173
+
+**Note**: 
+- Professor database and essential CSRankings files are included
+- First run may download missing files from CSRankings GitHub
+- Automatic update check on each start (downloads only if needed)
 
 ### Usage Guide
 
@@ -258,12 +269,18 @@ MIT License
 
 ### 快速开始
 
-#### 1. 安装依赖
+#### 1. 克隆仓库
+```bash
+git clone https://github.com/Tastal/CSProfAlign.git
+cd CSProfAlign
+```
+
+#### 2. 安装依赖
 ```bash
 npm install
 ```
 
-#### 2. 启动应用
+#### 3. 启动应用
 
 **方式A: 云端API (推荐)**
 ```bash
@@ -286,8 +303,13 @@ start.bat
 # macOS/Linux: ./start.sh
 ```
 
-#### 3. 打开浏览器
+#### 4. 打开浏览器
 访问 http://localhost:5173
+
+**说明**: 
+- 教授数据库和必需的CSRankings文件已包含
+- 首次运行可能从CSRankings GitHub下载缺失文件
+- 每次启动自动检查更新 (仅在需要时下载)
 
 ### 使用指南
 

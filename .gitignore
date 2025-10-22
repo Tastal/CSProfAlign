@@ -56,12 +56,15 @@ coverage/
 temp/
 tmp/
 
-# CSRankings data (user needs to clone separately)
-CSRankings/
-CSRankings_local/
+# CSRankings - Keep only essential files, exclude the rest
+CSRankings/*
+!CSRankings/
+!CSRankings/csrankings.csv
+!CSRankings/generated-author-info.csv
+!CSRankings/country-info.csv
 
-# Generated data (will be created on first run)
-public/data/*.json
+# Keep processed JSON data in repository (DO NOT IGNORE)
+# public/data/*.json should be committed
 
 # User-generated exports
 *.csv
