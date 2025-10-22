@@ -60,15 +60,15 @@ tmp/
 CSRankings/
 
 # Essential CSRankings files in data/csrankings/ (KEEP THESE)
-# data/csrankings/*.csv should be committed
+!data/csrankings/*.csv
 
 # Keep processed JSON data in repository (DO NOT IGNORE)
-# public/data/*.json should be committed
+!public/data/*.json
 
-# User-generated exports
+# User-generated exports (exclude user-generated CSV files)
 *.csv
-filtered_professors.csv
-professor_list.csv
+!data/csrankings/*.csv
+!public/data/*.json
 
 # Docker volumes (created by docker-compose)
 models/
