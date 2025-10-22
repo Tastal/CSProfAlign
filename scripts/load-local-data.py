@@ -11,7 +11,7 @@ from collections import defaultdict
 import sys
 
 # Paths
-CSRANKINGS_DIR = Path('CSRankings')
+CSRANKINGS_DIR = Path('data/csrankings')
 OUTPUT_DIR = Path('public/data')
 
 # Ensure output directory exists
@@ -20,10 +20,10 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 def check_csrankings_exists():
     """Check if CSRankings directory exists"""
     if not CSRANKINGS_DIR.exists():
-        print("ERROR: CSRankings directory not found!")
+        print("ERROR: CSRankings data directory not found!")
         print(f"Expected location: {CSRANKINGS_DIR.absolute()}")
-        print("\nPlease ensure CSRankings is cloned in the project root:")
-        print("  git clone --depth 1 https://github.com/emeryberger/CSRankings.git")
+        print("\nThe essential CSRankings files should be in data/csrankings/")
+        print("Run update-csrankings.py to download them automatically.")
         sys.exit(1)
     
     required_files = [

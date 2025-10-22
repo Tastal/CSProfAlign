@@ -9,7 +9,7 @@ import hashlib
 from pathlib import Path
 import sys
 
-CSRANKINGS_DIR = Path('CSRankings')
+CSRANKINGS_DIR = Path('data/csrankings')
 GITHUB_RAW_URL = 'https://raw.githubusercontent.com/emeryberger/CSRankings/main'
 
 REQUIRED_FILES = [

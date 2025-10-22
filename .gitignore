@@ -56,12 +56,11 @@ coverage/
 temp/
 tmp/
 
-# CSRankings - Keep only essential files, exclude the rest
-CSRankings/*
-!CSRankings/
-!CSRankings/csrankings.csv
-!CSRankings/generated-author-info.csv
-!CSRankings/country-info.csv
+# CSRankings - Exclude entire directory (using data/csrankings/ instead)
+CSRankings/
+
+# Essential CSRankings files in data/csrankings/ (KEEP THESE)
+# data/csrankings/*.csv should be committed
 
 # Keep processed JSON data in repository (DO NOT IGNORE)
 # public/data/*.json should be committed
