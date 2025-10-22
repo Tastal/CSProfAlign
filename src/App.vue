@@ -4,7 +4,7 @@
     <header class="app-header">
       <div class="header-content">
         <div class="logo">
-          <h1>🎓 CSProfHunt</h1>
+          <h1>🎓 CSProfAlign</h1>
           <span class="tagline">AI-Powered Professor Discovery</span>
         </div>
         
@@ -18,6 +18,11 @@
               @click="openGithub"
             >
               <span style="font-size: 18px">📚</span>
+            </el-button>
+          </el-tooltip>
+          <el-tooltip content="Debug Console" placement="bottom">
+            <el-button circle @click="showDebugConsole">
+              <span style="font-size: 18px">📊</span>
             </el-button>
           </el-tooltip>
         </div>
@@ -55,7 +60,7 @@
     </footer>
 
     <!-- Help Dialog -->
-    <el-dialog v-model="helpVisible" title="How to Use CSProfHunt" width="600px">
+    <el-dialog v-model="helpVisible" title="How to Use CSProfAlign" width="600px">
       <div class="help-content">
         <el-steps direction="vertical" :active="0">
           <el-step title="Step 1: Select Filters">
@@ -76,20 +81,21 @@
             </template>
           </el-step>
 
-          <el-step title="Step 3: Configure AI Matching (Optional)">
+          <el-step title="Step 3: Configure LLM">
             <template #description>
               <p>
-                In the right panel, select an LLM provider (OpenAI, Gemini, Claude, DeepSeek, or Local).
-                Enter your API key (if using cloud services) and describe your research direction in detail.
+                <strong>Cloud API (Recommended):</strong> Select provider (OpenAI/DeepSeek) → Enter API key<br>
+                <strong>Local Model:</strong> Select "Local" → Load Qwen 0.5B/1.5B<br>
+                Enter your research direction in detail.
               </p>
             </template>
           </el-step>
 
-          <el-step title="Step 4: Run AI Analysis (Optional)">
+          <el-step title="Step 4: Run AI Filtering">
             <template #description>
               <p>
-                Adjust the matching threshold (0.6 recommended) and click "🚀 Start AI Analysis".
-                The AI will evaluate each professor's alignment with your research interests.
+                Adjust threshold (0.6 default), choose scoring method (Basic/Decision Tree),
+                then click "🚀 Start AI Filtering" to evaluate professors.
               </p>
             </template>
           </el-step>
@@ -108,10 +114,10 @@
 
         <h3>Tips</h3>
         <ul>
-          <li>Be specific in your research direction description for better matches</li>
-          <li>Start with a lower threshold (0.5-0.6) to see more candidates</li>
-          <li>Local models are free but slower than cloud APIs</li>
-          <li>Processing time depends on the number of professors and LLM speed</li>
+          <li><strong>Research Direction:</strong> Be specific for better matches (describe techniques, topics, applications)</li>
+          <li><strong>Threshold:</strong> Start at 0.6, lower to 0.5 for more results, raise to 0.7+ for precision</li>
+          <li><strong>Cloud vs Local:</strong> Cloud API is faster/better, Local is free/offline</li>
+          <li><strong>Scoring Method:</strong> Basic is fast, Decision Tree is more consistent</li>
         </ul>
       </div>
 
@@ -119,6 +125,9 @@
         <el-button type="primary" @click="helpVisible = false">Got it!</el-button>
       </template>
     </el-dialog>
+
+    <!-- Debug Console -->
+    <DebugConsole ref="debugConsole" />
   </div>
 </template>
 
@@ -130,17 +139,19 @@ import FilterPanel from './components/FilterPanel.vue'
 import LLMConfig from './components/LLMConfig.vue'
 import ProgressBar from './components/ProgressBar.vue'
 import ResultList from './components/ResultList.vue'
+import DebugConsole from './components/DebugConsole.vue'
 import { useAppStore } from './stores/appStore'
 
 const store = useAppStore()
 const helpVisible = ref(false)
+const debugConsole = ref(null)
 
 onMounted(() => {
   // Show help on first visit
-  const hasVisited = localStorage.getItem('csprofhunt-visited')
+  const hasVisited = localStorage.getItem('csprofalign-visited')
   if (!hasVisited) {
     helpVisible.value = true
-    localStorage.setItem('csprofhunt-visited', 'true')
+    localStorage.setItem('csprofalign-visited', 'true')
   }
 })
 
@@ -148,8 +159,12 @@ function showHelp() {
   helpVisible.value = true
 }
 
+function showDebugConsole() {
+  debugConsole.value.show()
+}
+
 function openGithub() {
-  window.open('https://github.com/Tastal/CSProfHunt', '_blank')
+  window.open('https://github.com/Tastal/CSProfAlign', '_blank')
 }
 </script>
 
@@ -215,14 +230,15 @@ body {
 /* Main */
 .app-main {
   flex: 1;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   padding: 20px;
 }
 
 .app-layout {
   max-width: 1600px;
   margin: 0 auto;
-  height: 100%;
+  min-height: 100%;
   display: grid;
   grid-template-columns: 320px 1fr 380px;
   gap: 20px;
@@ -230,16 +246,17 @@ body {
 
 .left-panel,
 .right-panel {
-  height: 100%;
-  overflow-y: auto;
+  height: fit-content;
+  min-height: 400px;
+  overflow-y: visible;
   overflow-x: hidden;
 }
 
 .center-panel {
-  height: 100%;
+  height: fit-content;
+  min-height: 600px;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
 
 /* Footer */
@@ -283,13 +300,29 @@ body {
 }
 
 /* Responsive */
-@media (max-width: 1400px) {
+/* Large screens (>1600px) */
+@media (min-width: 1601px) {
   .app-layout {
-    grid-template-columns: 280px 1fr 340px;
+    grid-template-columns: 340px 1fr 400px;
   }
 }
 
+/* Medium screens (1200-1600px) */
+@media (max-width: 1600px) {
+  .app-layout {
+    grid-template-columns: 300px 1fr 360px;
+  }
+}
+
+/* Small screens (900-1200px) */
 @media (max-width: 1200px) {
+  .app-layout {
+    grid-template-columns: 280px 1fr 320px;
+  }
+}
+
+/* Tablet (768-900px) - Single column layout */
+@media (max-width: 900px) {
   .app-layout {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto 1fr;
@@ -297,11 +330,22 @@ body {
 
   .left-panel,
   .right-panel {
-    height: auto;
-    max-height: 400px;
+    max-height: none;
+  }
+
+  /* Adjust order: Filter -> LLM Config -> Results */
+  .left-panel {
+    order: 1;
+  }
+  .right-panel {
+    order: 2;
+  }
+  .center-panel {
+    order: 3;
   }
 }
 
+/* Mobile (<768px) */
 @media (max-width: 768px) {
   .app-main {
     padding: 12px;

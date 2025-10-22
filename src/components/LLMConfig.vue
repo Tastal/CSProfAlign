@@ -26,7 +26,7 @@
             <span>DeepSeek</span>
           </el-option>
           <el-option label="Local Model" value="local">
-            <span>Local Model (Browser)</span>
+            <span>Local Model (vLLM Backend)</span>
           </el-option>
         </el-select>
       </el-form-item>
@@ -72,17 +72,44 @@
 
       <!-- Local Model Options -->
       <div v-if="store.llmProvider === 'local'">
-        <el-form-item label="Local Model">
+        <!-- Backend Status -->
+        <el-alert
+          :type="backendStatus === 'connected' ? 'success' : 'error'"
+          :closable="false"
+          style="margin-bottom: 16px"
+        >
+          <template v-if="backendStatus === 'connected'">
+            ✅ Backend Connected (localhost:8000)
+          </template>
+          <template v-else-if="backendStatus === 'checking'">
+            ⏳ Checking backend status...
+          </template>
+          <template v-else>
+            <div>
+              ❌ Backend Not Running
+              <div style="margin-top: 8px; font-size: 12px;">
+                Please start Docker backend:
+                <code style="display: block; margin-top: 4px; padding: 4px; background: var(--el-fill-color-light);">
+                  start-backend.bat
+                </code>
+              </div>
+            </div>
+          </template>
+        </el-alert>
+        
+        <el-form-item label="Model">
           <el-select
             v-model="selectedLocalModel"
             style="width: 100%"
+            placement="bottom"
             @change="handleLocalModelChange"
+            :disabled="backendStatus !== 'connected'"
           >
             <el-option
-              v-for="model in RECOMMENDED_MODELS"
-              :key="model.name"
-              :label="`${model.description} (${model.size})`"
-              :value="model.name"
+              v-for="model in availableModels"
+              :key="model.id"
+              :label="`${model.name} (${model.size})`"
+              :value="model.id"
             >
               <div>
                 <span>{{ model.description }}</span>
@@ -94,31 +121,77 @@
           </el-select>
         </el-form-item>
 
+        <!-- Model Status Alert -->
         <el-alert
-          v-if="!store.localModelReady"
-          title="Local model requires initial download"
-          type="info"
+          v-if="backendStatus === 'connected'"
+          :type="downloadAlertType"
           :closable="false"
           style="margin-bottom: 16px"
         >
-          First-time model download may take several minutes.
+          <!-- Status 1: Ready to Load -->
+          <template v-if="!store.localModelLoading && !store.localModelReady">
+            <div class="model-info">
+              <div><strong>Model:</strong> {{ selectedModelInfo.name }}</div>
+              <div><strong>Size:</strong> {{ selectedModelInfo.size }}</div>
+              <div><strong>VRAM:</strong> {{ selectedModelInfo.vram }}</div>
+              <div style="margin-top: 8px; color: var(--el-color-warning); font-size: 12px;">
+                First download may take 5-10 minutes
+              </div>
+            </div>
+          </template>
+
+          <!-- Status 2: Loading -->
+          <template v-else-if="store.localModelLoading">
+            <div class="downloading-status">
+              <div style="margin-bottom: 8px;">
+                <strong>📥 Loading Model...</strong>
+              </div>
+              <div style="font-size: 12px; color: var(--el-text-color-secondary);">
+                This may take a few minutes on first load while downloading from HuggingFace...
+              </div>
+            </div>
+          </template>
+
+          <!-- Status 3: Ready -->
+          <template v-else-if="store.localModelReady">
+            <div class="model-ready">
+              ✅ <strong>Model Loaded</strong>
+              <div style="margin-top: 4px; font-size: 12px; color: var(--el-text-color-secondary);">
+                Batch processing: 20 professors at a time (GPU-accelerated)
+              </div>
+            </div>
+          </template>
         </el-alert>
 
-        <el-button
-          v-if="!store.localModelReady"
-          type="primary"
-          :loading="store.localModelLoading"
-          @click="handleLoadLocalModel"
-          style="width: 100%; margin-bottom: 16px"
-        >
-          {{ store.localModelLoading ? 'Loading Model...' : 'Load Model' }}
-        </el-button>
-
-        <el-progress
-          v-if="store.localModelLoading"
-          :percentage="localModelProgress"
-          :status="localModelProgress === 100 ? 'success' : undefined"
-        />
+        <!-- Load/Unload Model Buttons -->
+        <div style="display: flex; gap: 12px; margin-bottom: 16px;">
+          <el-button
+            v-if="!store.localModelReady"
+            type="primary"
+            :loading="store.localModelLoading"
+            @click="handleLoadLocalModel"
+            :disabled="backendStatus !== 'connected'"
+            style="flex: 1;"
+          >
+            {{ store.localModelLoading ? 'Loading...' : 'Load Model' }}
+          </el-button>
+          <el-button
+            v-if="store.localModelReady"
+            type="success"
+            style="flex: 1;"
+            disabled
+          >
+            ✅ Ready
+          </el-button>
+          <el-button
+            v-if="store.localModelReady"
+            type="danger"
+            @click="handleUnloadModel"
+            :disabled="store.isProcessing"
+          >
+            Unload
+          </el-button>
+        </div>
       </div>
 
       <!-- Research Direction -->
@@ -138,35 +211,70 @@ I'm interested in large language models for code generation, particularly focusi
       </el-form-item>
 
       <!-- Threshold -->
-      <el-form-item label="Matching Threshold">
-        <el-slider
-          v-model="store.threshold"
-          :min="0"
-          :max="1"
-          :step="0.05"
-          :marks="thresholdMarks"
-          show-stops
-        />
+      <el-form-item>
+        <template #label>
+          <span>
+            Matching Threshold
+            <el-tooltip placement="top" effect="dark">
+              <template #content>
+                <div style="max-width: 300px">
+                  Minimum match score to include professors in results.<br/>
+                  Lower threshold = more results, but less relevant.<br/>
+                  Higher threshold = fewer results, but more precise.
+                </div>
+              </template>
+              <el-icon style="margin-left: 4px; cursor: help;">
+                <QuestionFilled />
+              </el-icon>
+            </el-tooltip>
+          </span>
+        </template>
+        <div class="slider-container">
+          <el-slider
+            v-model="store.threshold"
+            :min="0"
+            :max="1"
+            :step="0.05"
+            :marks="thresholdMarks"
+            show-stops
+          />
+        </div>
         <div class="threshold-display">
-          <span>{{ store.threshold.toFixed(2) }}</span>
+          <span class="threshold-value">{{ store.threshold.toFixed(2) }}</span>
           <span class="threshold-desc">{{ getThresholdDescription() }}</span>
         </div>
       </el-form-item>
 
       <!-- Scoring Method -->
-      <el-form-item label="Scoring Method">
+      <el-form-item>
+        <template #label>
+          <span>
+            Scoring Method
+            <el-tooltip placement="top" effect="dark">
+              <template #content>
+                <div style="max-width: 300px">
+                  <strong>Basic:</strong> Direct 0.0-1.0 score. Simple and fast, but may vary by LLM.<br/><br/>
+                  <strong>Decision Tree:</strong> Uses YES/NO questions for objective evaluation. 95% consistency across LLMs.
+                </div>
+              </template>
+              <el-icon style="margin-left: 4px; cursor: help;">
+                <QuestionFilled />
+              </el-icon>
+            </el-tooltip>
+          </span>
+        </template>
         <el-select v-model="store.scoringScheme" style="width: 100%">
-          <el-option label="Original (Direct Scoring)" value="original">
+          <el-option label="Basic" value="original">
             <div style="padding: 4px 0;">
-              <div style="font-weight: 500;">Original Method</div>
+              <div style="font-weight: 500;">Basic</div>
               <small style="color: var(--el-color-info); font-size: 12px;">
                 Direct 0-1 score (may vary by LLM)
               </small>
             </div>
           </el-option>
-          <el-option label="Decision Tree (Recommended)" value="decision_tree">
+          <el-option label="Decision Tree" value="decision_tree">
             <div style="padding: 4px 0;">
-              <div style="font-weight: 500;">Binary Decision Tree ⭐</div>
+              <div style="font-weight: 500;">Decision Tree ⭐</div>
               <small style="color: var(--el-color-success); font-size: 12px;">
                 95% consistency across LLMs
               </small>
@@ -175,54 +283,99 @@ I'm interested in large language models for code generation, particularly focusi
         </el-select>
       </el-form-item>
 
-      <el-alert
-        v-if="store.scoringScheme === 'decision_tree'"
-        title="Decision Tree Method"
-        type="success"
-        :closable="false"
-        style="margin-bottom: 16px"
-      >
-        <template #default>
-          <div style="font-size: 13px; line-height: 1.5;">
-            Uses YES/NO questions for objective evaluation. 
-          </div>
+      <!-- Publication Data Source -->
+      <el-form-item>
+        <template #label>
+          <span>
+            Publication Data Source
+            <el-tooltip placement="top" effect="dark">
+              <template #content>
+                <div style="max-width: 350px">
+                  <strong>Hybrid (Recommended):</strong> Uses DBLP API to fetch real paper titles for 90%+ professors. Smart school matching. Processing time: ~15-25 min for 1000 professors.<br/><br/>
+                  <strong>Scholar Scraper:</strong> Original method scraping Google Scholar. Slower and less stable.
+                </div>
+              </template>
+              <el-icon style="margin-left: 4px; cursor: help;">
+                <QuestionFilled />
+              </el-icon>
+            </el-tooltip>
+          </span>
         </template>
-      </el-alert>
+        <el-select 
+          v-model="store.publicationSource" 
+          style="width: 100%"
+          placeholder="Select publication data source"
+        >
+          <el-option label="Hybrid (CSRankings + DBLP)" value="hybrid">
+            <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+              <span>Hybrid (CSRankings + DBLP)</span>
+              <el-tag size="small" type="success" style="margin-left: 8px">Recommended</el-tag>
+            </div>
+          </el-option>
+          <el-option label="Scholar Scraper (Original)" value="scholar">
+            <span>Scholar Scraper (Original)</span>
+          </el-option>
+        </el-select>
+      </el-form-item>
 
       <!-- Advanced Settings (Collapsible) -->
       <el-collapse v-model="activeCollapse">
-        <el-collapse-item title="⚡ Performance Settings" name="advanced">
-          <el-alert
-            title="Parallel Processing Enabled"
-            type="success"
-            :closable="false"
-            style="margin-bottom: 16px"
-          >
-            <template #default>
-              Higher concurrency = faster processing, but may hit API rate limits.
-              Recommended: 10-20 for most APIs.
+        <el-collapse-item title="⚙️ Advanced Settings" name="advanced">
+          <el-form-item>
+            <template #label>
+              <span>
+                LLM Requests
+                <el-tooltip placement="top" effect="dark">
+                  <template #content>
+                    <div style="max-width: 300px">
+                      Number of professors processed simultaneously.<br/>
+                      Higher concurrency = faster processing, but may hit API rate limits.<br/>
+                      Recommended: 10-20 for most APIs.
+                    </div>
+                  </template>
+                  <el-icon style="margin-left: 4px; cursor: help;">
+                    <QuestionFilled />
+                  </el-icon>
+                </el-tooltip>
+              </span>
             </template>
-          </el-alert>
-
-          <el-form-item label="Concurrent Requests">
-            <el-slider
-              v-model="store.maxWorkers"
-              :min="1"
-              :max="50"
-              :step="1"
-              show-stops
-              :marks="{ 1: '1', 10: '10', 20: '20', 30: '30', 50: '50' }"
-            />
+            <div class="slider-container">
+              <el-slider
+                v-model="store.maxWorkers"
+                :min="1"
+                :max="50"
+                :step="1"
+                show-stops
+                :marks="{ 1: '1', 10: '10', 20: '20', 30: '30', 50: '50' }"
+              />
+            </div>
             <div class="setting-value">
-              <strong>{{ store.maxWorkers }}</strong> professors processed simultaneously
+              <span class="setting-number">{{ store.maxWorkers }}</span>
+              <span class="setting-desc">professors processed simultaneously</span>
               <br>
-              <small style="color: var(--el-color-info)">
+              <small style="color: var(--el-color-info); margin-top: 4px; display: block;">
                 Est. time for 3000 profs: ~{{ estimateTime(3000) }}
               </small>
             </div>
           </el-form-item>
 
-          <el-form-item label="Max Papers to Consider">
+          <el-form-item>
+            <template #label>
+              <span>
+                Max Papers to Consider
+                <el-tooltip placement="top" effect="dark">
+                  <template #content>
+                    <div style="max-width: 300px">
+                      Maximum number of recent papers to analyze per professor.<br/>
+                      More papers = more accurate, but slower processing.
+                    </div>
+                  </template>
+                  <el-icon style="margin-left: 4px; cursor: help;">
+                    <QuestionFilled />
+                  </el-icon>
+                </el-tooltip>
+              </span>
+            </template>
             <el-input-number
               v-model="store.maxPapers"
               :min="5"
@@ -230,17 +383,55 @@ I'm interested in large language models for code generation, particularly focusi
               style="width: 100%"
             />
           </el-form-item>
+
+          <!-- DBLP API Concurrency (only show when using DBLP) -->
+          <el-form-item 
+            v-if="store.publicationSource === 'hybrid' || store.publicationSource === 'dblp-priority'"
+          >
+            <template #label>
+              <span>
+                DBLP API Concurrency
+                <el-tooltip placement="top" effect="dark">
+                  <template #content>
+                    <div style="max-width: 300px">
+                      Number of DBLP API requests simultaneously.<br/>
+                      Recommended: 3-5 for stable performance.<br/>
+                      Higher values may cause DBLP API timeouts.
+                    </div>
+                  </template>
+                  <el-icon style="margin-left: 4px; cursor: help;">
+                    <QuestionFilled />
+                  </el-icon>
+                </el-tooltip>
+              </span>
+            </template>
+            <div class="slider-container">
+              <el-slider
+                v-model="store.dblpConcurrency"
+                :min="1"
+                :max="10"
+                :step="1"
+                :marks="{ 1: '1', 3: '3', 5: '5', 10: '10' }"
+              />
+            </div>
+            <div class="setting-value">
+              <span class="setting-number">{{ store.dblpConcurrency }}</span>
+              <span class="setting-desc">DBLP requests simultaneously</span>
+            </div>
+          </el-form-item>
         </el-collapse-item>
       </el-collapse>
 
       <!-- Run Button -->
       <el-form-item style="margin-top: 24px">
         <el-button
-          type="primary"
+          :type="buttonHovered && store.isProcessing ? 'danger' : 'primary'"
           size="large"
-          :loading="store.isProcessing || store.loading"
-          :disabled="!canRunAnalysis"
-          @click="handleRunAnalysis"
+          :loading="store.loading && !store.isProcessing"
+          :disabled="!canRunAnalysis && !store.isProcessing"
+          @click="store.isProcessing ? handleStopProcessing() : handleRunAnalysis()"
+          @mouseenter="buttonHovered = true"
+          @mouseleave="buttonHovered = false"
           style="width: 100%"
         >
           <el-icon v-if="!store.isProcessing && !store.loading"><MagicStick /></el-icon>
@@ -269,17 +460,66 @@ I'm interested in large language models for code generation, particularly focusi
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { ChatDotRound, InfoFilled, MagicStick } from '@element-plus/icons-vue'
 import { useAppStore } from '@/stores/appStore'
-import { RECOMMENDED_MODELS } from '@/services/localLLM'
+import { backendLLM } from '@/services/backendLLM'
 
 const store = useAppStore()
 
 const activeCollapse = ref([])
-const selectedLocalModel = ref('Xenova/LaMini-Flan-T5-783M')
+const selectedLocalModel = ref('qwen-1.5b')
 const localModelProgress = ref(0)
+const downloadMessage = ref('Initializing...')
+const downloadDevice = ref('')
+const currentLoadedModel = ref('')
+const buttonHovered = ref(false)
+
+// Backend status
+const backendStatus = ref('checking')
+const availableModels = ref([])
+
+// Watch for provider changes and check backend
+watch(() => store.llmProvider, async (newProvider) => {
+  if (newProvider === 'local') {
+    await checkBackendStatus()
+  }
+})
+
+// Check backend health on mount if already selected
+onMounted(async () => {
+  if (store.llmProvider === 'local') {
+    await checkBackendStatus()
+  }
+})
+
+async function checkBackendStatus() {
+  backendStatus.value = 'checking'
+  
+  try {
+    console.log('Checking backend health at http://localhost:8000/health')
+    const healthy = await backendLLM.checkHealth()
+    console.log('Backend health check result:', healthy)
+    
+    backendStatus.value = healthy ? 'connected' : 'disconnected'
+    
+    if (healthy) {
+      console.log('Fetching available models...')
+      const models = await backendLLM.getAvailableModels()
+      console.log('Available models:', models)
+      availableModels.value = models
+      
+      // Set default model if available
+      if (models.length > 0 && !selectedLocalModel.value) {
+        selectedLocalModel.value = models[0].id
+      }
+    }
+  } catch (error) {
+    console.error('Backend check failed:', error)
+    backendStatus.value = 'disconnected'
+  }
+}
 
 const thresholdMarks = {
   0: '0.0',
@@ -289,6 +529,21 @@ const thresholdMarks = {
   1: '1.0'
 }
 
+// Computed: Selected model info
+const selectedModelInfo = computed(() => {
+  return availableModels.value.find(m => m.id === selectedLocalModel.value) || 
+         availableModels.value[0] || 
+         { name: 'Qwen 1.5B', size: '1.5GB', description: 'Higher accuracy' }
+})
+
+// Computed: Download alert type  
+const downloadAlertType = computed(() => {
+  if (backendStatus.value === 'disconnected') return 'error'
+  if (store.localModelReady) return 'success'
+  if (store.localModelLoading) return 'warning'
+  return 'info'
+})
+
 const canRunAnalysis = computed(() => {
   // Can always run to load professors
   // LLM filtering is optional
@@ -297,7 +552,9 @@ const canRunAnalysis = computed(() => {
 
 function getButtonText() {
   if (store.loading) return 'Loading Data...'
-  if (store.isProcessing) return 'AI Filtering...'
+  if (store.isProcessing) {
+    return buttonHovered.value ? '⏹ Stop Processing' : '⏳ AI Filtering...'
+  }
   if (!store.researchDirection.trim()) {
     return '📊 Load Professors'
   }
@@ -386,17 +643,72 @@ function showApiKeyHelp() {
 
 async function handleLoadLocalModel() {
   try {
+    downloadMessage.value = 'Initializing download...'
+    downloadDevice.value = ''
+    
     await store.loadLocalModel(selectedLocalModel.value, (progress) => {
       localModelProgress.value = progress.progress || 0
+      
+      // Update download message
+      if (progress.progress < 20) {
+        downloadMessage.value = 'Initializing...'
+      } else if (progress.progress < 40) {
+        downloadMessage.value = 'Downloading...'
+      } else if (progress.progress < 60) {
+        downloadMessage.value = 'Loading tokenizer...'
+      } else if (progress.progress < 80) {
+        downloadMessage.value = 'Processing...'
+      } else if (progress.progress < 100) {
+        downloadMessage.value = 'Finalizing...'
+      } else {
+        downloadMessage.value = 'Complete'
+      }
+      
+      if (progress.device) {
+        downloadDevice.value = progress.device
+      }
+      
+      if (progress.model) {
+        currentLoadedModel.value = progress.model
+      }
     })
-    ElMessage.success('Local model loaded successfully!')
+    
+    ElMessage.success('Model loaded successfully!')
   } catch (error) {
-    ElMessage.error(`Failed to load model: ${error.message}`)
+    console.error('Model load error:', error)
+    ElMessage.error({
+      message: `Failed to load model: ${error.message}`,
+      duration: 5000
+    })
+  }
+}
+
+async function handleUnloadModel() {
+  try {
+    await ElMessageBox.confirm(
+      'This will unload the model and free memory. You will need to reload it to use again.',
+      'Unload Local Model',
+      {
+        confirmButtonText: 'Unload',
+        cancelButtonText: 'Cancel',
+        type: 'warning'
+      }
+    )
+    
+    await store.unloadLocalModel()
+    
+    ElMessage.success('Model unloaded and memory freed')
+  } catch (error) {
+    if (error !== 'cancel') {
+      console.error('Error unloading model:', error)
+      ElMessage.error('Failed to unload model')
+    }
   }
 }
 
 function handleLocalModelChange() {
   store.localModelReady = false
+  currentLoadedModel.value = ''
 }
 
 async function handleRunAnalysis() {
@@ -438,6 +750,24 @@ async function handleRunAnalysis() {
   }
 }
 
+function handleStopProcessing() {
+  ElMessageBox.confirm(
+    'Are you sure you want to stop the AI analysis? Progress will be lost.',
+    'Stop Processing',
+    {
+      confirmButtonText: 'Stop',
+      cancelButtonText: 'Continue',
+      type: 'warning'
+    }
+  ).then(() => {
+    // User confirmed - stop processing
+    store.stopLLMFilter()
+    ElMessage.warning('Processing stopped by user')
+  }).catch(() => {
+    // User clicked "Continue" - do nothing
+  })
+}
+
 function handleReset() {
   store.resetLLMConfig()
   ElMessage.info('Configuration reset')
@@ -472,6 +802,12 @@ function handleReset() {
   margin-top: 4px;
 }
 
+.slider-container {
+  width: 85%;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
 .threshold-display {
   display: flex;
   justify-content: space-between;
@@ -480,17 +816,21 @@ function handleReset() {
   padding: 8px 12px;
   background: var(--el-fill-color-light);
   border-radius: 4px;
+  gap: 16px;
 }
 
-.threshold-display span:first-child {
+.threshold-value {
   color: var(--el-color-primary);
   font-weight: 600;
   font-size: 16px;
+  min-width: 45px;
+  text-align: left;
 }
 
 .threshold-desc {
   color: var(--el-text-color-secondary);
   font-size: 13px;
+  flex: 1;
 }
 
 .setting-value {
@@ -501,9 +841,16 @@ function handleReset() {
   text-align: center;
 }
 
-.setting-value strong {
+.setting-number {
   color: var(--el-color-primary);
+  font-weight: 700;
   font-size: 18px;
+  margin-right: 12px;
+}
+
+.setting-desc {
+  color: var(--el-text-color-regular);
+  font-size: 14px;
 }
 
 :deep(.el-card__body) {
@@ -533,6 +880,22 @@ function handleReset() {
 
 :deep(.el-collapse-item__content) {
   padding: 12px 0;
+}
+
+/* Model info styles */
+.model-info div {
+  margin: 4px 0;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.downloading-status {
+  width: 100%;
+}
+
+.model-ready {
+  font-size: 14px;
+  line-height: 1.6;
 }
 </style>
 

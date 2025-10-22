@@ -6,6 +6,34 @@
         <div class="professor-info">
           <h3 class="professor-name">{{ professor.name }}</h3>
           <p class="professor-affiliation">{{ professor.affiliation }}</p>
+          
+          <!-- Publication Data Sources -->
+          <div v-if="professor.publicationSources && professor.publicationSources.length > 0" class="publication-sources">
+            <el-tag 
+              v-if="professor.publicationSources.includes('csrankings-local')" 
+              size="small"
+              type="info"
+            >
+              <el-icon><Document /></el-icon>
+              CSRankings
+            </el-tag>
+            <el-tag 
+              v-if="professor.publicationSources.includes('dblp-api')" 
+              size="small"
+              type="success"
+            >
+              <el-icon><Link /></el-icon>
+              DBLP
+            </el-tag>
+            <el-tag 
+              v-if="professor.publicationSources.includes('scholar-scraper')" 
+              size="small"
+              type="warning"
+            >
+              <el-icon><Search /></el-icon>
+              Scholar
+            </el-tag>
+          </div>
         </div>
         
         <div v-if="professor.matchScore !== undefined" class="match-score">
@@ -110,7 +138,8 @@ import {
   Reading,
   MoreFilled,
   TrendCharts,
-  Download
+  Download,
+  Search
 } from '@element-plus/icons-vue'
 import { getVenueHierarchy } from '@/utils/areaConfig'
 
@@ -203,6 +232,19 @@ function exportProfessor() {
   margin: 0;
   font-size: 14px;
   color: var(--el-text-color-secondary);
+}
+
+.publication-sources {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.publication-sources .el-tag {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .match-score {

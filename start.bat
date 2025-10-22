@@ -1,8 +1,8 @@
 @echo off
-title CSProfHunt - AI-Powered Professor Discovery
+title CSProfAlign - AI-Powered Professor Discovery
 echo.
 echo ========================================
-echo   CSProfHunt - AI-Powered Professor Discovery
+echo   CSProfAlign - AI-Powered Professor Discovery
 echo ========================================
 echo.
 
@@ -20,7 +20,7 @@ if not exist "node_modules" (
     )
     echo.
 ) else (
-    echo [Step 1/3] Dependencies already installed ✓
+    echo [Step 1/3] Dependencies already installed [OK]
     echo.
 )
 
@@ -65,11 +65,11 @@ if exist "CSRankings\.git" (
         cd ..
         goto :load_data
     ) else (
-        echo CSRankings data is up to date ✓
+        echo CSRankings data is up to date [OK]
         echo.
     )
 ) else (
-    echo CSRankings data exists ✓
+    echo CSRankings data exists [OK]
     echo.
 )
 
@@ -116,15 +116,15 @@ if errorlevel 1 (
 )
 
 echo.
-echo Data loaded successfully ✓
+echo Data loaded successfully [OK]
 echo.
 
 :start_server
 echo [Step 3/3] Starting development server...
 echo.
-echo 🌐 Server: http://localhost:3000
-echo 📊 Data:   CSRankings data ready
-echo 🚀 Ready:  Click "Load Professors" to start
+echo ==Server: http://localhost:5173
+echo ==Data:   CSRankings data ready
+echo ==Ready:  Click "Load Professors" to start
 echo.
 echo Press Ctrl+C to stop the server
 echo ========================================

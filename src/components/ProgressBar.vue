@@ -12,8 +12,7 @@
             :status="store.processingProgress === 100 ? 'success' : undefined"
             :stroke-width="32"
             :show-text="false"
-            striped
-            striped-flow
+            :indeterminate="false"
           />
           <div class="progress-overlay">
             <span class="progress-count">{{ store.processedCount }} / {{ store.totalCount }}</span>
@@ -80,10 +79,9 @@ const processingRate = computed(() => {
 
 <style scoped>
 .progress-container {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  padding: 16px;
+  position: relative;
+  z-index: 10;
+  margin-bottom: 16px;
   animation: slideDown 0.3s ease-out;
 }
 
@@ -119,6 +117,42 @@ const processingRate = computed(() => {
 .progress-wrapper {
   position: relative;
   margin-top: 20px;
+}
+
+/* Custom pulse animation for progress bar */
+.progress-wrapper :deep(.el-progress-bar__outer) {
+  background: var(--el-fill-color);
+}
+
+.progress-wrapper :deep(.el-progress-bar__inner) {
+  transition: width 0.6s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-wrapper :deep(.el-progress-bar__inner)::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  animation: progress-shimmer 3s ease-in-out infinite;
+}
+
+@keyframes progress-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 .progress-overlay {

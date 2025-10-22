@@ -22,10 +22,6 @@
               <el-icon><Reading /></el-icon>
               List
             </el-radio-button>
-            <el-radio-button value="table">
-              <el-icon><List /></el-icon>
-              Table
-            </el-radio-button>
           </el-radio-group>
 
           <!-- Group By -->
@@ -212,106 +208,6 @@
       </template>
     </el-card>
 
-    <!-- Table View -->
-    <el-card v-else class="table-container" shadow="hover">
-      <el-table
-        :data="sortedProfessors"
-        stripe
-        :default-sort="{ prop: sortBy, order: 'descending' }"
-      >
-        <el-table-column prop="rank" label="#" width="60" fixed>
-          <template #default="{ $index }">
-            {{ $index + 1 }}
-          </template>
-        </el-table-column>
-
-        <el-table-column prop="name" label="Name" min-width="180" fixed>
-          <template #default="{ row }">
-            <div class="name-cell">
-              <span class="professor-name">{{ row.name }}</span>
-            </div>
-          </template>
-        </el-table-column>
-
-        <el-table-column prop="affiliation" label="Institution" min-width="200">
-          <template #default="{ row }">
-            <span class="affiliation">{{ row.affiliation }}</span>
-          </template>
-        </el-table-column>
-
-        <el-table-column
-          v-if="hasMatchScores"
-          prop="matchScore"
-          label="Match"
-          width="100"
-          sortable
-        >
-          <template #default="{ row }">
-            <el-progress
-              :percentage="Math.round(row.matchScore * 100)"
-              :color="getScoreColor(row.matchScore)"
-            />
-          </template>
-        </el-table-column>
-
-        <el-table-column
-          prop="total_papers_recent"
-          label="Papers"
-          width="100"
-          sortable
-        >
-          <template #default="{ row }">
-            {{ Math.round(row.relevantPapers || row.total_papers_recent || 0) }}
-          </template>
-        </el-table-column>
-
-        <el-table-column label="Areas" min-width="200">
-          <template #default="{ row }">
-            <div class="areas-cell">
-              <el-tag
-                v-for="area in row.areas.slice(0, 3)"
-                :key="area"
-                size="small"
-                style="margin-right: 4px"
-              >
-                {{ area.toUpperCase() }}
-              </el-tag>
-              <el-tag v-if="row.areas.length > 3" size="small" type="info">
-                +{{ row.areas.length - 3 }}
-              </el-tag>
-            </div>
-          </template>
-        </el-table-column>
-
-        <el-table-column label="Links" width="180" fixed="right">
-          <template #default="{ row }">
-            <div class="actions-cell">
-              <el-button
-                v-if="row.homepage"
-                :href="row.homepage"
-                target="_blank"
-                size="small"
-                :icon="Link"
-                text
-              >
-                Home
-              </el-button>
-              <el-button
-                v-if="row.scholarid"
-                :href="`https://scholar.google.com/citations?user=${row.scholarid}`"
-                target="_blank"
-                size="small"
-                :icon="Reading"
-                text
-              >
-                Scholar
-              </el-button>
-            </div>
-          </template>
-        </el-table-column>
-      </el-table>
-    </el-card>
-
     <!-- Pagination (only show when not grouping) -->
     <div v-if="groupBy === 'none' && totalProfessors > pageSize" class="pagination-container">
       <el-pagination
@@ -328,45 +224,66 @@
     </div><!-- End of content-area -->
 
     <!-- Floating Export Button -->
-    <div v-if="displayProfessors.length > 0" class="floating-export-btn">
+    <div class="floating-export-btn">
       <el-dropdown trigger="click" @command="handleExport" placement="top-end">
-        <el-button type="success" circle size="large" :icon="Download" />
+        <el-button 
+          type="success" 
+          circle 
+          size="large" 
+          :icon="Download"
+          :disabled="displayProfessors.length === 0"
+        />
         <template #dropdown>
           <el-dropdown-menu>
             <div class="export-header">
-              <strong>Export {{ displayCount }} Professors</strong>
+              <strong v-if="displayCount > 0">Export {{ displayCount }} Professors</strong>
+              <strong v-else style="color: var(--el-text-color-secondary);">No Data to Export</strong>
             </div>
-            <el-dropdown-item command="csv">
+            <el-dropdown-item command="csv" :disabled="displayProfessors.length === 0">
               <el-icon><Document /></el-icon>
-              <div class="export-option">
-                <strong>CSV Format</strong>
-                <small>Spreadsheet compatible</small>
-              </div>
+              <strong>CSV Format</strong>
             </el-dropdown-item>
-            <el-dropdown-item command="json">
+            <el-dropdown-item command="json" :disabled="displayProfessors.length === 0">
               <el-icon><Folder /></el-icon>
-              <div class="export-option">
-                <strong>JSON Format</strong>
-                <small>Developer friendly</small>
-              </div>
+              <strong>JSON Format</strong>
             </el-dropdown-item>
+            
+            <!-- History Section -->
+            <template v-if="exportHistory.length > 0">
+              <el-divider style="margin: 8px 0" />
+              <div class="export-history-header">
+                📝 Recent Exports
+              </div>
+              <div
+                v-for="(item, index) in exportHistory.slice(0, 5)"
+                :key="index"
+                class="history-item-wrapper"
+              >
+                <div class="history-item">
+                  <div class="history-main">
+                    <el-icon :component="item.format === 'csv' ? Document : Folder" />
+                    <span class="history-count">{{ item.count }} professors</span>
+                    <el-tag size="small" :type="item.format === 'csv' ? 'success' : 'primary'">
+                      {{ item.format.toUpperCase() }}
+                    </el-tag>
+                  </div>
+                  <div class="history-time">{{ item.date }} {{ item.time }}</div>
+                </div>
+              </div>
+            </template>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
-      
-      <!-- Badge showing count -->
-      <el-badge :value="displayCount" :max="999" class="export-badge" />
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, onMounted } from 'vue'
 import { ElMessage } from 'element-plus'
 import {
   UserFilled,
   Grid,
-  List,
   Download,
   Document,
   Folder,
@@ -388,6 +305,9 @@ const activeGroups = ref([])
 // Pagination
 const currentPage = ref(1)
 const pageSize = ref(200)
+
+// Export history
+const exportHistory = ref([])
 
 const displayProfessors = computed(() => {
   return store.displayProfessors
@@ -478,9 +398,25 @@ function resetPagination() {
   currentPage.value = 1
 }
 
-// Watch for sort changes to reset pagination
-watch([sortBy, groupBy, () => store.displayProfessors.length], () => {
+// Watch for sort/filter changes to reset pagination
+watch([sortBy, groupBy], () => {
   resetPagination()
+})
+
+// Watch for real-time updates during processing
+watch(() => store.displayProfessors.length, (newLength, oldLength) => {
+  // During processing, new results are added incrementally
+  if (store.isProcessing && newLength > oldLength) {
+    // Keep user on page 1 to see new results as they arrive
+    if (currentPage.value === 1) {
+      // User is on page 1, stay there to see new results
+      return
+    }
+    // User browsed to other pages, respect their choice
+  } else if (!store.isProcessing && newLength !== oldLength) {
+    // Processing finished or filter changed, reset to page 1
+    resetPagination()
+  }
 })
 
 // Handle page change
@@ -529,21 +465,82 @@ function handleExport(command) {
     return
   }
 
-  const timestamp = new Date().toISOString().slice(0, 10)
-  const filename = `profhunt-results-${timestamp}`
+  const now = new Date()
+  const timestamp = now.toISOString().slice(0, 10)
+  const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })
+  const filename = `csprofhunt-results-${timestamp}`
 
   try {
+    const data = displayProfessors.value
+    
     if (command === 'csv') {
-      exportToCSV(displayProfessors.value, `${filename}.csv`)
+      exportToCSV(data, `${filename}.csv`)
       ElMessage.success('Exported to CSV')
+      
+      // Add to history
+      addToExportHistory({
+        format: 'csv',
+        count: data.length,
+        time: timeStr,
+        date: timestamp,
+        data: data,
+        filename: `${filename}.csv`
+      })
     } else if (command === 'json') {
-      exportToJSON(displayProfessors.value, `${filename}.json`)
+      exportToJSON(data, `${filename}.json`)
       ElMessage.success('Exported to JSON')
+      
+      // Add to history
+      addToExportHistory({
+        format: 'json',
+        count: data.length,
+        time: timeStr,
+        date: timestamp,
+        data: data,
+        filename: `${filename}.json`
+      })
     }
   } catch (error) {
     ElMessage.error(`Export failed: ${error.message}`)
   }
 }
+
+function addToExportHistory(item) {
+  // Add to front of history (without data, only metadata)
+  const historyItem = {
+    format: item.format,
+    count: item.count,
+    time: item.time,
+    date: item.date,
+    filename: item.filename
+  }
+  
+  exportHistory.value.unshift(historyItem)
+  
+  // Keep only last 10 exports
+  if (exportHistory.value.length > 10) {
+    exportHistory.value = exportHistory.value.slice(0, 10)
+  }
+  
+  // Save to localStorage
+  try {
+    localStorage.setItem('csprofhunt-export-history', JSON.stringify(exportHistory.value))
+  } catch (error) {
+    console.warn('Failed to save export history:', error)
+  }
+}
+
+// Load export history from localStorage on component mount
+onMounted(() => {
+  try {
+    const saved = localStorage.getItem('csprofhunt-export-history')
+    if (saved) {
+      exportHistory.value = JSON.parse(saved)
+    }
+  } catch (error) {
+    console.warn('Failed to load export history:', error)
+  }
+})
 
 function handleReset() {
   store.resetFilters()
@@ -606,45 +603,6 @@ function handleReset() {
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 16px;
   padding: 16px;
-}
-
-.table-container {
-  margin: 16px 16px 24px 16px;
-}
-
-.name-cell {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.professor-name {
-  font-weight: 600;
-  color: var(--el-text-color-primary);
-}
-
-.affiliation {
-  color: var(--el-text-color-regular);
-}
-
-.areas-cell {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-}
-
-.actions-cell {
-  display: flex;
-  gap: 4px;
-}
-
-:deep(.el-table) {
-  font-size: 14px;
-}
-
-:deep(.el-table th) {
-  font-weight: 600;
-  background: var(--el-fill-color-light);
 }
 
 .professor-group {
@@ -785,13 +743,6 @@ function handleReset() {
   box-shadow: 0 6px 20px rgba(103, 194, 58, 0.6);
 }
 
-.export-badge {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  pointer-events: none;
-}
-
 .export-header {
   padding: 12px 16px;
   border-bottom: 1px solid var(--el-border-color-light);
@@ -799,21 +750,44 @@ function handleReset() {
   color: var(--el-text-color-primary);
 }
 
-.export-option {
-  display: flex;
-  flex-direction: column;
-  margin-left: 8px;
-}
-
-.export-option strong {
-  font-size: 14px;
-  color: var(--el-text-color-primary);
-}
-
-.export-option small {
+.export-history-header {
+  padding: 8px 16px;
   font-size: 12px;
   color: var(--el-text-color-secondary);
-  margin-top: 2px;
+  font-weight: 500;
+}
+
+.history-item-wrapper {
+  padding: 8px 16px;
+  cursor: default;
+}
+
+.history-item-wrapper:hover {
+  background: var(--el-fill-color-light);
+}
+
+.history-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.history-main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.history-count {
+  font-size: 13px;
+  color: var(--el-text-color-primary);
+  flex: 1;
+}
+
+.history-time {
+  font-size: 11px;
+  color: var(--el-text-color-secondary);
+  margin-left: 24px;
 }
 
 @media (max-width: 768px) {

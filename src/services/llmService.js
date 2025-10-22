@@ -3,12 +3,17 @@
  * Supports multiple providers: OpenAI, Gemini, Claude, DeepSeek
  */
 
+import { publicationService, DataSource } from './publicationService'
+import { promptService } from './promptService'
+import { logService } from './logService'
+
 export class LLMService {
   constructor(config) {
     this.provider = config.provider
     this.apiKey = config.apiKey
     this.model = config.model
     this.baseURL = config.baseURL
+    this.signal = config.signal
   }
 
   /**
@@ -41,6 +46,7 @@ export class LLMService {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${this.apiKey}`
       },
+      signal: this.signal,
       body: JSON.stringify({
         model: this.model || 'gpt-4',
         messages: [
@@ -74,6 +80,7 @@ export class LLMService {
       headers: {
         'Content-Type': 'application/json'
       },
+      signal: this.signal,
       body: JSON.stringify({
         contents: [{
           parts: [{ text: fullPrompt }]
@@ -107,6 +114,7 @@ export class LLMService {
         'x-api-key': this.apiKey,
         'anthropic-version': '2023-06-01'
       },
+      signal: this.signal,
       body: JSON.stringify({
         model: this.model || 'claude-3-sonnet-20240229',
         max_tokens: 500,
@@ -139,6 +147,7 @@ export class LLMService {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${this.apiKey}`
       },
+      signal: this.signal,
       body: JSON.stringify({
         model: this.model || 'deepseek-chat',
         messages: [
@@ -161,53 +170,57 @@ export class LLMService {
 }
 
 /**
- * Build prompt for professor evaluation
+ * Build prompt for professor evaluation (Basic Method)
+ * Now loads from external text file
  */
-export function buildProfessorPrompt(professor, researchDirection) {
-  const recentPapers = []
-  for (const [area, years] of Object.entries(professor.publications)) {
-    for (const [year, count] of Object.entries(years)) {
-      if (parseInt(year) >= 2020 && count > 0) {
-        recentPapers.push(`${area} (${year}): ${count} papers`)
+export async function buildProfessorPrompt(professor, researchDirection) {
+  // Extract publication data
+  let recentPapers = []
+  
+  // Check if we have a publication list from hybrid method
+  if (professor.publicationList && professor.publicationList.length > 0) {
+    // Use new publication list format (from CSRankings + DBLP)
+    recentPapers = professor.publicationList
+      .filter(pub => pub.year >= 2020)
+      .slice(0, 20) // Limit to 20 most recent
+      .map(pub => `${pub.title} (${pub.venue}, ${pub.year})`)
+  } else {
+    // Fallback to original publications object format
+    for (const [area, years] of Object.entries(professor.publications || {})) {
+      for (const [year, count] of Object.entries(years)) {
+        if (parseInt(year) >= 2020 && count > 0) {
+          recentPapers.push(`${area} (${year}): ${count} papers`)
+        }
       }
     }
   }
   
-  return `
-Professor: ${professor.name}
-Institution: ${professor.affiliation}
-Research Areas: ${professor.areas.join(', ')}
-Recent Publications (2020-2024):
-${recentPapers.join('\n')}
-
-Research Direction to Match:
-${researchDirection}
-
-Task: Evaluate how well this professor's research aligns with the specified research direction.
-Provide a match score between 0.0 and 1.0, where:
-- 0.0-0.3: Poor match (different field or focus)
-- 0.4-0.6: Moderate match (related but not core)
-- 0.7-0.9: Good match (closely aligned)
-- 0.9-1.0: Excellent match (perfectly aligned)
-
-Respond with ONLY a JSON object in this format:
-{
-  "score": 0.X,
-  "reasoning": "Brief explanation (max 100 words)"
-}
-`.trim()
+  // Load prompt template from file
+  const template = await promptService.loadPrompt('basic-user-prompt.txt')
+  
+  // Render with variables
+  return promptService.renderPrompt(template, {
+    'professor.name': professor.name,
+    'professor.affiliation': professor.affiliation,
+    'professor.areas': professor.areas ? professor.areas.join(', ') : 'Not specified',
+    'publications': recentPapers.length > 0 ? recentPapers.join('\n') : 'No recent publications found',
+    'researchDirection': researchDirection
+  })
 }
 
 /**
- * System prompt for professor evaluation
+ * Get system prompt for Basic Method
+ * Now loads from external text file
  */
-export const SYSTEM_PROMPT = `You are an academic research matching assistant. Your task is to evaluate how well a professor's research profile matches a given research direction. Be objective and consider:
-1. Research area alignment
-2. Recent publication activity
-3. Specific topics and techniques
-4. Research impact and focus
+export async function getBasicSystemPrompt() {
+  return await promptService.loadPrompt('basic-system-prompt.txt')
+}
 
-Provide accurate scores and concise reasoning.`
+// Legacy export for backward compatibility (will load on first use)
+export let SYSTEM_PROMPT = null
+promptService.loadPrompt('basic-system-prompt.txt').then(text => {
+  SYSTEM_PROMPT = text
+})
 
 /**
  * Parse LLM response to extract score
@@ -217,7 +230,12 @@ export function parseScore(response) {
     // Try to parse as JSON
     const jsonMatch = response.match(/\{[\s\S]*\}/)
     if (jsonMatch) {
-      const parsed = JSON.parse(jsonMatch[0])
+      // Clean up common JSON formatting issues from LLM (same as Decision Tree)
+      let jsonText = jsonMatch[0]
+      jsonText = jsonText.replace(/""(\w+)":/g, '"$1":') // Fix double quotes
+      jsonText = jsonText.replace(/,(\s*[}\]])/g, '$1')   // Fix trailing commas
+      
+      const parsed = JSON.parse(jsonText)
       return {
         score: parseFloat(parsed.score) || 0,
         reasoning: parsed.reasoning || '',
@@ -258,6 +276,27 @@ export async function batchFilterProfessors(professors, config, onProgress) {
   const llmService = new LLMService(config)
   const results = []
   
+  // Debug: Log entire config
+  console.log('🔧 Config received in batchFilterProfessors:', {
+    publicationSource: config.publicationSource,
+    scoringScheme: config.scoringScheme,
+    maxWorkers: config.maxWorkers,
+    maxPapers: config.maxPapers
+  })
+  logService.log('llm', 'info', 'LLM processing started', config)
+  
+  // Preload prompts
+  console.log('📄 Preloading prompt templates...')
+  logService.log('llm', 'info', 'Preloading prompt templates')
+  await promptService.preloadAll()
+  
+  // Configure DBLP request queue and abort signal
+  if (config.publicationSource === 'hybrid' || config.publicationSource === 'dblp-priority') {
+    const dblpConcurrency = config.dblpConcurrency || 3
+    publicationService.configureDBLPQueue(dblpConcurrency, 500) // Increased to 500ms to avoid rate limiting
+    publicationService.setAbortSignal(config.signal) // Pass abort signal for cancellation
+  }
+  
   // Select scoring scheme
   let buildPrompt, parseScoreFn, systemPrompt
   
@@ -266,13 +305,13 @@ export async function batchFilterProfessors(professors, config, onProgress) {
     const decisionTree = await import('./scoringSchemes/decisionTree.js')
     buildPrompt = decisionTree.buildDecisionTreePrompt
     parseScoreFn = decisionTree.parseDecisionTreeScore
-    systemPrompt = decisionTree.DECISION_TREE_SYSTEM_PROMPT
+    systemPrompt = await promptService.loadPrompt('decision-tree-system-prompt.txt')
     console.log('📋 Using Decision Tree scoring method (95% consistency)')
   } else {
     // Use original scoring
     buildPrompt = buildProfessorPrompt
     parseScoreFn = parseScore
-    systemPrompt = SYSTEM_PROMPT
+    systemPrompt = await promptService.loadPrompt('basic-system-prompt.txt')
     console.log('📋 Using Original scoring method')
   }
   
@@ -282,6 +321,13 @@ export async function batchFilterProfessors(professors, config, onProgress) {
   
   console.log(`🚀 Starting parallel processing with ${CONCURRENT_REQUESTS} concurrent requests`)
   console.log(`📊 Total professors to process: ${professors.length}`)
+  console.log(`📄 Publication source configured: ${config.publicationSource || 'NOT SET'}`)
+  logService.log('llm', 'success', `Starting parallel processing with ${CONCURRENT_REQUESTS} concurrent requests, Total: ${professors.length}`)
+  
+  // Clear old results at the start (real-time display)
+  if (config.onBatchComplete) {
+    config.onBatchComplete([], 0, true) // true = shouldClear
+  }
   
   // Split professors into batches
   const batches = []
@@ -301,7 +347,47 @@ export async function batchFilterProfessors(professors, config, onProgress) {
     
     const batchPromises = batch.map(async (professor) => {
       try {
-        const prompt = buildPrompt(professor, config.researchDirection)
+        // Get publications based on configured source
+        let publicationSources = []
+        let enrichedProfessor = { ...professor }
+        
+        // Debug log for first professor in first batch
+        if (batchIndex === 0 && batch.indexOf(professor) === 0) {
+          console.log(`🔍 DEBUG: config.publicationSource = "${config.publicationSource}"`)
+          console.log(`🔍 DEBUG: Will use ${config.publicationSource === 'hybrid' ? 'HYBRID' : 'SCHOLAR'} method`)
+        }
+        
+        if (config.publicationSource === 'hybrid') {
+          // Use new hybrid method (CSRankings + DBLP)
+          try {
+            const pubResult = await publicationService.getPublicationsHybrid(professor, {
+              allowScholar: false,
+              maxPapers: config.maxPapers || 20,
+              enableDBLP: true // Enabled: Get real paper titles from DBLP API
+            })
+            
+            // Add publication data to professor object
+            enrichedProfessor.publicationList = pubResult.papers
+            publicationSources = pubResult.sources
+            
+            // Debug: Log paper count for first professor
+            if (batchIndex === 0 && batch.indexOf(professor) === 0) {
+              console.log(`📄 ${professor.name}: Got ${pubResult.papers.length} papers from ${pubResult.sources.join('+')}`)
+              if (pubResult.papers.length > 0) {
+                console.log(`   Sample papers:`, pubResult.papers.slice(0, 3).map(p => `${p.title} (${p.year})`))
+              }
+            }
+          } catch (error) {
+            console.warn(`⚠️ Hybrid method failed for ${professor.name}, using original data:`, error)
+            // Fallback to original publications object
+            publicationSources = [DataSource.SCHOLAR_SCRAPER]
+          }
+        } else {
+          // Use original scholar scraper method
+          publicationSources = [DataSource.SCHOLAR_SCRAPER]
+        }
+        
+        const prompt = await buildPrompt(enrichedProfessor, config.researchDirection)
         const response = await llmService.call(prompt, systemPrompt)
         const result = parseScoreFn(response)
         
@@ -311,7 +397,8 @@ export async function batchFilterProfessors(professors, config, onProgress) {
           matchReasoning: result.reasoning,
           researchSummary: result.researchSummary || result.reasoning,
           decisionPath: result.decisionPath,
-          matchLevel: result.matchLevel
+          matchLevel: result.matchLevel,
+          publicationSources // Add data source information
         }
       } catch (error) {
         console.error(`Error processing professor ${professor.name}:`, error)
@@ -334,9 +421,19 @@ export async function batchFilterProfessors(professors, config, onProgress) {
     const batchTime = ((Date.now() - batchStartTime) / 1000).toFixed(2)
     
     console.log(`✅ Batch ${batchIndex + 1}/${batches.length} completed in ${batchTime}s (${rate} profs/sec)`)
+    logService.log('progress', 'success', `Batch ${batchIndex + 1}/${batches.length} completed in ${batchTime}s (${rate} profs/sec)`)
     
     if (onProgress) {
       onProgress(processedCount, professors.length)
+    }
+    
+    // Real-time callback with matched professors only
+    if (config.onBatchComplete) {
+      const matchedInBatch = batchResults.filter(p => p.matchScore >= config.threshold)
+      if (matchedInBatch.length > 0) {
+        config.onBatchComplete(matchedInBatch, processedCount, false)
+        logService.log('results', 'success', `Matched: +${matchedInBatch.length} professors (Total: ${processedCount})`)
+      }
     }
     
     // Small delay between batches to avoid rate limiting

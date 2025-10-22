@@ -107,25 +107,10 @@
           <span class="stat-value">{{ store.candidateProfessors.length }}</span>
         </div>
         <div v-if="store.llmFilteredProfessors.length > 0" class="stat-item">
-          <span class="stat-label">AI Matched:</span>
+          <span class="stat-label">Matched:</span>
           <span class="stat-value">{{ matchedCount }}</span>
         </div>
       </div>
-
-      <!-- Debug Info (development only) -->
-      <el-collapse v-model="debugOpen" style="margin-top: 12px">
-        <el-collapse-item title="🔍 Debug Info" name="debug">
-          <div class="debug-info">
-            <p><strong>Region:</strong> {{ store.selectedRegions }}</p>
-            <p><strong>Year:</strong> {{ store.yearRange }}</p>
-            <p><strong>Venues:</strong> {{ store.selectedVenues.length }} selected</p>
-            <p><strong>Search:</strong> "{{ store.searchQuery }}"</p>
-            <el-button size="small" @click="logDebugInfo" style="margin-top: 8px">
-              Print to Console
-            </el-button>
-          </div>
-        </el-collapse-item>
-      </el-collapse>
     </el-form>
   </el-card>
 </template>
@@ -142,7 +127,6 @@ const store = useAppStore()
 
 const regionMode = ref('country')
 const selectedRegion = ref('us')
-const debugOpen = ref([])
 const localSearchQuery = ref('')
 
 const displayRegions = computed(() => {
@@ -216,22 +200,6 @@ function handleSearchClear() {
     store.applyCandidateFilters()
   }
 }
-
-function logDebugInfo() {
-  console.log('=== FULL DEBUG INFO ===')
-  console.log('Selected Regions:', store.selectedRegions)
-  console.log('Year Range:', store.yearRange)
-  console.log('Selected Venues:', store.selectedVenues)
-  console.log('Search Query:', store.searchQuery)
-  console.log('---')
-  console.log('Raw Professors:', store.professors.length)
-  console.log('Candidate Professors:', store.candidateProfessors.length)
-  console.log('Display Professors:', store.displayProfessors.length)
-  console.log('---')
-  console.log('Sample raw professor:', store.professors[0])
-  console.log('Sample candidate professor:', store.candidateProfessors[0])
-  ElMessage.success('Debug info printed to console (F12)')
-}
 </script>
 
 <style scoped>
@@ -298,19 +266,6 @@ function logDebugInfo() {
 
 :deep(.el-form-item) {
   margin-bottom: 18px;
-}
-
-.debug-info {
-  font-size: 13px;
-}
-
-.debug-info p {
-  margin: 4px 0;
-  color: var(--el-text-color-regular);
-}
-
-.debug-info strong {
-  color: var(--el-text-color-primary);
 }
 </style>
 

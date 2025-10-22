@@ -3,11 +3,36 @@
  */
 
 import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import dataService from '@/services/dataService'
 import { batchFilterProfessors } from '@/services/llmService'
-import { localLLM } from '@/services/localLLM'
+import { backendLLM } from '@/services/backendLLM'
+import { logService } from '@/services/logService'
+import { publicationService } from '@/services/publicationService'
 import { filterByYearRange, filterByVenues, calculateRelevantPapers } from '@/utils/filterUtils'
+
+// LLM Settings persistence
+const LLM_CONFIG_KEY = 'csprofalign-llm-config'
+
+function loadLLMSettings() {
+  try {
+    const saved = localStorage.getItem(LLM_CONFIG_KEY)
+    if (saved) {
+      return JSON.parse(saved)
+    }
+  } catch (error) {
+    console.warn('Failed to load LLM settings from localStorage:', error)
+  }
+  return null
+}
+
+function saveLLMSettings(settings) {
+  try {
+    localStorage.setItem(LLM_CONFIG_KEY, JSON.stringify(settings))
+  } catch (error) {
+    console.warn('Failed to save LLM settings to localStorage:', error)
+  }
+}
 
 export const useAppStore = defineStore('app', () => {
   // State
@@ -23,23 +48,35 @@ export const useAppStore = defineStore('app', () => {
   const selectedVenues = ref([])
   const searchQuery = ref('')
   
-  // LLM settings
-  const llmProvider = ref('openai')
-  const llmApiKey = ref('')
-  const llmModel = ref('')
-  const llmBaseURL = ref('')
-  const researchDirection = ref('')
-  const threshold = ref(0.6)
-  const maxWorkers = ref(10)
-  const batchSize = ref(10)
-  const maxPapers = ref(20)
-  const scoringScheme = ref('original') // 'original' or 'decision_tree'
+  // Load saved LLM settings
+  const savedSettings = loadLLMSettings()
+  
+  // LLM settings (with defaults from localStorage)
+  const llmProvider = ref(savedSettings?.llmProvider || 'openai')
+  const llmApiKey = ref(savedSettings?.llmApiKey || '')
+  const llmModel = ref(savedSettings?.llmModel || '')
+  const llmBaseURL = ref(savedSettings?.llmBaseURL || '')
+  const researchDirection = ref(savedSettings?.researchDirection || '')
+  const threshold = ref(savedSettings?.threshold ?? 0.6)
+  const maxWorkers = ref(savedSettings?.maxWorkers || 10)
+  const batchSize = ref(savedSettings?.batchSize || 10)
+  const maxPapers = ref(savedSettings?.maxPapers || 20)
+  const scoringScheme = ref(savedSettings?.scoringScheme || 'original') // 'original' or 'decision_tree'
+  const publicationSource = ref(savedSettings?.publicationSource || 'hybrid') // 'hybrid' or 'scholar'
+  const dblpConcurrency = ref(savedSettings?.dblpConcurrency ?? 5) // DBLP API concurrency, default 5, adjustable 1-10
+  const publicationStats = ref({
+    csrankingsCount: 0,
+    dblpCount: 0,
+    scholarCount: 0,
+    totalCount: 0
+  })
   
   // Processing state
   const isProcessing = ref(false)
   const processedCount = ref(0)
   const totalCount = ref(0)
   const processingStartTime = ref(null)
+  const abortController = ref(null)
   
   // Local LLM state
   const useLocalLLM = ref(false)
@@ -77,9 +114,13 @@ export const useAppStore = defineStore('app', () => {
   
   // Manual filter function (called explicitly, not reactive)
   function applyCandidateFilters() {
+    // Clear LLM filtered results when applying new filters
+    llmFilteredProfessors.value = []
+    
     let result = [...professors.value]
     console.log('=== Filtering Candidates ===')
     console.log('Starting with:', result.length, 'professors')
+    logService.log('filter', 'info', `Applying filters to ${result.length} professors`)
     
     // Apply year range filter
     result = filterByYearRange(result, yearRange.value[0], yearRange.value[1])
@@ -148,9 +189,11 @@ export const useAppStore = defineStore('app', () => {
       console.log('Selected regions:', selectedRegions.value)
       console.log('Year range:', yearRange.value)
       console.log('Selected venues:', selectedVenues.value)
+      logService.log('data', 'info', `Loading professors from: ${selectedRegions.value.join(', ')}`)
       
       const data = await dataService.loadRegions(selectedRegions.value)
       console.log('Raw data loaded:', data.length, 'professors')
+      logService.log('data', 'success', `Data loaded: ${data.length} professors`)
       
       professors.value = data
       llmFilteredProfessors.value = []
@@ -163,6 +206,7 @@ export const useAppStore = defineStore('app', () => {
     } catch (error) {
       console.error('Failed to load professors:', error)
       console.error('Error details:', error.stack)
+      logService.log('data', 'error', 'Failed to load professors: ' + error.message)
       throw error
     } finally {
       loading.value = false
@@ -175,39 +219,125 @@ export const useAppStore = defineStore('app', () => {
       throw new Error('Please provide a research direction')
     }
     
-    if (useLocalLLM.value && !localLLM.isReady()) {
+    const isUsingLocal = useLocalLLM.value || llmProvider.value === 'local'
+    
+    if (isUsingLocal && !backendLLM.isReady) {
       throw new Error('Local model not loaded. Please load a model first.')
     }
     
-    if (!useLocalLLM.value && !llmApiKey.value.trim()) {
+    if (!isUsingLocal && !llmApiKey.value.trim()) {
       throw new Error('Please provide an API key or switch to local model')
     }
+    
+    // Create new AbortController for this processing session
+    abortController.value = new AbortController()
     
     isProcessing.value = true
     processedCount.value = 0
     totalCount.value = candidateProfessors.value.length
     processingStartTime.value = Date.now()
+    logService.resetTimer()
+    logService.log('llm', 'info', `Starting LLM filter for ${totalCount.value} professors`)
     
     try {
       let results
       
-      if (useLocalLLM.value) {
-        // Use local LLM
+      if (useLocalLLM.value || llmProvider.value === 'local') {
+        // Use backend LLM (vLLM) with batch processing
         results = []
-        for (let i = 0; i < candidateProfessors.value.length; i++) {
-          const prof = candidateProfessors.value[i]
-          const { score, reasoning } = await localLLM.evaluateProfessor(
-            prof,
-            researchDirection.value
-          )
+        const BATCH_SIZE = 20 // Process 20 professors at a time (GPU-accelerated batch)
+        const professors = candidateProfessors.value
+        
+        // Split into batches
+        const batches = []
+        for (let i = 0; i < professors.length; i += BATCH_SIZE) {
+          batches.push(professors.slice(i, i + BATCH_SIZE))
+        }
+        
+        console.log(`🚀 Backend LLM: Processing ${professors.length} professors in ${batches.length} batches (${BATCH_SIZE} per batch)`)
+        logService.log('llm', 'info', `Backend LLM batch processing: ${batches.length} batches, ${BATCH_SIZE} professors per batch`)
+        
+        let processedSoFar = 0
+        const startTime = Date.now()
+        
+        // Clear old results
+        llmFilteredProfessors.value = []
+        
+        // Process each batch sequentially (backend handles parallelization)
+        for (let batchIndex = 0; batchIndex < batches.length; batchIndex++) {
+          const batch = batches[batchIndex]
+          const batchStartTime = Date.now()
           
-          results.push({
-            ...prof,
-            matchScore: score,
-            matchReasoning: reasoning
-          })
+          console.log(`[Batch ${batchIndex + 1}/${batches.length}] Processing ${batch.length} professors via backend API...`)
           
-          processedCount.value = i + 1
+          try {
+            // Fetch publication data for all professors in batch
+            const enrichedBatch = await Promise.all(
+              batch.map(async (prof) => {
+                const enrichedProf = { ...prof }
+                
+                if (publicationSource.value === 'hybrid') {
+                  try {
+                    const pubResult = await publicationService.getPublicationsHybrid(prof, {
+                      allowScholar: false,
+                      maxPapers: maxPapers.value || 20,
+                      enableDBLP: true
+                    })
+                    enrichedProf.publicationList = pubResult.papers
+                    enrichedProf.publicationSources = pubResult.sources
+                  } catch (error) {
+                    console.warn(`⚠️ Failed to get publications for ${prof.name}:`, error)
+                  }
+                }
+                
+                return enrichedProf
+              })
+            )
+            
+            // Call backend API for batch evaluation
+            const response = await backendLLM.evaluateBatch(
+              enrichedBatch,
+              researchDirection.value,
+              threshold.value
+            )
+            
+            // Map results back to professor objects
+            const batchResults = response.results.map((result, idx) => ({
+              ...enrichedBatch[idx],
+              matchScore: result.score,
+              matchReasoning: result.reasoning,
+              researchSummary: result.researchSummary
+            }))
+            
+            results.push(...batchResults)
+            
+            // Update progress
+            processedSoFar += batchResults.length
+            processedCount.value = processedSoFar
+            
+            // Filter and add matched professors to display in real-time
+            const matchedInBatch = batchResults.filter(p => p.matchScore >= threshold.value)
+            if (matchedInBatch.length > 0) {
+              llmFilteredProfessors.value.push(...matchedInBatch)
+            }
+            
+            const elapsed = (Date.now() - startTime) / 1000
+            const rate = (processedSoFar / elapsed).toFixed(2)
+            const batchTime = ((Date.now() - batchStartTime) / 1000).toFixed(2)
+            
+            console.log(`✅ Backend batch ${batchIndex + 1}/${batches.length} done in ${batchTime}s (${rate} profs/sec) - Matched: ${matchedInBatch.length}`)
+            logService.log('progress', 'success', `Backend batch ${batchIndex + 1}/${batches.length} completed in ${batchTime}s (${rate} profs/sec)`)
+            logService.log('results', 'success', `Matched: +${matchedInBatch.length} professors (Total: ${llmFilteredProfessors.value.length})`)
+            
+            // Check for abort
+            if (abortController.value?.signal?.aborted) {
+              throw new Error('Processing cancelled by user')
+            }
+            
+          } catch (error) {
+            console.error(`❌ Error processing batch ${batchIndex + 1}:`, error)
+            // Continue with next batch
+          }
         }
       } else {
         // Use cloud LLM
@@ -217,9 +347,32 @@ export const useAppStore = defineStore('app', () => {
           model: llmModel.value,
           baseURL: llmBaseURL.value,
           researchDirection: researchDirection.value,
+          threshold: threshold.value, // Pass threshold for real-time filtering
           maxWorkers: maxWorkers.value, // Pass concurrency config
           batchSize: batchSize.value,
-          scoringScheme: scoringScheme.value // Pass scoring scheme
+          maxPapers: maxPapers.value,
+          scoringScheme: scoringScheme.value, // Pass scoring scheme
+          publicationSource: publicationSource.value, // Pass publication source
+          dblpConcurrency: dblpConcurrency.value, // Pass DBLP concurrency
+          signal: abortController.value.signal, // Pass abort signal
+          
+          // Real-time callback for batch completion
+          onBatchComplete: (matchedProfessors, processed, shouldClear) => {
+            if (shouldClear) {
+              // Clear old results on first call
+              llmFilteredProfessors.value = []
+              console.log('🔄 Cleared old results, starting fresh')
+            }
+            
+            // Add new matched professors
+            if (matchedProfessors.length > 0) {
+              llmFilteredProfessors.value.push(...matchedProfessors)
+              console.log(`📊 Real-time update: +${matchedProfessors.length} professors (Total: ${llmFilteredProfessors.value.length})`)
+            }
+            
+            // Update processed count
+            processedCount.value = processed
+          }
         }
         
         console.log(`🚀 Starting LLM filter with ${maxWorkers.value} concurrent workers`)
@@ -234,22 +387,61 @@ export const useAppStore = defineStore('app', () => {
         )
       }
       
-      llmFilteredProfessors.value = results
+      // Final update: ensure all results are captured (in case callback missed any)
+      llmFilteredProfessors.value = results.filter(p => p.matchScore >= threshold.value)
       
-      console.log(`Filtered ${results.length} professors`)
+      // Debug: Show score distribution
+      const scoreDistribution = {}
+      results.forEach(prof => {
+        const scoreRange = Math.floor(prof.matchScore * 10) / 10
+        scoreDistribution[scoreRange] = (scoreDistribution[scoreRange] || 0) + 1
+      })
+      
+      console.log(`✅ Processed ${results.length} professors`)
+      console.log(`📊 Score distribution:`, scoreDistribution)
+      
+      const passedFilter = results.filter(prof => prof.matchScore >= threshold.value)
+      console.log(`🎯 Professors passing threshold (${threshold.value}): ${passedFilter.length}/${results.length}`)
+      
+      if (passedFilter.length < 10 && passedFilter.length > 0) {
+        console.log(`📝 Professors who passed:`)
+        passedFilter.forEach(prof => {
+          console.log(`  - ${prof.name}: ${prof.matchScore.toFixed(2)} | ${prof.researchSummary?.substring(0, 80)}...`)
+        })
+      }
     } catch (error) {
-      console.error('LLM filtering failed:', error)
-      throw error
+      if (error.name === 'AbortError') {
+        console.log('LLM filtering was aborted by user')
+        logService.log('llm', 'warning', 'LLM filtering was aborted by user')
+      } else {
+        console.error('LLM filtering failed:', error)
+        logService.log('llm', 'error', 'LLM filtering failed: ' + error.message)
+        throw error
+      }
     } finally {
       isProcessing.value = false
+      abortController.value = null
+      const stats = logService.getStats()
+      logService.log('llm', 'success', `LLM filter completed. Processed: ${processedCount.value}/${totalCount.value}, Elapsed: ${stats.elapsed}s`)
     }
+  }
+  
+  function stopLLMFilter() {
+    if (abortController.value) {
+      abortController.value.abort()
+      console.log('🛑 Aborting LLM filtering...')
+    }
+    isProcessing.value = false
+    processedCount.value = 0
+    totalCount.value = 0
+    abortController.value = null
   }
   
   async function loadLocalModel(modelName, onProgress) {
     localModelLoading.value = true
     
     try {
-      await localLLM.loadModel(modelName, onProgress)
+      await backendLLM.loadModel(modelName, onProgress)
       localModelReady.value = true
     } catch (error) {
       localModelReady.value = false
@@ -259,12 +451,27 @@ export const useAppStore = defineStore('app', () => {
     }
   }
   
+  async function unloadLocalModel() {
+    try {
+      await backendLLM.unloadModel()
+      localModelReady.value = false
+      localModelLoading.value = false
+      console.log('✅ Backend model unloaded from store')
+    } catch (error) {
+      console.error('Error unloading backend model:', error)
+      // Force reset state even if error
+      localModelReady.value = false
+      localModelLoading.value = false
+      throw error
+    }
+  }
+  
   function resetFilters() {
     selectedRegions.value = ['us']
     yearRange.value = [2020, 2025]
     selectedVenues.value = []
     searchQuery.value = ''
-    llmFilteredProfessors.value = []
+    // Keep llmFilteredProfessors to allow export after reset
     professors.value = []
     cachedCandidates.value = []
   }
@@ -274,6 +481,41 @@ export const useAppStore = defineStore('app', () => {
     threshold.value = 0.6
     llmFilteredProfessors.value = []
   }
+  
+  // Watch for LLM settings changes and save to localStorage
+  watch(
+    [
+      llmProvider,
+      llmApiKey,
+      llmModel,
+      llmBaseURL,
+      researchDirection,
+      threshold,
+      maxWorkers,
+      batchSize,
+      maxPapers,
+      scoringScheme,
+      publicationSource,
+      dblpConcurrency
+    ],
+    () => {
+      saveLLMSettings({
+        llmProvider: llmProvider.value,
+        llmApiKey: llmApiKey.value,
+        llmModel: llmModel.value,
+        llmBaseURL: llmBaseURL.value,
+        researchDirection: researchDirection.value,
+        threshold: threshold.value,
+        maxWorkers: maxWorkers.value,
+        batchSize: batchSize.value,
+        maxPapers: maxPapers.value,
+        scoringScheme: scoringScheme.value,
+        publicationSource: publicationSource.value,
+        dblpConcurrency: dblpConcurrency.value
+      })
+    },
+    { deep: true }
+  )
   
   return {
     // State
@@ -300,6 +542,9 @@ export const useAppStore = defineStore('app', () => {
     batchSize,
     maxPapers,
     scoringScheme,
+    publicationSource,
+    dblpConcurrency,
+    publicationStats,
     
     // Processing state
     isProcessing,
@@ -322,7 +567,9 @@ export const useAppStore = defineStore('app', () => {
     loadProfessors,
     applyCandidateFilters,
     runLLMFilter,
+    stopLLMFilter,
     loadLocalModel,
+    unloadLocalModel,
     resetFilters,
     resetLLMConfig
   }

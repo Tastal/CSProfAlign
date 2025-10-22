@@ -1,0 +1,30 @@
+Professor: {{professor.name}}
+Institution: {{professor.affiliation}}
+Research Areas: {{professor.areas}}
+Recent Publications (2020-2025):
+{{publications}}
+
+Target Research Direction:
+{{researchDirection}}
+
+TASK: Evaluate how well this professor's research aligns with the specified research direction.
+
+Provide a match score between 0.0 and 1.0, where:
+- 0.0-0.3: Poor match (different field or limited overlap)
+- 0.4-0.6: Moderate match (some relevant work)
+- 0.7-0.9: Good match (substantial alignment)
+- 0.9-1.0: Excellent match (perfectly aligned, highly productive in this area)
+
+IMPORTANT:
+- Consider research area alignment, publication activity, and relevance
+- Recent papers (2023-2025) should be weighted more heavily
+- Use the FULL 0.0-1.0 scale - scores like 0.45, 0.55, 0.65 are valid
+- Be nuanced in your scoring - not everything is either 0.2 or 0.8
+
+REQUIRED OUTPUT (JSON only):
+{
+  "score": 0.XX,
+  "reasoning": "Brief explanation (max 100 words)",
+  "research_summary": "Precise 30-50 word research direction summary with specific techniques and applications"
+}
+

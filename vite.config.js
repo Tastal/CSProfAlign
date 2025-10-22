@@ -20,14 +20,15 @@ export default defineConfig({
       output: {
         manualChunks: {
           'element-plus': ['element-plus'],
-          'echarts': ['echarts', 'vue-echarts'],
-          'transformers': ['@xenova/transformers']
+          'echarts': ['echarts', 'vue-echarts']
         }
       }
     }
   },
   server: {
-    port: 3000,
+    port: 5173,
+    host: '127.0.0.1',
+    strictPort: false,
     open: true
   },
   worker: {

@@ -1,7 +1,7 @@
 {
-  "name": "csprofhunt",
+  "name": "csprofalign",
   "version": "1.0.0",
-  "description": "CSProfHunt - AI-powered professor filtering and discovery tool based on CSRankings data",
+  "description": "CSProfAlign - AI-powered professor filtering and discovery tool based on CSRankings data",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -16,7 +16,6 @@
     "papaparse": "^5.4.1",
     "echarts": "^5.4.3",
     "vue-echarts": "^6.6.1",
-    "@xenova/transformers": "^2.10.0",
     "@element-plus/icons-vue": "^2.3.1"
   },
   "devDependencies": {

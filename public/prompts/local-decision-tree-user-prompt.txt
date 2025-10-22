@@ -1,0 +1,54 @@
+Professor: {{professor.name}}
+Institution: {{professor.affiliation}}
+Research Areas: {{professor.areas}}
+
+Recent Publications (2020-2025):
+{{publications}}
+
+TARGET RESEARCH DIRECTION:
+{{researchDirection}}
+
+TASK: Answer YES/NO questions to evaluate research alignment.
+
+QUESTION 1: Is the professor's PRIMARY research area directly related to the target direction?
+- Answer YES if: The main research area explicitly matches or is central to the target
+- Answer NO if: The main research area is different, though may have some overlap
+
+[If Q1 = YES, continue to Q2]
+QUESTION 2: Does the professor have RECENT publications (2024-2025) in this direction?
+- Answer YES if: Has 2 or more papers in 2024-2025
+- Answer NO if: Has 0-1 papers in 2024-2025, or only older papers
+
+[If Q2 = YES, continue to Q3]
+QUESTION 3: Is the research HIGHLY PRODUCTIVE in this area?
+- Answer YES if: Has 5+ papers total in 2023-2025
+- Answer NO if: Has fewer papers or older publications
+
+[If Q1 = NO, continue to Q4]
+QUESTION 4: Does the research have ANY connection to the target direction?
+- Answer YES if: The work uses related techniques or addresses related problems
+- Answer NO if: Completely unrelated field
+
+[If Q4 = YES, continue to Q5]
+QUESTION 5: Is there evidence of RECENT work in related areas?
+- Answer YES if: Has 2+ papers in 2023-2025 in related areas
+- Answer NO if: Has fewer papers or older work
+
+SCORING LOGIC:
+- Q1=YES, Q2=YES, Q3=YES → Score 0.8-1.0
+- Q1=YES, Q2=YES, Q3=NO → Score 0.6-0.7
+- Q1=YES, Q2=NO → Score 0.4-0.5
+- Q1=NO, Q4=YES, Q5=YES → Score 0.3-0.4
+- Q1=NO, Q4=YES, Q5=NO → Score 0.1-0.2
+- Q1=NO, Q4=NO → Score 0.0-0.1
+
+BE STRICT:
+- If papers are in different subfield → Q1=NO
+- If only 1-2 relevant papers → Q3=NO
+- If no recent papers (2023+) → Q2=NO
+- If areas list doesn't match → Q1=NO
+
+PROVIDE:
+Score: [Be conservative! Most should be 0.3-0.6]
+Reasoning: [Cite specific papers or explain mismatch]
+Research Summary: [Describe THEIR actual work, not the target]
