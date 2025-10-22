@@ -73,6 +73,28 @@ echo.
 
 call npm run dev
 
+if %errorlevel% neq 0 (
+    echo.
+    echo ========================================
+    echo   Server Start Failed
+    echo ========================================
+    echo.
+    echo Common issues:
+    echo 1. Port 5173 is already in use
+    echo    - Close other applications using port 5173
+    echo    - Or kill the process: netstat -ano ^| findstr :5173
+    echo.
+    echo 2. Permission denied
+    echo    - Try running as Administrator
+    echo    - Right-click start.bat and select "Run as administrator"
+    echo.
+    echo 3. Antivirus or Firewall blocking
+    echo    - Add exception for Node.js in your security software
+    echo.
+    pause
+    exit /b 1
+)
+
 echo.
 echo Server stopped.
 pause

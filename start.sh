@@ -55,7 +55,6 @@ fi
 
 echo
 
-start_server:
 echo "[Step 3/3] Starting development server..."
 echo
 echo "==Server: http://localhost:5173"
@@ -67,6 +66,26 @@ echo "========================================"
 echo
 
 npm run dev
+
+if [ $? -ne 0 ]; then
+    echo
+    echo "========================================"
+    echo "   Server Start Failed"
+    echo "========================================"
+    echo
+    echo "Common issues:"
+    echo "1. Port 5173 is already in use"
+    echo "   - Close other applications using port 5173"
+    echo "   - Or kill the process: lsof -ti:5173 | xargs kill -9"
+    echo
+    echo "2. Permission denied"
+    echo "   - Try running with sudo: sudo ./start.sh"
+    echo
+    echo "3. Firewall blocking"
+    echo "   - Add exception for Node.js in your firewall"
+    echo
+    exit 1
+fi
 
 echo
 echo "Server stopped."
