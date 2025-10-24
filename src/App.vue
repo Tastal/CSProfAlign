@@ -32,7 +32,7 @@
     <!-- Main Content -->
     <main class="app-main">
       <div class="app-layout">
-        <!-- Left Panel: Filters -->
+        <!-- Left Panel: Searching Scope -->
         <aside class="left-panel">
           <FilterPanel />
         </aside>
@@ -43,7 +43,7 @@
           <ResultList />
         </section>
 
-        <!-- Right Panel: LLM Config -->
+        <!-- Right Panel: AI Analysis -->
         <aside class="right-panel">
           <LLMConfig />
         </aside>
@@ -253,10 +253,11 @@ body {
 }
 
 .center-panel {
-  height: fit-content;
+  height: 100%;
   min-height: 600px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 /* Footer */

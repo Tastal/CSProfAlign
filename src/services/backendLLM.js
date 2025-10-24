@@ -3,11 +3,15 @@
  * Replaces browser-based WebGPU inference
  */
 
+import backendConfig from '@/config/backend.js'
+
 class BackendLLMService {
   constructor() {
-    this.baseURL = 'http://localhost:8000'
+    this.baseURL = backendConfig.baseURL
     this.currentModel = null
     this.isReady = false
+    
+    console.log(`🔗 Backend API configured at: ${this.baseURL}`)
   }
 
   /**

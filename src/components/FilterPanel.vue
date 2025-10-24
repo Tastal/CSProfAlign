@@ -3,8 +3,8 @@
     <template #header>
       <div class="card-header">
         <span class="header-title">
-          <el-icon><Filter /></el-icon>
-          Filter Settings
+          <el-icon><Search /></el-icon>
+          Searching Scope
         </span>
       </div>
     </template>

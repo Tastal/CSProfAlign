@@ -4,3 +4,7 @@ pydantic==2.5.0
 python-multipart==0.0.6
 websockets==12.0
 
+# INT8 quantization support
+bitsandbytes>=0.41.0
+accelerate>=0.25.0
+

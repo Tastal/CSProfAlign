@@ -92,135 +92,149 @@
       </div>
     </el-card>
 
-    <!-- Cards View -->
-    <div v-else-if="viewMode === 'cards'" class="cards-container">
-      <template v-if="groupBy === 'none'">
-        <ProfessorCard
-          v-for="(prof, index) in sortedProfessors"
-          :key="prof.name + index"
-          :professor="{ ...prof, rank: index + 1 }"
-        />
-      </template>
-      
-      <template v-else>
-        <div v-for="(group, groupName) in groupedProfessors" :key="groupName" class="professor-group">
-          <h3 class="group-header">
-            {{ groupName }}
-            <el-tag size="small" type="info">{{ group.length }} professors</el-tag>
-          </h3>
-          <div class="cards-container">
+    <!-- Cards View with Virtual Scroller (No Grouping) -->
+    <DynamicScroller
+      v-if="viewMode === 'cards' && groupBy === 'none' && sortedProfessors.length > 0"
+      :items="sortedProfessors"
+      :min-item-size="240"
+      :buffer="600"
+      key-field="_id"
+      class="scroller"
+    >
+      <template v-slot="{ item, index, active }">
+        <DynamicScrollerItem
+          :item="item"
+          :active="active"
+          :data-index="index"
+          :size-dependencies="[
+            item.researchSummary,
+            item.matchReasoning,
+          ]"
+        >
+          <div class="card-wrapper">
             <ProfessorCard
-              v-for="(prof, index) in group"
-              :key="`${prof.name}-${index}`"
-              :professor="prof"
+              :professor="{ ...item, rank: index + 1 }"
             />
           </div>
-        </div>
+        </DynamicScrollerItem>
       </template>
+    </DynamicScroller>
+      
+    <!-- Cards View with Grouping (No Virtual Scroll) -->
+    <div v-else-if="viewMode === 'cards' && groupBy !== 'none'" class="grouped-view">
+      <div v-for="(group, groupName) in groupedProfessors" :key="groupName" class="professor-group">
+        <h3 class="group-header">
+          {{ groupName }}
+          <el-tag size="small" type="info">{{ group.length }} professors</el-tag>
+        </h3>
+        <div class="cards-container">
+          <ProfessorCard
+            v-for="(prof, index) in group"
+            :key="`${prof.name}-${index}`"
+            :professor="prof"
+          />
+        </div>
+      </div>
     </div>
 
-    <!-- Compact List View -->
-    <el-card v-else-if="viewMode === 'list'" shadow="hover" class="list-view">
-      <template v-if="groupBy === 'none'">
-        <div class="compact-list">
-          <div 
-            v-for="(prof, index) in sortedProfessors" 
-            :key="`${prof.name}-${index}`"
-            class="list-item"
-          >
+    <!-- Compact List View with Virtual Scroller -->
+    <DynamicScroller
+      v-if="viewMode === 'list' && groupBy === 'none' && sortedProfessors.length > 0"
+      :items="sortedProfessors"
+      :min-item-size="60"
+      :buffer="400"
+      key-field="_id"
+      class="scroller list-scroller"
+    >
+      <template v-slot="{ item, index, active }">
+        <DynamicScrollerItem
+          :item="item"
+          :active="active"
+          :data-index="index"
+          class="list-item-wrapper"
+        >
+          <div class="list-item">
             <div class="list-rank">{{ index + 1 }}</div>
             <div class="list-item-main">
               <div class="list-item-name">
-                <strong>{{ prof.name }}</strong>
-                <el-tag v-if="prof.matchScore" :type="getScoreType(prof.matchScore)" size="small" round>
-                  {{ (prof.matchScore * 100).toFixed(0) }}%
+                <strong>{{ item.name }}</strong>
+                <el-tag v-if="item.matchScore" :type="getScoreType(item.matchScore)" size="small" round>
+                  {{ (item.matchScore * 100).toFixed(0) }}%
                 </el-tag>
               </div>
               <div class="list-item-affiliation">
-                {{ prof.affiliation }}
+                {{ item.affiliation }}
               </div>
             </div>
             <div class="list-item-stats">
               <el-tag size="small" type="info">
-                {{ Math.round(prof.relevantPapers || prof.total_papers_recent || 0) }} papers
+                {{ Math.round(item.relevantPapers || item.total_papers_recent || 0) }} papers
               </el-tag>
               <el-button-group size="small">
-                <el-button :icon="Link" @click="openHomepage(prof.homepage)" :disabled="!prof.homepage" text>
+                <el-button :icon="Link" @click="openHomepage(item.homepage)" :disabled="!item.homepage" text>
                   Home
                 </el-button>
-                <el-button :icon="Reading" @click="openScholar(prof.scholarid)" :disabled="!prof.scholarid" text>
+                <el-button :icon="Reading" @click="openScholar(item.scholarid)" :disabled="!item.scholarid" text>
                   Scholar
                 </el-button>
               </el-button-group>
             </div>
           </div>
-        </div>
+        </DynamicScrollerItem>
       </template>
-      
-      <template v-else>
-        <el-collapse v-model="activeGroups">
-          <el-collapse-item 
-            v-for="(group, groupName) in groupedProfessors" 
-            :key="groupName"
-            :name="groupName"
-          >
-            <template #title>
-              <div class="group-title-bar">
-                <strong>{{ groupName }}</strong>
-                <el-tag size="small" type="primary">{{ group.length }}</el-tag>
-              </div>
-            </template>
-            <div class="compact-list">
-              <div 
-                v-for="(prof, index) in group" 
-                :key="`${prof.name}-${index}`"
-                class="list-item"
-              >
-                <div class="list-rank">{{ index + 1 }}</div>
-                <div class="list-item-main">
-                  <div class="list-item-name">
-                    <strong>{{ prof.name }}</strong>
-                    <el-tag v-if="prof.matchScore" :type="getScoreType(prof.matchScore)" size="small" round>
-                      {{ (prof.matchScore * 100).toFixed(0) }}%
-                    </el-tag>
-                  </div>
-                  <div class="list-item-affiliation" v-if="groupBy !== 'institution'">
-                    {{ prof.affiliation }}
-                  </div>
-                </div>
-                <div class="list-item-stats">
-                  <el-tag size="small" type="info">
-                    {{ Math.round(prof.relevantPapers || prof.total_papers_recent || 0) }} papers
+    </DynamicScroller>
+    
+    <!-- List View with Grouping -->
+    <div v-else-if="viewMode === 'list' && groupBy !== 'none'" class="grouped-view">
+      <el-collapse v-model="activeGroups" class="grouped-list">
+        <el-collapse-item 
+          v-for="(group, groupName) in groupedProfessors" 
+          :key="groupName"
+          :name="groupName"
+        >
+          <template #title>
+            <div class="group-title-bar">
+              <strong>{{ groupName }}</strong>
+              <el-tag size="small" type="primary">{{ group.length }}</el-tag>
+            </div>
+          </template>
+          <div class="compact-list">
+            <div 
+              v-for="(prof, index) in group" 
+              :key="`${prof.name}-${index}`"
+              class="list-item"
+            >
+              <div class="list-rank">{{ index + 1 }}</div>
+              <div class="list-item-main">
+                <div class="list-item-name">
+                  <strong>{{ prof.name }}</strong>
+                  <el-tag v-if="prof.matchScore" :type="getScoreType(prof.matchScore)" size="small" round>
+                    {{ (prof.matchScore * 100).toFixed(0) }}%
                   </el-tag>
-                  <el-button-group size="small">
-                    <el-button :icon="Link" @click="openHomepage(prof.homepage)" :disabled="!prof.homepage" text>
-                      Home
-                    </el-button>
-                    <el-button :icon="Reading" @click="openScholar(prof.scholarid)" :disabled="!prof.scholarid" text>
-                      Scholar
-                    </el-button>
-                  </el-button-group>
                 </div>
+                <div class="list-item-affiliation" v-if="groupBy !== 'institution'">
+                  {{ prof.affiliation }}
+                </div>
+              </div>
+              <div class="list-item-stats">
+                <el-tag size="small" type="info">
+                  {{ Math.round(prof.relevantPapers || prof.total_papers_recent || 0) }} papers
+                </el-tag>
+                <el-button-group size="small">
+                  <el-button :icon="Link" @click="openHomepage(prof.homepage)" :disabled="!prof.homepage" text>
+                    Home
+                  </el-button>
+                  <el-button :icon="Reading" @click="openScholar(prof.scholarid)" :disabled="!prof.scholarid" text>
+                    Scholar
+                  </el-button>
+                </el-button-group>
               </div>
             </div>
-          </el-collapse-item>
-        </el-collapse>
-      </template>
-    </el-card>
-
-    <!-- Pagination (only show when not grouping) -->
-    <div v-if="groupBy === 'none' && totalProfessors > pageSize" class="pagination-container">
-      <el-pagination
-        v-model:current-page="currentPage"
-        :page-size="pageSize"
-        :total="totalProfessors"
-        :page-sizes="[100, 200, 300, 500]"
-        layout="total, sizes, prev, pager, next, jumper"
-        @size-change="(size) => { pageSize = size; resetPagination() }"
-        @current-change="handlePageChange"
-        background
-      />
+          </div>
+        </el-collapse-item>
+      </el-collapse>
     </div>
+
     </div><!-- End of content-area -->
 
     <!-- Floating Export Button -->
@@ -281,6 +295,7 @@
 <script setup>
 import { ref, computed, watch, onMounted } from 'vue'
 import { ElMessage } from 'element-plus'
+import { DynamicScroller, DynamicScrollerItem } from 'vue-virtual-scroller'
 import {
   UserFilled,
   Grid,
@@ -302,9 +317,7 @@ const sortBy = ref('papers-desc')
 const groupBy = ref('none')
 const activeGroups = ref([])
 
-// Pagination
-const currentPage = ref(1)
-const pageSize = ref(200)
+// No pagination - using virtual scroller for performance
 
 // Export history
 const exportHistory = ref([])
@@ -346,14 +359,16 @@ const allSortedProfessors = computed(() => {
   }
 })
 
-// Paginated professors
+// All professors with unique IDs for virtual scroller
 const sortedProfessors = computed(() => {
-  const start = (currentPage.value - 1) * pageSize.value
-  const end = start + pageSize.value
-  return allSortedProfessors.value.slice(start, end)
+  // Add unique ID for virtual scroller key-field
+  return allSortedProfessors.value.map((prof, index) => ({
+    ...prof,
+    _id: `${prof.name}-${prof.affiliation}-${index}` // Unique key
+  }))
 })
 
-// Total count for pagination
+// Total count
 const totalProfessors = computed(() => allSortedProfessors.value.length)
 
 const groupedProfessors = computed(() => {
@@ -392,42 +407,6 @@ const groupedProfessors = computed(() => {
 const displayCount = computed(() => {
   return totalProfessors.value
 })
-
-// Reset to page 1 when sort or filter changes
-function resetPagination() {
-  currentPage.value = 1
-}
-
-// Watch for sort/filter changes to reset pagination
-watch([sortBy, groupBy], () => {
-  resetPagination()
-})
-
-// Watch for real-time updates during processing
-watch(() => store.displayProfessors.length, (newLength, oldLength) => {
-  // During processing, new results are added incrementally
-  if (store.isProcessing && newLength > oldLength) {
-    // Keep user on page 1 to see new results as they arrive
-    if (currentPage.value === 1) {
-      // User is on page 1, stay there to see new results
-      return
-    }
-    // User browsed to other pages, respect their choice
-  } else if (!store.isProcessing && newLength !== oldLength) {
-    // Processing finished or filter changed, reset to page 1
-    resetPagination()
-  }
-})
-
-// Handle page change
-function handlePageChange(page) {
-  currentPage.value = page
-  // Scroll to top of results
-  const contentArea = document.querySelector('.content-area')
-  if (contentArea) {
-    contentArea.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-}
 
 const hasMatchScores = computed(() => {
   return displayProfessors.value.some(prof => prof.matchScore !== undefined)
@@ -564,9 +543,10 @@ function handleReset() {
 
 .content-area {
   flex: 1;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
   padding: 0;
+  position: relative;
+  min-height: 0;
 }
 
 .toolbar-content {
@@ -598,6 +578,67 @@ function handleReset() {
   flex-wrap: wrap;
 }
 
+/* Dynamic Virtual Scroller Container */
+.scroller {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto !important;
+  overflow-x: hidden;
+}
+
+.scroller :deep(.vue-recycle-scroller__item-wrapper) {
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.scroller :deep(.vue-recycle-scroller__item-view) {
+  width: 100%;
+}
+
+.scroller :deep(.vue-recycle-scroller__slot) {
+  padding: 0 16px;
+}
+
+/* Card wrapper for spacing */
+.card-wrapper {
+  padding-bottom: 24px;
+}
+
+/* List scroller specific styles */
+.list-scroller {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.list-scroller :deep(.vue-recycle-scroller__item-wrapper) {
+  padding: 0;
+}
+
+/* List item wrapper */
+.list-item-wrapper .list-item {
+  border-bottom: 1px solid var(--el-border-color-lighter);
+}
+
+/* Grouped view container */
+.grouped-view {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 16px;
+}
+
+.grouped-list {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  padding: 12px;
+}
+
+/* Grid container for grouped view */
 .cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
@@ -710,18 +751,6 @@ function handleReset() {
   font-size: 15px;
 }
 
-/* Pagination */
-.pagination-container {
-  display: flex;
-  justify-content: center;
-  padding: 24px 0;
-  margin-top: 16px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-}
-
 /* Floating Export Button */
 .floating-export-btn {
   position: fixed;
@@ -802,15 +831,6 @@ function handleReset() {
 
   .toolbar-right {
     justify-content: space-between;
-  }
-
-  .pagination-container {
-    padding: 16px 8px;
-  }
-
-  .pagination-container :deep(.el-pagination) {
-    flex-wrap: wrap;
-    justify-content: center;
   }
 
   .floating-export-btn {

@@ -481,8 +481,8 @@ class PublicationService {
     }
 
     try {
-      // Use request queue to control concurrency and rate limiting
-      const papers = await this.dblpQueue.execute(async () => {
+      // Use request queue with exponential backoff for rate limiting
+      const papers = await this.dblpQueue.executeWithBackoff(async () => {
         // Step 1: Search DBLP by name
         const searchUrl = `${DBLP_CONFIG.searchAPI}?q=author:${encodeURIComponent(name)}&format=json&h=100`
         
@@ -500,7 +500,9 @@ class PublicationService {
 
         if (!response.ok) {
           if (response.status === 429) {
-            throw new Error(`DBLP rate limiting: 429 Too Many Requests`)
+            const error = new Error(`DBLP rate limiting: 429 Too Many Requests`)
+            error.status = 429 // Add status for backoff detection
+            throw error
           }
           throw new Error(`DBLP search error: ${response.status}`)
         }

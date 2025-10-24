@@ -40,7 +40,10 @@ An intelligent platform for discovering professors whose research aligns with yo
 
 **LLM Support**
 - Cloud: OpenAI GPT-4, DeepSeek
-- Local: Qwen 0.5B, Qwen 1.5B (via vLLM backend)
+- Local: 
+  - Qwen 0.5B (Fast, 4GB VRAM)
+  - Qwen 1.5B (Balanced, 8GB VRAM)
+  - Qwen 2.5 7B (High accuracy, 16GB VRAM, INT8 quantized)
 
 ### Quick Start
 
@@ -154,6 +157,7 @@ Navigate to http://localhost:5173
 | Cloud API | 1 min | ~5 min/500 profs | $0.5-15 |
 | Local 0.5B | 10 min first time | ~8 min/500 profs | Free |
 | Local 1.5B | 15 min first time | ~11 min/500 profs | Free |
+| Local 7B | 20 min first time | ~18 min/500 profs | Free |
 
 ### Requirements
 
@@ -164,8 +168,11 @@ Navigate to http://localhost:5173
 
 **For Local LLM**
 - Docker Desktop
-- NVIDIA GPU with 8GB VRAM (or 4GB for 0.5B model)
-- 16GB system RAM
+- NVIDIA GPU:
+  - 0.5B model: 4GB VRAM
+  - 1.5B model: 8GB VRAM
+  - 7B model: 16GB VRAM (INT8 quantized)
+- 16GB+ system RAM
 
 ### Project Structure
 
@@ -197,8 +204,22 @@ CSProfAlign/
 
 **Backend won't start**
 - Ensure Docker is running: `docker info`
-- Check port 8000: `netstat -an | findstr 8000` (Windows) or `lsof -i :8000` (Unix)
+- **Port 8000 occupied:** Run `change-port.bat` to switch to another port (e.g., 8001)
+- **Old containers running:** `docker ps -a`, then `docker stop <name>` and `docker rm <name>`
 - View logs: `docker-compose logs -f`
+
+**Port Configuration**
+If port 8000 is in use:
+```bat
+# Windows - Quick fix
+set BACKEND_PORT=8001
+start-backend.bat
+
+# Or use the configuration script
+change-port.bat
+```
+
+See [PORT_CONFIG.md](PORT_CONFIG.md) for detailed instructions.
 
 **Model loading fails**
 - Check GPU memory: NVIDIA-smi (Windows/Linux) or Activity Monitor (macOS)
@@ -265,7 +286,10 @@ MIT License
 
 **LLM支持**
 - 云端: OpenAI GPT-4, DeepSeek
-- 本地: Qwen 0.5B, Qwen 1.5B (通过vLLM后端)
+- 本地: 
+  - Qwen 0.5B (快速, 4GB显存)
+  - Qwen 1.5B (平衡, 8GB显存)
+  - Qwen 2.5 7B (高精度, 16GB显存, INT8量化)
 
 ### 快速开始
 
@@ -379,6 +403,7 @@ start.bat
 | 云端API | 1分钟 | ~5分钟/500教授 | $0.5-15 |
 | 本地0.5B | 首次10分钟 | ~8分钟/500教授 | 免费 |
 | 本地1.5B | 首次15分钟 | ~11分钟/500教授 | 免费 |
+| 本地7B | 首次20分钟 | ~18分钟/500教授 | 免费 |
 
 ### 系统要求
 
@@ -389,8 +414,11 @@ start.bat
 
 **使用本地LLM需要**
 - Docker Desktop
-- NVIDIA GPU 8GB显存 (0.5B模型需4GB)
-- 16GB系统内存
+- NVIDIA GPU:
+  - 0.5B模型: 4GB显存
+  - 1.5B模型: 8GB显存
+  - 7B模型: 16GB显存 (INT8量化)
+- 16GB+系统内存
 
 ### 项目结构
 
@@ -420,8 +448,22 @@ CSProfAlign/
 
 **后端无法启动**
 - 确保Docker运行中: `docker info`
-- 检查端口8000: `netstat -an | findstr 8000` (Windows) 或 `lsof -i :8000` (Unix)
+- **端口8000被占用:** 运行`change-port.bat`切换到其他端口(如8001)
+- **旧容器仍在运行:** `docker ps -a`，然后`docker stop <容器名>`和`docker rm <容器名>`
 - 查看日志: `docker-compose logs -f`
+
+**端口配置**
+如果端口8000被占用:
+```bat
+# Windows - 快速修复
+set BACKEND_PORT=8001
+start-backend.bat
+
+# 或使用配置脚本
+change-port.bat
+```
+
+详细说明见[PORT_CONFIG.md](PORT_CONFIG.md)
 
 **模型加载失败**
 - 检查GPU内存: nvidia-smi (Windows/Linux) 或活动监视器 (macOS)

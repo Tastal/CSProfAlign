@@ -15,7 +15,7 @@ from models import (
     HealthResponse
 )
 from llm_engine import llm_engine, AVAILABLE_MODELS
-from prompt_builder import build_evaluation_prompt, parse_llm_response
+from prompt_builder import build_evaluation_prompt, parse_llm_response, validate_llm_response
 
 # Configure logging
 logging.basicConfig(
@@ -146,13 +146,36 @@ async def evaluate_batch(request: EvaluateRequest):
         logger.info(f"🚀 Running batch inference ({len(prompts)} prompts)")
         outputs = llm_engine.generate_batch(prompts)
         
-        # Parse results
+        # Parse and validate results
         logger.info(f"📝 Parsing {len(outputs)} outputs")
         results = []
-        for output in outputs:
+        invalid_count = 0
+        
+        for i, output in enumerate(outputs):
             text = llm_engine.extract_text(output)
-            parsed = parse_llm_response(text)
+            
+            # Validate output quality
+            is_valid, error_msg = validate_llm_response(text)
+            
+            if not is_valid:
+                invalid_count += 1
+                logger.warning(f"⚠️ Invalid output for professor {i}: {error_msg}")
+                logger.warning(f"   Raw output (first 200 chars): {text[:200]}")
+                
+                # Use fallback response for invalid output
+                parsed = {
+                    "score": 0.0,
+                    "reasoning": f"Invalid model output: {error_msg}",
+                    "researchSummary": "Unable to analyze due to invalid model response"
+                }
+            else:
+                # Parse valid output
+                parsed = parse_llm_response(text)
+            
             results.append(EvaluationResult(**parsed))
+        
+        if invalid_count > 0:
+            logger.warning(f"⚠️ {invalid_count}/{len(outputs)} outputs were invalid and replaced with fallback")
         
         processing_time = time.time() - start_time
         

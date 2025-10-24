@@ -63,7 +63,7 @@ export const useAppStore = defineStore('app', () => {
   const maxPapers = ref(savedSettings?.maxPapers || 20)
   const scoringScheme = ref(savedSettings?.scoringScheme || 'original') // 'original' or 'decision_tree'
   const publicationSource = ref(savedSettings?.publicationSource || 'hybrid') // 'hybrid' or 'scholar'
-  const dblpConcurrency = ref(savedSettings?.dblpConcurrency ?? 5) // DBLP API concurrency, default 5, adjustable 1-10
+  const dblpConcurrency = ref(savedSettings?.dblpConcurrency ?? 2) // DBLP API concurrency, default 2 (conservative), adjustable 1-5
   const publicationStats = ref({
     csrankingsCount: 0,
     dblpCount: 0,

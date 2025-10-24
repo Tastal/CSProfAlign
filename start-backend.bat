@@ -5,6 +5,13 @@ echo    CSProfAlign Local LLM Backend Server
 echo ========================================
 echo.
 
+REM Set default backend port if not already set
+if "%BACKEND_PORT%"=="" (
+    set BACKEND_PORT=8000
+)
+echo [CONFIG] Backend port: %BACKEND_PORT%
+echo.
+
 REM Check if Docker is installed
 docker --version >nul 2>&1
 if %errorlevel% neq 0 (
@@ -63,8 +70,8 @@ echo ========================================
 docker-compose ps
 
 echo.
-echo Backend URL: http://localhost:8000
-echo Health Check: http://localhost:8000/health
+echo Backend URL: http://localhost:%BACKEND_PORT%
+echo Health Check: http://localhost:%BACKEND_PORT%/health
 echo.
 echo To view logs: docker-compose logs -f
 echo To stop backend: docker-compose down

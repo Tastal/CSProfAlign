@@ -62,8 +62,14 @@
         >
           {{ area.toUpperCase() }}
         </el-tag>
-        <el-tag v-if="professor.areas.length > 5" size="small" type="info">
-          +{{ professor.areas.length - 5 }} more
+        <el-tag 
+          v-if="professor.areas.length > 5" 
+          size="small" 
+          type="info"
+          @click="showAllAreas = !showAllAreas"
+          style="cursor: pointer;"
+        >
+          {{ showAllAreas ? 'Show less' : `+${professor.areas.length - 5} more` }}
         </el-tag>
       </div>
 
@@ -81,9 +87,21 @@
           <el-icon><ChatLineRound /></el-icon>
           <strong>Research Focus:</strong>
         </div>
-        <p class="reasoning-text">
-          {{ professor.researchSummary || professor.matchReasoning }}
-        </p>
+        <div class="summary-container">
+          <p :class="['reasoning-text', { 'expanded': isExpanded }]">
+            {{ professor.researchSummary || professor.matchReasoning }}
+          </p>
+          <el-button 
+            v-if="isTruncated" 
+            text 
+            type="primary" 
+            size="small"
+            @click="isExpanded = !isExpanded"
+            class="expand-button"
+          >
+            {{ isExpanded ? 'Collapse ▲' : 'Expand ▼' }}
+          </el-button>
+        </div>
       </div>
 
       <!-- Actions -->
@@ -129,7 +147,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 import { ElMessage } from 'element-plus'
 import {
   Document,
@@ -150,8 +168,18 @@ const props = defineProps({
   }
 })
 
+// Expand/Collapse state
+const isExpanded = ref(false)
+const showAllAreas = ref(false)
+
+// Check if summary text is long enough to truncate
+const isTruncated = computed(() => {
+  const summary = props.professor.researchSummary || props.professor.matchReasoning || ''
+  return summary.length > 200
+})
+
 const displayAreas = computed(() => {
-  return props.professor.areas.slice(0, 5)
+  return showAllAreas.value ? props.professor.areas : props.professor.areas.slice(0, 5)
 })
 
 function getScoreColor(score) {
@@ -197,7 +225,6 @@ function exportProfessor() {
 
 <style scoped>
 .professor-card {
-  margin-bottom: 16px;
   transition: all 0.3s;
 }
 
@@ -265,6 +292,7 @@ function exportProfessor() {
 .area-tag {
   color: white !important;
   font-weight: 500;
+  border: none !important;
 }
 
 .publications {
@@ -301,11 +329,29 @@ function exportProfessor() {
   font-size: 14px;
 }
 
+.summary-container {
+  position: relative;
+}
+
 .reasoning-text {
   margin: 0;
   line-height: 1.6;
   color: var(--el-text-color-regular);
   font-size: 13px;
+  max-height: 4.8em; /* 3 lines at line-height 1.6 */
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.reasoning-text.expanded {
+  max-height: none;
+}
+
+.expand-button {
+  margin-top: 4px;
+  padding: 0 4px;
+  height: auto;
+  font-size: 12px;
 }
 
 .card-actions {

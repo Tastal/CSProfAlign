@@ -110,6 +110,45 @@ def build_evaluation_prompt(professor: Professor, research_direction: str, use_s
     return f"{system_prompt}\n\n{user_prompt}"
 
 
+def validate_llm_response(text: str) -> tuple[bool, str]:
+    """
+    Validate LLM output quality
+    Returns (is_valid, error_message)
+    """
+    import re
+    
+    if not text or not isinstance(text, str):
+        return False, "Empty or invalid response"
+    
+    text_stripped = text.strip()
+    
+    # Check minimum length
+    if len(text_stripped) < 20:
+        return False, "Output too short"
+    
+    # Check for invalid patterns
+    invalid_patterns = [
+        (r'^\s*$', "Empty/whitespace only"),
+        (r'^\*+$', "Only asterisks"),
+        (r'^[^\w\s]{10,}', "Too many special characters"),
+        (r'(.)\1{20,}', "Repeated characters"),
+        (r'^(Error|Failed|Unable|Invalid)', "Error message output"),
+    ]
+    
+    for pattern, desc in invalid_patterns:
+        if re.search(pattern, text_stripped):
+            return False, f"Invalid pattern: {desc}"
+    
+    # Check if it looks like valid output (has score or JSON)
+    has_score = bool(re.search(r'(?:score|Score)[:\s]*[0-9.]+', text_stripped))
+    has_json = bool(re.search(r'\{.*"score".*\}', text_stripped, re.DOTALL))
+    
+    if not (has_score or has_json):
+        return False, "No score found in output"
+    
+    return True, None
+
+
 def parse_llm_response(response_text: str) -> dict:
     """
     Parse LLM response to extract score and reasoning

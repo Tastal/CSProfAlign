@@ -17,17 +17,24 @@ logger = logging.getLogger(__name__)
 AVAILABLE_MODELS = {
     "qwen-0.5b": {
         "model_path": "Qwen/Qwen2.5-0.5B-Instruct",
-        "name": "Qwen 0.5B",
-        "size": "512MB",
-        "description": "Fast and efficient (Recommended)",
-        "vram": "4GB"
+        "name": "Qwen2.5-0.5B-Instruct",
+        "size": "0.5B",
+        "vram": "4GB",
+        "recommended_batch_size": 20
     },
     "qwen-1.5b": {
         "model_path": "Qwen/Qwen2.5-1.5B-Instruct",
-        "name": "Qwen 1.5B",
-        "size": "1.5GB",
-        "description": "Higher accuracy",
-        "vram": "8GB"
+        "name": "Qwen2.5-1.5B-Instruct",
+        "size": "1.5B",
+        "vram": "8GB",
+        "recommended_batch_size": 15
+    },
+    "qwen-7b": {
+        "model_path": "Qwen/Qwen2.5-7B-Instruct",
+        "name": "Qwen2.5-7B-Instruct",
+        "size": "7B",
+        "vram": "16GB",
+        "recommended_batch_size": 8
     }
 }
 
@@ -38,12 +45,7 @@ class LLMEngine:
     def __init__(self):
         self.llm: Optional[LLM] = None
         self.current_model: Optional[str] = None
-        self.sampling_params = SamplingParams(
-            temperature=0.2,
-            top_p=0.8,
-            max_tokens=128,
-            repetition_penalty=1.1
-        )
+        self.sampling_params = None  # Will be set when model is loaded
     
     def is_loaded(self) -> bool:
         """Check if model is loaded"""
@@ -102,16 +104,42 @@ class LLMEngine:
             else:
                 gpu_util = 0.75  # Default for CPU fallback
             
-            self.llm = LLM(
-                model=model_path,
-                gpu_memory_utilization=gpu_util,
-                max_model_len=4096,
-                trust_remote_code=True,
-                download_dir="/root/.cache/huggingface"
-            )
+            # Enable INT8 quantization for large models (7B+)
+            use_quantization = "7b" in model_id or "14b" in model_id
+            
+            if use_quantization:
+                logger.info(f"Enabling INT8 quantization for {model_id}")
+                self.llm = LLM(
+                    model=model_path,
+                    quantization="bitsandbytes",
+                    load_format="bitsandbytes",
+                    gpu_memory_utilization=gpu_util,
+                    max_model_len=4096,
+                    trust_remote_code=True,
+                    download_dir="/root/.cache/huggingface"
+                )
+            else:
+                self.llm = LLM(
+                    model=model_path,
+                    gpu_memory_utilization=gpu_util,
+                    max_model_len=4096,
+                    trust_remote_code=True,
+                    download_dir="/root/.cache/huggingface"
+                )
             
             self.current_model = model_id
-            logger.info(f"✅ Model loaded successfully: {model_id}")
+            
+            # Set sampling parameters based on model size
+            # Larger models benefit from lower temperature for more focused outputs
+            temperature = 0.1 if "7b" in model_id or "14b" in model_id else 0.2
+            self.sampling_params = SamplingParams(
+                temperature=temperature,
+                top_p=0.8,
+                max_tokens=128,
+                repetition_penalty=1.1
+            )
+            
+            logger.info(f"✅ Model loaded successfully: {model_id} (temp={temperature})")
             
         except Exception as e:
             logger.error(f"❌ Failed to load model {model_id}: {e}")

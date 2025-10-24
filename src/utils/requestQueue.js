@@ -7,11 +7,15 @@ export class RequestQueue {
   constructor(maxConcurrent = 3, minInterval = 200) {
     this.maxConcurrent = maxConcurrent
     this.minInterval = minInterval
+    this.baseDelay = minInterval
+    this.currentDelay = minInterval
     this.activeRequests = 0
     this.lastRequestTime = 0
     this.totalRequests = 0
     this.successCount = 0
     this.errorCount = 0
+    this.consecutiveErrors = 0
+    this.lastErrorTime = null
   }
 
   /**
@@ -23,6 +27,44 @@ export class RequestQueue {
     this.maxConcurrent = maxConcurrent
     this.minInterval = minInterval
     console.log(`[RequestQueue] Config updated: ${maxConcurrent} concurrent, ${minInterval}ms interval`)
+  }
+
+  /**
+   * Execute a request with exponential backoff on rate limit errors
+   * @param {Function} requestFn - Async function to execute
+   * @param {AbortSignal} signal - Optional abort signal
+   * @returns {Promise} Request result
+   */
+  async executeWithBackoff(requestFn, signal = null) {
+    try {
+      const result = await this.execute(requestFn, signal)
+      
+      // Success: gradually recover speed
+      if (this.consecutiveErrors > 0) {
+        this.consecutiveErrors = Math.max(0, this.consecutiveErrors - 1)
+        this.currentDelay = this.baseDelay * Math.pow(2, this.consecutiveErrors)
+        
+        if (this.consecutiveErrors === 0) {
+          console.log(`[RequestQueue] ✅ Recovered from rate limit, back to ${this.baseDelay}ms`)
+        }
+      }
+      
+      return result
+    } catch (error) {
+      // Check if it's a rate limit error (HTTP 429)
+      if (error.status === 429 || error.message?.includes('429') || error.message?.includes('Too Many Requests')) {
+        this.consecutiveErrors++
+        this.lastErrorTime = Date.now()
+        this.currentDelay = Math.min(5000, this.baseDelay * Math.pow(2, this.consecutiveErrors))
+        
+        console.warn(`[RequestQueue] ⚠️ Rate limit hit (${this.consecutiveErrors} consecutive), backing off to ${this.currentDelay}ms`)
+        
+        // Wait before rethrowing to let the system cool down
+        await new Promise(resolve => setTimeout(resolve, this.currentDelay))
+      }
+      
+      throw error
+    }
   }
 
   /**

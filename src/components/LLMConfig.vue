@@ -3,15 +3,18 @@
     <template #header>
       <div class="card-header">
         <span class="header-title">
-          <el-icon><ChatDotRound /></el-icon>
-          LLM Configuration
+          <el-icon><MagicStick /></el-icon>
+          AI Analysis
         </span>
       </div>
     </template>
 
     <el-form label-position="top" size="default">
-      <!-- Provider Selection -->
-      <el-form-item label="LLM Provider">
+      <!-- Collapsible Configuration Groups -->
+      <el-collapse v-model="activeCollapses" class="config-collapse">
+        <!-- Group 1: LLM Provider -->
+        <el-collapse-item name="provider" title="🔧 LLM Provider">
+          <el-form-item label="Provider">
         <el-select v-model="store.llmProvider" style="width: 100%">
           <el-option label="OpenAI (ChatGPT)" value="openai">
             <span>OpenAI (ChatGPT)</span>
@@ -108,14 +111,12 @@
             <el-option
               v-for="model in availableModels"
               :key="model.id"
-              :label="`${model.name} (${model.size})`"
+              :label="model.name"
               :value="model.id"
             >
-              <div>
-                <span>{{ model.description }}</span>
-                <span style="float: right; color: var(--el-color-info)">
-                  {{ model.size }}
-                </span>
+              <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                <span>{{ model.name }}</span>
+                <el-tag size="small" type="info">{{ model.size }}</el-tag>
               </div>
             </el-option>
           </el-select>
@@ -193,9 +194,11 @@
           </el-button>
         </div>
       </div>
+        </el-collapse-item>
 
-      <!-- Research Direction -->
-      <el-form-item label="Research Direction">
+        <!-- Group 2: Research Criteria -->
+        <el-collapse-item name="criteria" title="🎯 Research Criteria">
+          <el-form-item label="Research Direction">
         <el-input
           v-model="store.researchDirection"
           type="textarea"
@@ -243,10 +246,12 @@ I'm interested in large language models for code generation, particularly focusi
           <span class="threshold-value">{{ store.threshold.toFixed(2) }}</span>
           <span class="threshold-desc">{{ getThresholdDescription() }}</span>
         </div>
-      </el-form-item>
+          </el-form-item>
+        </el-collapse-item>
 
-      <!-- Scoring Method -->
-      <el-form-item>
+        <!-- Group 3: Analysis Methods -->
+        <el-collapse-item name="methods" title="⚙️ Analysis Methods">
+          <el-form-item>
         <template #label>
           <span>
             Scoring Method
@@ -274,7 +279,7 @@ I'm interested in large language models for code generation, particularly focusi
           </el-option>
           <el-option label="Decision Tree" value="decision_tree">
             <div style="padding: 4px 0;">
-              <div style="font-weight: 500;">Decision Tree ⭐</div>
+              <div style="font-weight: 500;">Decision Tree</div>
               <small style="color: var(--el-color-success); font-size: 12px;">
                 95% consistency across LLMs
               </small>
@@ -316,21 +321,25 @@ I'm interested in large language models for code generation, particularly focusi
             <span>Scholar Scraper (Original)</span>
           </el-option>
         </el-select>
-      </el-form-item>
+          </el-form-item>
+        </el-collapse-item>
 
-      <!-- Advanced Settings (Collapsible) -->
-      <el-collapse v-model="activeCollapse">
-        <el-collapse-item title="⚙️ Advanced Settings" name="advanced">
+        <!-- Group 4: Advanced Settings -->
+        <el-collapse-item name="advanced" title="🔬 Advanced Settings">
           <el-form-item>
             <template #label>
               <span>
                 LLM Requests
+                <el-tag v-if="recommendedBatchSize" size="small" type="success" style="margin-left: 8px">
+                  Recommended: {{ recommendedBatchSize }}
+                </el-tag>
                 <el-tooltip placement="top" effect="dark">
                   <template #content>
                     <div style="max-width: 300px">
                       Number of professors processed simultaneously.<br/>
                       Higher concurrency = faster processing, but may hit API rate limits.<br/>
-                      Recommended: 10-20 for most APIs.
+                      <span v-if="recommendedBatchSize">Auto-adjusted based on selected model.</span>
+                      <span v-else>Recommended: 10-20 for most APIs.</span>
                     </div>
                   </template>
                   <el-icon style="margin-left: 4px; cursor: help;">
@@ -395,8 +404,9 @@ I'm interested in large language models for code generation, particularly focusi
                   <template #content>
                     <div style="max-width: 300px">
                       Number of DBLP API requests simultaneously.<br/>
-                      Recommended: 3-5 for stable performance.<br/>
-                      Higher values may cause DBLP API timeouts.
+                      Recommended: 2-3 for stable performance.<br/>
+                      <strong>Warning:</strong> Higher values (4-5) may trigger rate limits 
+                      when processing 1000+ professors in a single batch.
                     </div>
                   </template>
                   <el-icon style="margin-left: 4px; cursor: help;">
@@ -409,9 +419,9 @@ I'm interested in large language models for code generation, particularly focusi
               <el-slider
                 v-model="store.dblpConcurrency"
                 :min="1"
-                :max="10"
+                :max="5"
                 :step="1"
-                :marks="{ 1: '1', 3: '3', 5: '5', 10: '10' }"
+                :marks="{ 1: '1', 2: '2', 3: '3', 5: '5' }"
               />
             </div>
             <div class="setting-value">
@@ -443,7 +453,8 @@ I'm interested in large language models for code generation, particularly focusi
           :title="getDisabledReason()"
           :type="store.researchDirection.trim() ? 'success' : 'info'"
           :closable="false"
-          style="margin-top: 12px; font-size: 13px"
+          style="margin-top: 12px; font-size: 13px; text-align: center;"
+          class="status-alert"
         />
       </el-form-item>
 
@@ -468,7 +479,8 @@ import { backendLLM } from '@/services/backendLLM'
 
 const store = useAppStore()
 
-const activeCollapse = ref([])
+const activeCollapse = ref([]) // For Advanced Settings
+const activeCollapses = ref([]) // For main config groups
 const selectedLocalModel = ref('qwen-1.5b')
 const localModelProgress = ref(0)
 const downloadMessage = ref('Initializing...')
@@ -480,6 +492,15 @@ const buttonHovered = ref(false)
 const backendStatus = ref('checking')
 const availableModels = ref([])
 
+// Computed: Recommended batch size for current model
+const recommendedBatchSize = computed(() => {
+  if (store.llmProvider === 'local') {
+    const model = availableModels.value.find(m => m.id === selectedLocalModel.value)
+    return model?.recommended_batch_size || null
+  }
+  return null
+})
+
 // Watch for provider changes and check backend
 watch(() => store.llmProvider, async (newProvider) => {
   if (newProvider === 'local') {
@@ -487,10 +508,27 @@ watch(() => store.llmProvider, async (newProvider) => {
   }
 })
 
+// Watch for local model selection changes - auto-adjust batch size
+watch(selectedLocalModel, (newModel) => {
+  const modelInfo = availableModels.value.find(m => m.id === newModel)
+  if (modelInfo && modelInfo.recommended_batch_size) {
+    store.maxWorkers = modelInfo.recommended_batch_size
+    ElMessage.info({
+      message: `Batch size auto-adjusted to ${modelInfo.recommended_batch_size} for ${modelInfo.name}`,
+      duration: 2000
+    })
+  }
+})
+
 // Check backend health on mount if already selected
 onMounted(async () => {
   if (store.llmProvider === 'local') {
     await checkBackendStatus()
+  }
+  
+  // Auto-expand provider panel if not configured
+  if (!store.llmApiKey && store.llmProvider !== 'local') {
+    activeCollapses.value = ['provider']
   }
 })
 
@@ -863,6 +901,78 @@ function handleReset() {
   margin-bottom: 18px;
 }
 
+/* Configuration collapse panels */
+.config-collapse {
+  border: none !important;
+  margin-bottom: 12px;
+}
+
+.config-collapse :deep(.el-collapse-item) {
+  margin-bottom: 6px;
+}
+
+.config-collapse :deep(.el-collapse-item__header) {
+  background: #e8eaf0 !important;  /* Darker background */
+  padding: 8px 12px !important;  /* 60% of original */
+  border-radius: 6px;
+  margin-bottom: 0 !important;
+  font-weight: 600;
+  font-size: 13px !important;  /* Slightly smaller */
+  transition: background 0.2s;
+  min-height: 32px !important;  /* Reduce height */
+  height: auto !important;
+  line-height: 1.4 !important;
+}
+
+.config-collapse :deep(.el-collapse-item__header:hover) {
+  background: #d8dae5 !important;  /* Darker hover */
+}
+
+.config-collapse :deep(.el-collapse-item__wrap) {
+  background: transparent;
+  border: none;
+}
+
+.config-collapse :deep(.el-collapse-item__content) {
+  padding: 10px 6px !important;  /* 60% of original */
+}
+
+.config-collapse :deep(.el-form-item) {
+  margin-bottom: 12px !important;  /* Reduce form item spacing */
+}
+
+.config-collapse :deep(.el-form-item__label) {
+  margin-bottom: 6px !important;
+  font-size: 13px !important;
+}
+
+.config-collapse :deep(.el-input),
+.config-collapse :deep(.el-select),
+.config-collapse :deep(.el-textarea) {
+  font-size: 13px !important;
+}
+
+.config-collapse :deep(.el-input__inner),
+.config-collapse :deep(.el-select__wrapper) {
+  height: 32px !important;  /* Smaller input height */
+}
+
+.config-collapse :deep(.el-button) {
+  height: 32px !important;
+  font-size: 13px !important;
+  padding: 8px 15px !important;
+}
+
+.config-collapse :deep(.el-alert) {
+  padding: 8px 12px !important;
+  font-size: 12px !important;
+}
+
+.config-collapse :deep(.el-alert__title) {
+  font-size: 12px !important;
+}
+
+/* Old Advanced Settings collapse (inside config-collapse now) */
 :deep(.el-collapse) {
   border: none;
 }
@@ -896,6 +1006,12 @@ function handleReset() {
 .model-ready {
   font-size: 14px;
   line-height: 1.6;
+}
+
+/* Status alert centering */
+.status-alert :deep(.el-alert__title) {
+  text-align: center !important;
+  width: 100%;
 }
 </style>
 
