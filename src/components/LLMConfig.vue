@@ -56,22 +56,26 @@
         v-if="store.llmProvider !== 'local'"
         label="Model (Optional)"
       >
-        <el-input
+        <el-select
           v-model="store.llmModel"
-          :placeholder="getDefaultModel()"
-        />
+          placeholder="Select a model (optional)"
+          clearable
+          style="width: 100%"
+        >
+          <el-option
+            v-for="model in modelOptions"
+            :key="model.value"
+            :label="model.label"
+            :value="model.value"
+          >
+            <div style="display: flex; justify-content: space-between; width: 100%;">
+              <span>{{ model.label }}</span>
+              <el-tag v-if="model.description" size="small" type="info">{{ model.description }}</el-tag>
+            </div>
+          </el-option>
+        </el-select>
       </el-form-item>
 
-      <!-- Base URL (optional) -->
-      <el-form-item
-        v-if="store.llmProvider !== 'local'"
-        label="Base URL (Optional)"
-      >
-        <el-input
-          v-model="store.llmBaseURL"
-          placeholder="Custom API endpoint"
-        />
-      </el-form-item>
 
       <!-- Local Model Options -->
       <div v-if="store.llmProvider === 'local'">
@@ -429,6 +433,30 @@ I'm interested in large language models for code generation, particularly focusi
               <span class="setting-desc">DBLP requests simultaneously</span>
             </div>
           </el-form-item>
+
+          <!-- Base URL (only show for cloud providers) -->
+          <el-form-item v-if="store.llmProvider !== 'local'">
+            <template #label>
+              <span>
+                Base URL (Optional)
+                <el-tooltip placement="top" effect="dark">
+                  <template #content>
+                    <div style="max-width: 300px">
+                      Custom API endpoint for proxy or self-hosted services.<br/>
+                      Leave empty to use default API endpoints.
+                    </div>
+                  </template>
+                  <el-icon style="margin-left: 4px; cursor: help;">
+                    <QuestionFilled />
+                  </el-icon>
+                </el-tooltip>
+              </span>
+            </template>
+            <el-input
+              v-model="store.llmBaseURL"
+              placeholder="Custom API endpoint (optional)"
+            />
+          </el-form-item>
         </el-collapse-item>
       </el-collapse>
 
@@ -491,6 +519,36 @@ const buttonHovered = ref(false)
 // Backend status
 const backendStatus = ref('checking')
 const availableModels = ref([])
+
+// Computed: Model options based on provider
+const modelOptions = computed(() => {
+  const options = {
+    openai: [
+      { value: 'gpt-4o', label: 'GPT-4o', description: 'Latest' },
+      { value: 'gpt-4o-mini', label: 'GPT-4o Mini', description: 'Cost-effective' },
+      { value: 'gpt-4-turbo', label: 'GPT-4 Turbo', description: 'High performance' },
+      { value: 'gpt-4', label: 'GPT-4', description: 'Legacy' },
+      { value: 'gpt-3.5-turbo', label: 'GPT-3.5 Turbo', description: 'Fast' }
+    ],
+    gemini: [
+      { value: 'gemini-2.0-flash-exp', label: 'Gemini 2.0 Flash', description: 'Latest' },
+      { value: 'gemini-1.5-pro', label: 'Gemini 1.5 Pro', description: 'High performance' },
+      { value: 'gemini-1.5-flash', label: 'Gemini 1.5 Flash', description: 'Fast' },
+      { value: 'gemini-pro', label: 'Gemini Pro', description: 'Legacy' }
+    ],
+    claude: [
+      { value: 'claude-3-5-sonnet-20241022', label: 'Claude 3.5 Sonnet', description: 'Latest' },
+      { value: 'claude-3-5-haiku-20241022', label: 'Claude 3.5 Haiku', description: 'Fast' },
+      { value: 'claude-3-opus-20240229', label: 'Claude 3 Opus', description: 'High performance' },
+      { value: 'claude-3-sonnet-20240229', label: 'Claude 3 Sonnet', description: 'Balanced' }
+    ],
+    deepseek: [
+      { value: 'deepseek-chat', label: 'DeepSeek Chat (V3.2-Exp)', description: 'Default' },
+      { value: 'deepseek-reasoner', label: 'DeepSeek Reasoner (R1-0528)', description: 'Reasoning' }
+    ]
+  }
+  return options[store.llmProvider] || []
+})
 
 // Computed: Recommended batch size for current model
 const recommendedBatchSize = computed(() => {
@@ -614,9 +672,9 @@ function getDisabledReason() {
 
 function getDefaultModel() {
   const defaults = {
-    openai: 'gpt-4',
-    gemini: 'gemini-pro',
-    claude: 'claude-3-sonnet-20240229',
+    openai: 'gpt-4o',
+    gemini: 'gemini-2.0-flash-exp',
+    claude: 'claude-3-5-sonnet-20241022',
     deepseek: 'deepseek-chat'
   }
   return defaults[store.llmProvider] || ''

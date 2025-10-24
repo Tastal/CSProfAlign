@@ -165,7 +165,16 @@ export class LLMService {
     }
 
     const data = await response.json()
-    return data.choices[0].message.content
+    const message = data.choices[0].message
+    
+    // Handle reasoner model's different response format
+    if (message.reasoning_content) {
+      // For deepseek-reasoner: combine reasoning + content
+      return `${message.reasoning_content}\n\n${message.content}`
+    }
+    
+    // For regular models: just return content
+    return message.content
   }
 }
 

@@ -159,7 +159,7 @@
               <div class="list-item-name">
                 <strong>{{ item.name }}</strong>
                 <el-tag v-if="item.matchScore" :type="getScoreType(item.matchScore)" size="small" round>
-                  {{ (item.matchScore * 100).toFixed(0) }}%
+                  {{ (item.matchScore * 100).toFixed(0) }}
                 </el-tag>
               </div>
               <div class="list-item-affiliation">

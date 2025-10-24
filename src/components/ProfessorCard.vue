@@ -91,16 +91,13 @@
           <p :class="['reasoning-text', { 'expanded': isExpanded }]">
             {{ professor.researchSummary || professor.matchReasoning }}
           </p>
-          <el-button 
+          <span 
             v-if="isTruncated" 
-            text 
-            type="primary" 
-            size="small"
             @click="isExpanded = !isExpanded"
-            class="expand-button"
+            class="expand-icon"
           >
-            {{ isExpanded ? 'Collapse ▲' : 'Expand ▼' }}
-          </el-button>
+            {{ isExpanded ? '▲' : '▼' }}
+          </span>
         </div>
       </div>
 
@@ -347,11 +344,16 @@ function exportProfessor() {
   max-height: none;
 }
 
-.expand-button {
-  margin-top: 4px;
-  padding: 0 4px;
-  height: auto;
-  font-size: 12px;
+.expand-icon {
+  font-size: 10px;
+  color: #999;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: color 0.2s;
+}
+
+.expand-icon:hover {
+  color: #666;
 }
 
 .card-actions {
